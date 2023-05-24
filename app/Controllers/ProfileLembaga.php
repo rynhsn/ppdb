@@ -67,6 +67,6 @@ class ProfileLembaga extends BaseController
         ]);
 
         session()->setFlashdata('pesan', 'Profil berhasil diperbarui.');
-        return redirect()->to('/lembaga');
+        return redirect()->to('/panel/lembaga');
     }
 }

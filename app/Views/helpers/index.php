@@ -119,7 +119,7 @@
                                                     <span class="path2"></span>
                                                 </i>
                                             </a>
-                                            <?= form_open('/helpers/jenjang/' . $entity['id'], ['class' => 'd-inline']) ?>
+                                            <?= form_open('/panel/helpers/jenjang/' . $entity['id'], ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
                                             <button type="submit"

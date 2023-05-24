@@ -32,17 +32,29 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/tables', 'Home::tables');
+
 $routes->group('panel', static function ($routes) {
+    $routes->get('', 'Panel::index');
+
     $routes->group('helpers', static function ($routes) {
-        $routes->get('', 'Helpers::index');
-        $routes->post('(:segment)', 'Helpers::save/$1');
-        $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2');
-        $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2');
+        $routes->get('', 'Helpers::index', ['filter' => 'permission:manage-site']);
+        $routes->post('(:segment)', 'Helpers::save/$1', ['filter' => 'permission:manage-site']);
+        $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2', ['filter' => 'permission:manage-site']);
+        $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2', ['filter' => 'permission:manage-site']);
     });
 
     $routes->group('lembaga', static function ($routes) {
-        $routes->get('', 'ProfileLembaga::index');
-        $routes->put('', 'ProfileLembaga::update');
+        $routes->get('', 'ProfileLembaga::index', ['filter' => 'permission:manage-site']);
+        $routes->put('', 'ProfileLembaga::update', ['filter' => 'permission:manage-site']);
+    });
+
+    $routes->group('user', static function ($routes){
+        $routes->get('', 'Users::index', ['filter' => 'permission:manage-accounts']);
+        $routes->get('create', 'Users::create', ['filter' => 'permission:manage-accounts']);
+        $routes->get('edit/(:num)', 'Users::edit/$1', ['filter' => 'permission:manage-accounts']);
+        $routes->post('save', 'Users::save', ['filter' => 'permission:manage-accounts']);
+        $routes->put('save/(:num)', 'Users::save/$1', ['filter' => 'permission:manage-accounts']);
+        $routes->delete('(:segment)', 'Users::delete/$1', ['filter' => 'permission:manage-accounts']);
     });
 });
 

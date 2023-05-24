@@ -4,7 +4,7 @@
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <?= form_open('/helpers/kompetensi'); ?>
+            <?= form_open('/panel/helpers/kompetensi'); ?>
             <?= csrf_field(); ?>
             <!--begin::Modal header-->
             <div class="modal-header">
@@ -62,7 +62,7 @@
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <?= form_open('/helpers/kompetensi/'.$entity['id']); ?>
+            <?= form_open('/panel/helpers/kompetensi/'.$entity['id']); ?>
             <?= csrf_field(); ?>
             <?= form_hidden('_method', 'PUT'); ?>
             <!--begin::Modal header-->

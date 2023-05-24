@@ -66,12 +66,12 @@ class Helpers extends BaseController
 
         session()->setFlashdata('pesan', $table . ' berhasil disimpan.');
 
-        return redirect()->to('/helpers');
+        return redirect()->to('/panel/helpers');
     }
 
     public function delete($table, $id){
         $this->db->table($table)->delete(['id'=>$id]);
         session()->setFlashdata('pesan', 'Data '.$table.' berhasil dihapus.');
-        return redirect()->to('/helpers');
+        return redirect()->to('/panel/helpers');
     }
 }

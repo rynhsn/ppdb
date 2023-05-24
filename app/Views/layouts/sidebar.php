@@ -143,7 +143,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="path3"></span>
                             </i>
                         </span>
-                        <span class="menu-title">User Management</span>
+                        <span class="menu-title">Account Management</span>
                         <span class="menu-arrow"></span>
                     </span>
                     <!--end:Menu link-->
@@ -152,11 +152,11 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         <!--begin:Menu item-->
                         <div class="menu-item">
                             <!--begin:Menu link-->
-                            <a class="menu-link" href="../../demo1/dist/pages/user-profile/overview.html">
+                            <a class="menu-link" href="<?=base_url('panel/user');?>">
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                <span class="menu-title">Overview</span>
+                                <span class="menu-title">Users</span>
                             </a>
                             <!--end:Menu link-->
                         </div>

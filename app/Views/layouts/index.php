@@ -148,6 +148,9 @@
 <script src="<?= base_url(); ?>/js/custom/utilities/modals/create-app.js"></script>
 <script src="<?= base_url(); ?>/js/custom/utilities/modals/users-search.js"></script>
 
+<!-- data table users -->
+<script src="<?=base_url(); ?>/js/custom/datatables/users.js"></script>
+
 <!--untuk profil lembaga-->
 <script src="<?= base_url(); ?>/js/custom/account/settings/profile-details.js"></script>
 <!--end::Custom Javascript-->
@@ -155,21 +158,6 @@
 <script>
     $("#kt_datatable_pekerjaan").DataTable();
     $("#kt_datatable_pendidikan").DataTable();
-
-    function previewImg() {
-        var fileInput = document.getElementById('avatar');
-        var previewImage = document.getElementById('preview-image');
-
-        var file = fileInput.files[0];
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            previewImage.src = e.target.result;
-            console.log(document.querySelector('#avatar').files[0]);
-        };
-
-        reader.readAsDataURL(file);
-    }
 </script>
 </body>
 <!--end::Body-->

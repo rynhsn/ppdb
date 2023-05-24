@@ -4,7 +4,7 @@
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <?= form_open('/helpers/jenjang'); ?>
+            <?= form_open('/panel/helpers/jenjang'); ?>
             <?= csrf_field(); ?>
             <!--begin::Modal header-->
             <div class="modal-header">
@@ -62,7 +62,7 @@
         <!--begin::Modal content-->
         <div class="modal-content">
             <!--begin::Form-->
-            <?= form_open('/helpers/jenjang/'.$entity['id']); ?>
+            <?= form_open('/panel/helpers/jenjang/'.$entity['id']); ?>
             <?= csrf_field(); ?>
             <?= form_hidden('_method', 'PUT'); ?>
             <!--begin::Modal header-->
