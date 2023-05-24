@@ -104,12 +104,11 @@ class Users extends BaseController
             'username' => $this->request->getVar('username'),
             'email' => $this->request->getVar('email'),
             'password' => $this->request->getVar('password'),
-            'fullname' => $this->request->getVar('fullname'),
-            'active' => $active,
+//            'fullname' => $this->request->getVar('fullname'),
+//            'active' => $active,
         ];
-
-//        dd($data, $groupName);
-        $this->userModel->insert($data)->withGroup($groupName);
+//        $group = $this->groupModel->where('name', $groupName)->first();
+        $this->userModel->withGroup($groupName)->insert($data);
         session()->setFlashdata('pesan', 'User berhasil ditambahkan.');
         return redirect()->to('/panel/user');
     }

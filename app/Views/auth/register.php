@@ -58,6 +58,14 @@
                             <!--end::Username-->
                         </div>
 
+                        <div class="fv-row mb-8">
+                            <!--begin::Username-->
+                            <input type="text" name="fullname" autocomplete="off"
+                                   class="form-control bg-transparent <?php if (session('errors.fullname')) : ?>is-invalid<?php endif ?>"
+                                   placeholder="Nama Lengkap" value="<?= old('fullname') ?>"/>
+                            <!--end::Username-->
+                        </div>
+
                         <!--begin::Input group-->
                         <div class="fv-row mb-8" data-kt-password-meter="true">
                             <!--begin::Wrapper-->
