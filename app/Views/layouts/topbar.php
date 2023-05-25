@@ -15,7 +15,7 @@
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
             <a href="../../demo1/dist/index.html" class="d-lg-none">
-                <img alt="Logo" src="<?=base_url();?>/media/logos/default-small.svg" class="h-30px"/>
+                <img alt="Logo" src="<?=base_url();?>/media/avatars/default-small.svg" class="h-30px"/>
             </a>
         </div>
         <!--end::Mobile logo-->
@@ -334,7 +334,7 @@
                     <div class="cursor-pointer symbol symbol-30px symbol-md-40px"
                          data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                          data-kt-menu-placement="bottom-end">
-                        <img src="<?=base_url();?>/media/avatars/300-1.jpg" alt="user"/>
+                        <img src="<?=base_url();?>/media/avatars/<?=user()->avatar?>" alt="user"/>
                     </div>
                     <!--begin::User account menu-->
                     <div
@@ -345,16 +345,16 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="<?=base_url();?>/media/avatars/300-1.jpg"/>
+                                    <img alt="Logo" src="<?=base_url();?>/media/avatars/<?=user()->avatar?>"/>
                                 </div>
                                 <!--end::Avatar-->
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
-                                    <div class="fw-bold d-flex align-items-center fs-5">Max Smith
+                                    <div class="fw-bold d-flex align-items-center fs-5"><?=user()->fullname?>
                                         <span
-                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
+                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2"><?=user()->username?></span>
                                     </div>
-                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                    <a href="#" class="fw-semibold text-muted text-hover-primary fs-7"><?=user()->email?></a>
                                 </div>
                                 <!--end::Username-->
                             </div>
@@ -365,7 +365,7 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="../../demo1/dist/account/overview.html" class="menu-link px-5">My
+                            <a href="<?=base_url('panel/profile')?>" class="menu-link px-5">My
                                 Profile</a>
                         </div>
                         <!--end::Menu item-->
@@ -374,13 +374,13 @@
                         <!--end::Menu separator-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5 my-1">
-                            <a href="../../demo1/dist/account/settings.html" class="menu-link px-5">Account
+                            <a href="<?=base_url('panel/settings')?>" class="menu-link px-5">Account
                                 Settings</a>
                         </div>
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-                            <a href="<?=base_url('logout');?>>"
+                            <a href="<?=base_url('logout');?>"
                                class="menu-link px-5">Sign Out</a>
                         </div>
                         <!--end::Menu item-->

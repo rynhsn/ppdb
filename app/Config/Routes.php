@@ -30,31 +30,41 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/', function() {
+    return view('index');
+});
 $routes->get('/tables', 'Home::tables');
 
-$routes->group('panel', static function ($routes) {
+$routes->group('panel',['filter'=>'auth'] , static function ($routes) {
     $routes->get('', 'Panel::index');
+    $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
 
-    $routes->group('helpers', static function ($routes) {
-        $routes->get('', 'Helpers::index', ['filter' => 'permission:manage-site']);
-        $routes->post('(:segment)', 'Helpers::save/$1', ['filter' => 'permission:manage-site']);
-        $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2', ['filter' => 'permission:manage-site']);
-        $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2', ['filter' => 'permission:manage-site']);
+    $routes->group('helpers', ['filter' => 'permission:manage-site'], static function ($routes) {
+        $routes->get('', 'Helpers::index');
+        $routes->post('(:segment)', 'Helpers::save/$1');
+        $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2');
+        $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2');
     });
 
-    $routes->group('lembaga', static function ($routes) {
-        $routes->get('', 'ProfileLembaga::index', ['filter' => 'permission:manage-site']);
-        $routes->put('', 'ProfileLembaga::update', ['filter' => 'permission:manage-site']);
+    $routes->group('lembaga', ['filter' => 'permission:manage-site'], static function ($routes) {
+        $routes->get('', 'ProfileLembaga::index');
+        $routes->put('', 'ProfileLembaga::update');
     });
 
-    $routes->group('user', static function ($routes){
-        $routes->get('', 'Users::index', ['filter' => 'permission:manage-accounts']);
-        $routes->get('create', 'Users::create', ['filter' => 'permission:manage-accounts']);
-        $routes->get('edit/(:num)', 'Users::edit/$1', ['filter' => 'permission:manage-accounts']);
-        $routes->post('save', 'Users::save', ['filter' => 'permission:manage-accounts']);
-        $routes->put('save/(:num)', 'Users::save/$1', ['filter' => 'permission:manage-accounts']);
-        $routes->delete('(:segment)', 'Users::delete/$1', ['filter' => 'permission:manage-accounts']);
+    $routes->group('user', ['filter' => 'permission:manage-accounts'], function ($routes){
+        $routes->get('', 'Users::index');
+
+        $routes->get('create', 'Users::create');
+        $routes->post('', 'Users::save');
+
+        $routes->get('edit/(:any)', 'Users::edit/$1');
+        $routes->put('(:any)', 'Users::update');
+
+        $routes->post('reset', 'Users::reset');
+        $routes->post('setactive', 'Users::setActive');
+        $routes->put('changegroup/(:num)', 'Users::changeGroup/$1');
+
+        $routes->delete('(:segment)', 'Users::delete/$1');
     });
 });
 

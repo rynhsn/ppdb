@@ -78,7 +78,7 @@
             <!--begin::Card header-->
             <!--begin::Content-->
             <div id="kt_account_settings_profile_details" class="collapse show">
-                <?= form_open('/panel/user/save'); ?>
+                <?= form_open('/panel/user'); ?>
                 <?= csrf_field(); ?>
                 <!--begin::Card body-->
                 <div class="card-body border-top p-9">
@@ -182,7 +182,7 @@
                                 <!--end::Col-->
                                 <!--begin::Col-->
                                 <div class="col-lg-6 fv-row">
-                                    <input type="password" name="password_confirm"
+                                    <input type="password" name="pass_confirm"
                                            class="form-control form-control-lg form-control-solid mb-3 mb-lg-0 <?= validation_show_error('password_confirm') ? 'is-invalid' : ''; ?>"
                                            placeholder="Konfirmasi password" required autocomplete="false"/>
                                     <div class="invalid-feedback">
@@ -194,22 +194,6 @@
                             <!--end::Row-->
                         </div>
                         <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-0">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 col-form-label fw-semibold fs-6">Aktif ?</label>
-                        <!--begin::Label-->
-                        <!--begin::Label-->
-                        <div class="col-lg-8 d-flex align-items-center">
-                            <div class="form-check form-check-solid form-switch form-check-custom fv-row">
-                                <input class="form-check-input w-45px h-30px" type="checkbox" id="active"
-                                       checked="checked" name="active">
-                                <label class="form-check-label" for="active"></label>
-                            </div>
-                        </div>
-                        <!--begin::Label-->
                     </div>
                     <!--end::Input group-->
                 </div>

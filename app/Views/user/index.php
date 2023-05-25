@@ -74,7 +74,7 @@
                         <span class="text-muted mt-1 fw-semibold fs-7">Pengguna terdaftar</span>
                     </h3>
                     <div class="card-toolbar">
-                        <a href="<?=base_url()?>panel/user/create" class="btn btn-sm btn-light-primary">
+                        <a href="<?= base_url() ?>panel/user/create" class="btn btn-sm btn-light-primary">
                             <i class="ki-duotone ki-plus fs-2"></i>Daftarkan</a>
                     </div>
                 </div>
@@ -170,7 +170,8 @@
                                         <td>
                                             <div class="d-flex align-items-center">
                                                 <div class="symbol symbol-50px me-5">
-                                                    <img src="<?=base_url()?>/media/stock/600x400/img-26.jpg" class="" alt=""/>
+                                                    <img src="<?= base_url() ?>/media/stock/600x400/img-26.jpg" class=""
+                                                         alt=""/>
                                                 </div>
                                                 <div class="d-flex justify-content-start flex-column">
                                                     <a href="#"
@@ -193,7 +194,30 @@
                                                 class="badge badge-light-<?= $user->active ? 'success' : 'danger' ?> fs-7 fw-bold"><?= $user->active ? 'Aktif' : 'Tidak Aktif' ?></span>
                                         </td>
                                         <td class="text-end">
+                                            <?= form_open('/panel/user/setactive', ['class' => 'd-inline']) ?>
+                                            <?= csrf_field(); ?>
+                                            <input type="hidden" name="id" value="<?= $user->id ?>">
+                                            <input type="hidden" name="active" value="<?= $user->active ? 0 : 1 ?>">
+                                            <button type="submit"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                <i class="ki-duotone ki-<?= $user->active ? 'toggle-on-circle' : 'toggle-off-circle' ?> fs-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>
+                                            </button>
+                                            <?= form_close(); ?>
+
                                             <a href="#"
+                                               class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"
+                                               data-bs-toggle="modal"
+                                               data-bs-target="#kt_modal_usergroup_<?= $user->id; ?>">
+                                                <i class="ki-duotone ki-shield fs-2">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                </i>
+                                            </a>
+
+                                            <a href="<?= base_url('/panel/user/edit/' . $user->username) ?>"
                                                class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                                                 <i class="ki-duotone ki-pencil fs-2">
                                                     <span class="path1"></span>
@@ -204,7 +228,9 @@
                                             <?= form_open('/panel/user/' . $user->username, ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
-                                            <button type="submit" onclick="return confirm('pengguna akan dihapus, yakin?')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                            <button type="submit"
+                                                    onclick="return confirm('pengguna akan dihapus, yakin?')"
+                                                    class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                 <i class="ki-duotone ki-trash fs-2">
                                                     <span class="path1"></span>
                                                     <span class="path2"></span>

@@ -5,8 +5,10 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Config\Services;
 use Config\Database;
+use Myth\Auth\Entities\User;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
+use \Myth\Auth\Password;
 
 class Users extends BaseController
 {
@@ -14,6 +16,7 @@ class Users extends BaseController
     protected $userModel;
     protected $groupModel;
     protected $db;
+    protected $config;
 
     public function __construct()
     {
@@ -21,6 +24,7 @@ class Users extends BaseController
         $this->db = Database::connect();
         $this->userModel = new UserModel();
         $this->groupModel = new GroupModel();
+        $this->config = config('Auth');
     }
 
     public function index()
@@ -28,6 +32,7 @@ class Users extends BaseController
         $data = [
             'title' => 'User Management',
             'users' => $this->_getUser(),
+            'groups' => $this->groupModel->findAll(),
         ];
         return view('user/index', $data);
     }
@@ -37,7 +42,7 @@ class Users extends BaseController
     {
         $data = [
             'title' => 'Add User',
-            'validation' => \Config\Services::validation(),
+            'validation' => Services::validation(),
             'groups' => $this->groupModel->findAll(),
         ];
         return view('user/create', $data);
@@ -46,93 +51,149 @@ class Users extends BaseController
     //save
     public function save()
     {
-        //validasi input
-        if (!$this->validate([
-            'username' => [
-                'rules' => 'required|is_unique[users.username]',
-                'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'is_unique' => '{field} sudah terdaftar.'
-                ]
-            ],
-            'email' => [
-                'rules' => 'required|valid_email|is_unique[users.email]',
-                'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'valid_email' => 'Format {field} tidak sesuai.',
-                    'is_unique' => '{field} sudah terdaftar.'
-                ]
-            ],
-            'password' => [
-                'rules' => 'required|min_length[8]',
-                'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'min_length' => '{field} minimal 8 karakter.'
-                ]
-            ],
-            'password_confirm' => [
-                'rules' => 'required|matches[password]',
-                'errors' => [
-                    'required' => '{field} harus diisi.',
-                    'matches' => '{field} tidak sesuai dengan password.'
-                ]
-            ],
-            'fullname' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
-            'active' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
-            'group' => [
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{field} harus diisi.'
-                ]
-            ],
-        ])) {
-            return redirect()->to('/panel/user/create')->withInput();
-        }
-        $groupName = $this->request->getVar('group');
-        $active = $this->request->getVar('active') == 'on' ? 1 : 0;
-        $data = [
-            'username' => $this->request->getVar('username'),
-            'email' => $this->request->getVar('email'),
-            'password' => $this->request->getVar('password'),
-//            'fullname' => $this->request->getVar('fullname'),
-//            'active' => $active,
+        $rules = [
+            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]|is_unique[users.username]',
+            'fullname' => 'required|alpha_space|min_length[3]|max_length[30]',
+            'email' => 'required|valid_email|is_unique[users.email]',
+            'password' => 'required|strong_password',
+            'pass_confirm' => 'required|matches[password]',
         ];
-//        $group = $this->groupModel->where('name', $groupName)->first();
-        $this->userModel->withGroup($groupName)->insert($data);
-        session()->setFlashdata('pesan', 'User berhasil ditambahkan.');
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+        $allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
+        $user = new User($this->request->getPost($allowedPostFields));
+
+        $user->activate();
+
+        if (!$this->userModel->withGroup($this->request->getVar('group'))->save($user)) {
+            return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+        }
+        // Success!
+        session()->setFlashdata('pesan', 'Pengguna baru telah ditambahkan.');
         return redirect()->to('/panel/user');
     }
 
-    //delete
-    public function delete($id = null)
+    //edit
+    public function edit($username)
+    {
+        $data = [
+            'title' => 'Edit User',
+            'validation' => Services::validation(),
+            'user' => $this->userModel->where('username', $username)->first(),
+        ];
+        return view('user/edit', $data);
+    }
+
+    public function update()
+    {
+        $rules = [
+            'username' => 'required|alpha_numeric_space|min_length[3]|max_length[30]',
+            'email' => 'required|valid_email',
+            'fullname' => 'required|alpha_space|min_length[3]|max_length[30]',
+        ];
+
+        if ($this->request->getVar('username') != $this->request->getVar('usernameLama')) {
+            $rules['username'] .= '|is_unique[users.username]';
+        }
+        if ($this->request->getVar('email') != $this->request->getVar('emailLama')) {
+            $rules['email'] .= '|is_unique[users.email]';
+        }
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $allowedPostFields = array_merge(['id'], $this->config->validFields, $this->config->personalFields);
+        $user = new User($this->request->getPost($allowedPostFields));
+
+        $user->activate();
+
+        if (!$this->userModel->save($user)) {
+            return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+        }
+
+        // Success!
+        session()->setFlashdata('pesan', 'Akun pengguna telah diperbarui.');
+        if (has_permission('manage-accounts')){
+            return redirect()->to('/panel/user');
+        }
+        return redirect()->back();
+    }
+
+
+    public function reset()
+    {
+        $id = $this->request->getVar('id');
+        $rules = [
+            'password' => 'required|strong_password',
+            'pass_confirm' => 'required|matches[password]',
+        ];
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $data = [
+            'password_hash' => Password::hash($this->request->getVar('password')),
+            'reset_hash' => null,
+            'reset_at' => null,
+            'reset_expires' => null,
+        ];
+        $this->userModel->update($id, $data);
+
+        session()->setFlashdata('pesan', 'Password telah direset.');
+        return redirect()->back();
+    }
+
+    //update user group
+    function changeGroup($id)
+    {
+        $user = $this->userModel->find($id);
+        $group = $this->request->getVar('group');
+        if ($user) {
+            $this->groupModel->removeUserFromAllGroups($id);
+            $this->groupModel->addUserToGroup($id, $group);
+
+            session()->setFlashdata('pesan', 'User group telah diperbarui.');
+        } else {
+            session()->setFlashdata('pesan', 'Pengguna tidak ditemukan.');
+        }
+
+        return redirect()->to('/panel/user');
+    }
+
+
+    public function setActive()
+    {
+        $id = $this->request->getVar('id');
+        $active = $this->request->getVar('active');
+        $user = $this->userModel->find($id);
+        $user->setActive($active);
+        $this->userModel->save($user);
+        session()->setFlashdata('pesan', 'Akses telah diperbarui.');
+        return redirect()->to('/panel/user');
+    }
+
+    function delete($id = null)
     {
         $u = $this->userModel->where('username', $id)->first()->id;
         if ($this->userModel->delete($u)) {
             session()->setFlashdata('pesan', 'User berhasil dihapus.');
-            return redirect()->to('/panel/user');
         } else {
             session()->setFlashdata('pesan', 'User gagal dihapus.');
-            return redirect()->to('/panel/user');
         }
+        return redirect()->to('/panel/user');
     }
 
-    private function _getUser($id = null, $where = null)
+    function _getUser($id = null, $where = null)
     {
         $query = $this->db->table('users as u')
             ->select('u.*, u.fullname, u.active, ag.name as group_name')
             ->join('auth_groups_users as agu', 'agu.user_id = u.id')
             ->join('auth_groups as ag', 'ag.id = agu.group_id')
-            ->where('u.deleted_at', null);
+            ->where('u.deleted_at', null)
+            ->where('u.id !=', user_id());
         if ($id != null) {
             $query = $query->getwhere(['u.id' => $id]);
             $results = $query->getRow();
@@ -144,5 +205,15 @@ class Users extends BaseController
             $results = $query->getResult();
         }
         return $results;
+    }
+
+    public function accountSettings()
+    {
+        $data = [
+            'title' => 'Account Settings',
+            'validation' => Services::validation(),
+            'user' => $this->userModel->find(user_id()),
+        ];
+        return view('user/edit', $data);
     }
 }
