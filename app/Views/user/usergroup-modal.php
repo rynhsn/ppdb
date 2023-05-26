@@ -31,7 +31,7 @@
                         <label class="required fs-5 fw-semibold mb-2">User Group</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="group" aria-label="Pilih group role" data-control="select2"
+                        <select name="group" data-control="select2"
                                 data-placeholder="Pilih group role.."
                                 class="form-select form-select-solid form-select-lg <?= validation_show_error('group') ? 'is-invalid' : ''; ?>" required>
                             <option value="">Pilih group role..</option>

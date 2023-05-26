@@ -30,12 +30,13 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', function() {
-    return view('index');
-});
+$routes->get('/', 'Home::index');
+$routes->get('/daftar', 'Home::daftar');
+$routes->post('/daftar', 'Home::saveDaftar');
+
 $routes->get('/tables', 'Home::tables');
 
-$routes->group('panel',['filter'=>'auth'] , static function ($routes) {
+$routes->group('panel',['filter'=>'login'] , static function ($routes) {
     $routes->get('', 'Panel::index');
     $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
 
