@@ -22,6 +22,10 @@ class AuthPermissionsSeeder extends Seeder
                 'name'            => 'manage-profile',
                 'description'     => 'Manage Profile Info',
             ],
+            [
+                'name'            => 'akses-fitur-siswa',
+                'description'     => 'Akses Fitur Siswa',
+            ],
         ];
 
         // Using Query Builder

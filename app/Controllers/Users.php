@@ -5,10 +5,10 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use Config\Services;
 use Config\Database;
-use Myth\Auth\Entities\User;
-use Myth\Auth\Models\UserModel;
+use App\Entities\User;
+use App\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
-use \Myth\Auth\Password;
+use Myth\Auth\Password;
 
 class Users extends BaseController
 {
@@ -33,6 +33,7 @@ class Users extends BaseController
             'title' => 'User Management',
             'users' => $this->_getUser(),
             'groups' => $this->groupModel->findAll(),
+            'lembaga' => $this->lembaga,
         ];
         return view('user/index', $data);
     }
@@ -44,6 +45,7 @@ class Users extends BaseController
             'title' => 'Add User',
             'validation' => Services::validation(),
             'groups' => $this->groupModel->findAll(),
+            'lembaga' => $this->lembaga,
         ];
         return view('user/create', $data);
     }
@@ -82,6 +84,7 @@ class Users extends BaseController
             'title' => 'Edit User',
             'validation' => Services::validation(),
             'user' => $this->userModel->where('username', $username)->first(),
+            'lembaga' => $this->lembaga,
         ];
         return view('user/edit', $data);
     }
@@ -116,7 +119,7 @@ class Users extends BaseController
 
         // Success!
         session()->setFlashdata('pesan', 'Akun pengguna telah diperbarui.');
-        if (has_permission('manage-accounts')){
+        if (has_permission('manage-accounts')) {
             return redirect()->to('/panel/user');
         }
         return redirect()->back();
@@ -178,11 +181,9 @@ class Users extends BaseController
     function delete($id = null)
     {
         $u = $this->userModel->where('username', $id)->first()->id;
-        if ($this->userModel->delete($u)) {
-            session()->setFlashdata('pesan', 'User berhasil dihapus.');
-        } else {
-            session()->setFlashdata('pesan', 'User gagal dihapus.');
-        }
+        $this->groupModel->removeUserFromAllGroups($u);
+        $this->userModel->delete($u);
+        session()->setFlashdata('pesan', 'User berhasil dihapus.');
         return redirect()->to('/panel/user');
     }
 
@@ -213,6 +214,7 @@ class Users extends BaseController
             'title' => 'Account Settings',
             'validation' => Services::validation(),
             'user' => $this->userModel->find(user_id()),
+            'lembaga' => $this->lembaga,
         ];
         return view('user/edit', $data);
     }

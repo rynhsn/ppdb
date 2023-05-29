@@ -152,15 +152,18 @@
 <script src="<?= base_url(); ?>/js/custom/utilities/modals/users-search.js"></script>
 
 <!-- data table users -->
-<script src="<?=base_url(); ?>/js/custom/datatables/users.js"></script>
+<script src="<?=base_url(); ?>js/custom/ppdb/datatables/users.js"></script>
+<script src="<?=base_url(); ?>js/custom/ppdb/datatables/siswa.js"></script>
 
 <!--untuk profil lembaga-->
 <script src="<?= base_url(); ?>/js/custom/account/settings/profile-details.js"></script>
 <!--end::Custom Javascript-->
 <!--end::Javascript-->
 <script>
+    $("#kt_datepicker_flat").flatpickr();
     $("#kt_datatable_pekerjaan").DataTable();
     $("#kt_datatable_pendidikan").DataTable();
+    // $("#kt_datatable_siswa").DataTable();
 </script>
 </body>
 <!--end::Body-->

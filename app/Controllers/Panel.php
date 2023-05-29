@@ -3,20 +3,56 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\JenjangModel;
+use App\Models\KompetensiModel;
+use App\Models\PekerjaanModel;
+use App\Models\PendidikanModel;
+use App\Models\PenghasilanModel;
+use App\Models\SiswaModel;
 
 class Panel extends BaseController
 {
-    protected $lembagaModel;
+    protected $siswaModel;
+
     public function __construct()
     {
-        $this->lembagaModel = new \App\Models\ProfileLembagaModel();
+        $this->siswaModel = new SiswaModel();
+        $this->pendidikanModel = new PendidikanModel();
+        $this->jenjangModel = new JenjangModel();
+        $this->penghasilanModel = new PenghasilanModel();
+        $this->kompetensiModel = new KompetensiModel();
+        $this->pekerjaanModel = new PekerjaanModel();
     }
+
     public function index()
     {
         $data = [
-            'title' =>  'Panel',
-            'lembaga' => $this->lembagaModel->find(1),
+            'title' => 'Dashboard',
+            'lembaga' => $this->lembaga,
         ];
-        return view('index',$data);
+        if (in_groups('siswa')) {
+            $data += [
+                'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
+            ];
+            if ($data['siswa']['status_pendaftaran'] != 2) {
+                return view('panel/index-siswa-belum-bayar', $data);
+            }
+            return view('panel/index-siswa', $data);
+        }
+        return view('panel/index', $data);
+    }
+
+    public function profile(){
+        $data = [
+            'title' => 'Profile',
+            'lembaga' => $this->lembaga,
+            'jenjang' => $this->jenjangModel->findAll(),
+            'penghasilan' => $this->penghasilanModel->findAll(),
+            'kompetensi' => $this->kompetensiModel->findAll(),
+            'pekerjaan' => $this->pekerjaanModel->findAll(),
+            'pendidikan' => $this->pendidikanModel->findAll(),
+            'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
+        ];
+        return view('panel/profile', $data);
     }
 }

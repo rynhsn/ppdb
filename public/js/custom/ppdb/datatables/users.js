@@ -25,7 +25,7 @@ var KTDatatablesUsers = function () {
 
     // Hook export buttons
     var exportButtons = () => {
-        const documentTitle = 'Users Report';
+        const documentTitle = 'Laporan Pengguna';
         var buttons = new $.fn.dataTable.Buttons(table, {
             buttons: [
                 {

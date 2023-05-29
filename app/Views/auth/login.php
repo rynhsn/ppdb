@@ -66,7 +66,7 @@
                             <!--end::Input group=-->
                         <?php endif; ?>
                         <!--begin::Input group=-->
-                        <div class="fv-row mb-3">
+                        <div class="fv-row mb-10">
                             <!--begin::Password-->
                             <input type="password" placeholder="<?= lang('Auth.password') ?>" name="password"
                                    autocomplete="off"

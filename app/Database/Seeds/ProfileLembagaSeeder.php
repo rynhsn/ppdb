@@ -10,7 +10,7 @@ class ProfileLembagaSeeder extends Seeder
     {
         $data = [
             [
-                'nama_lembaga'  => 'YAYASAN PONDOK PESANTREN JAMIATUL IKHWAN',
+                'nama_lembaga'  => 'Yayasan Pondok Pesantren Jamiatul Ikhwan',
                 'alamat'        => 'Jl. Pasopati no. 65 Serang',
                 'email'         => 'info@test.sch.id',
                 'website'       => 'www.test.sch.id',
@@ -24,7 +24,7 @@ class ProfileLembagaSeeder extends Seeder
                 'nip_kepsek'    => '198909153007101112',
                 'logo'          => 'logo.png',
                 'created_at'    => date('Y-m-d H:i:s'),
-                'updated_at'    => date('Y-m-d H:i:s'),
+                'updated_at'    => null,
             ],
         ];
 

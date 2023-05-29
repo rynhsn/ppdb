@@ -34,11 +34,20 @@ $routes->get('/', 'Home::index');
 $routes->get('/daftar', 'Home::daftar');
 $routes->post('/daftar', 'Home::saveDaftar');
 
-$routes->get('/tables', 'Home::tables');
 
-$routes->group('panel',['filter'=>'login'] , static function ($routes) {
+$routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');
+    $routes->get('profile', 'Panel::profile');
     $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
+
+    $routes->group('validasi-registrasi', function ($routes){
+        $routes->get('', 'ValidasiRegistrasi::index');
+    });
+
+    $routes->group('pembayaran', function ($routes) {
+        $routes->get('', 'Pembayaran::index');
+        $routes->post('', 'Pembayaran::save');
+    });
 
     $routes->group('helpers', ['filter' => 'permission:manage-site'], static function ($routes) {
         $routes->get('', 'Helpers::index');
@@ -52,20 +61,23 @@ $routes->group('panel',['filter'=>'login'] , static function ($routes) {
         $routes->put('', 'ProfileLembaga::update');
     });
 
-    $routes->group('user', ['filter' => 'permission:manage-accounts'], function ($routes){
+    $routes->group('user', ['filter' => 'permission:manage-accounts'], function ($routes) {
         $routes->get('', 'Users::index');
-
         $routes->get('create', 'Users::create');
         $routes->post('', 'Users::save');
-
         $routes->get('edit/(:any)', 'Users::edit/$1');
         $routes->put('(:any)', 'Users::update');
-
         $routes->post('reset', 'Users::reset');
         $routes->post('setactive', 'Users::setActive');
         $routes->put('changegroup/(:num)', 'Users::changeGroup/$1');
-
         $routes->delete('(:segment)', 'Users::delete/$1');
+    });
+
+    $routes->group('calon-siswa', function ($routes) {
+        $routes->get('', 'Siswa::index');
+        $routes->get('delete/(:num)', 'Siswa::delete/$1');
+        $routes->get('edit/(:num)', 'Siswa::edit/$1');
+        $routes->put('update/(:num)', 'Siswa::update/$1');
     });
 });
 

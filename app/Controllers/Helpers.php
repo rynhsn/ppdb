@@ -38,6 +38,7 @@ class Helpers extends BaseController
             'penghasilan' => $this->penghasilan->findAll(),
             'kompetensi' => $this->kompetensi->findAll(),
             'pekerjaan' => $this->pekerjaan->findAll(),
+            'lembaga' => $this->lembaga,
             ];
         return view('helpers/index', $data);
     }

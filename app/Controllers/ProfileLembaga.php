@@ -7,6 +7,8 @@ use App\Models\ProfileLembagaModel;
 
 class ProfileLembaga extends BaseController
 {
+
+
     protected $profile;
 
     public function __construct()
@@ -18,7 +20,7 @@ class ProfileLembaga extends BaseController
     {
         $data = [
             'title' => 'Profil Lembaga',
-            'lembaga' => $this->profile->find(1)
+            'lembaga' => $this->lembaga,
         ];
         return view('profile-lembaga/index', $data);
     }
@@ -51,13 +53,14 @@ class ProfileLembaga extends BaseController
         }
 
         $this->profile->save([
+            'id' => 1,
             'nama_lembaga' => trim(ucfirst($this->request->getVar('nama_lembaga'))),
             'alamat' => $this->request->getVar('alamat'),
             'email' => $this->request->getVar('email'),
             'website' => $this->request->getVar('website'),
             'telp' => $this->request->getVar('telp'),
-            'kab_lembaga' => trim(ucfirst($this->request->getVar('kab'))),
-            'ketua_panitia' => trim(ucfirst($this->request->getVar('ketua'))),
+            'kab_lembaga' => trim(ucfirst($this->request->getVar('kab_lembaga'))),
+            'ketua_panitia' => trim(ucfirst($this->request->getVar('ketua_panitia'))),
             'nip_ketua' => $this->request->getVar('nip_ketua'),
             'th_pelajaran' => $this->request->getVar('th_pelajaran'),
             'no_surat' => $this->request->getVar('no_surat'),
