@@ -101,4 +101,4 @@ define('KENDARAAN', ['Sepeda Motor', 'Mobil', 'Sepeda', 'Jalan Kaki', 'Ojek', 'A
 define('STATUS_PEMBAYARAN', ['0' => ['Belum Bayar', 'danger'], '1' => ['Menunggu Konfirmasi', 'warning'], '2' => ['Sudah Bayar', 'success'], '3' => ['Ditolak', 'dark']]);
 define('STATUS_KELULUSAN', [0 => 'Belum Melakukan Ujian', 1 => 'Lulus', 2 => 'Tidak Lulus']);
 define('REKENING', ['BCA' => '1234567', 'BNI' => '09876554', 'BRI' => '91823647', 'Mandiri'=> '102938475627289']);
-define('BIAYA_PENDAFTARAN', ['SMA' => '100.000,-', 'SMK' => '150.000,-', 'Madrasah Aliyah' => '200.000,-']);
+define('BIAYA_PENDAFTARAN', ['SMP' => '100.000,-', 'SMK' => '150.000,-', 'Madrasah Aliyah' => '200.000,-']);

@@ -23,6 +23,10 @@ class AuthPermissionsSeeder extends Seeder
                 'description'     => 'Manage Profile Info',
             ],
             [
+                'name'            => 'manage-keuangan',
+                'description'     => 'Manage Keuangan',
+            ],
+            [
                 'name'            => 'akses-fitur-siswa',
                 'description'     => 'Akses Fitur Siswa',
             ],

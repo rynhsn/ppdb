@@ -71,7 +71,15 @@ class Pembayaran extends BaseController
             'jumlah' => $this->request->getVar('jumlah'),
             'bukti' => $namaFile,
         ];
+
+        $id_siswa = $this->request->getVar('id');
+        $pembayaran = $this->pembayaranModel->where('siswa_id', $id_siswa)->first();
+        if($pembayaran){
+            unlink('img/pembayaran/' . $pembayaran['bukti']);
+            $data += ['id' => $pembayaran['id']];
+        }
         $this->pembayaranModel->save($data);
+
         $data = [
             'id' => $this->request->getVar('id'),
             'status_pendaftaran' => 1,

@@ -21,8 +21,8 @@ class Pembayaran extends Migration
                 'unsigned' => true,
             ],
             'jumlah' => [
-                'type' => 'DECIMAL',
-                'constraint' => '8,2',
+                'type' => 'VARCHAR',
+                'constraint' => '14',
             ],
             'dari' => [
                 'type' => 'VARCHAR',
