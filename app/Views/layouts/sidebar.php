@@ -62,7 +62,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                 </div>
                 <!--end:Menu item-->
 
-                <?php if (has_permission('manage-keuangan')): ?>
+                <?php if (has_permission('manage-keuangan') || in_groups('keuangan')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->

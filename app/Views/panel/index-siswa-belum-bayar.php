@@ -52,7 +52,7 @@
             <!--begin::Row-->
             <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
                 <!--begin::Col-->
-                <div class="col-xxl <?=($siswa['status_pendaftaran']=='1') || ($siswa['status_pendaftaran']=='2')? 'd-none':'' ?>">
+                <div class="col-xxl <?=($siswa['status_pendaftaran']!='0') ? 'd-none':'' ?>">
                     <!--begin::Engage widget 10-->
                     <div class="card card-flush h-md-100">
                         <!--begin::Body-->
@@ -89,7 +89,7 @@
                 </div>
                 <!--end::Col-->
                 <!--begin::Col-->
-                <div class="col-xxl <?=($siswa['status_pendaftaran']!='1')? 'd-none':'' ?>">
+                <div class="col-xxl <?=($siswa['status_pendaftaran']!='1') ? 'd-none':'' ?>">
                     <!--begin::Engage widget 10-->
                     <div class="card card-flush h-md-100">
                         <!--begin::Body-->
@@ -107,6 +107,43 @@
                             <!--begin::Illustration-->
                             <img class="mx-auto h-150px h-lg-250px theme-light-show" src="/media/illustrations/unitedpalms-1/5.png" alt="" />
                             <img class="mx-auto h-150px h-lg-250px theme-dark-show" src="/media/illustrations/unitedpalms-1/5-dark.png" alt="" />
+                            <!--end::Illustration-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Engage widget 10-->
+                </div>
+                <!--end::Col-->
+                <!--begin::Col-->
+                <div class="col-xxl <?=($siswa['status_pendaftaran']!='3') ? 'd-none':'' ?>">
+                    <!--begin::Engage widget 10-->
+                    <div class="card card-flush h-md-100">
+                        <!--begin::Body-->
+                        <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('/media/stock/900x600/42.png')">
+                            <!--begin::Wrapper-->
+                            <div class="mb-10">
+                                <!--begin::Title-->
+                                <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
+														<span class="me-2">Bukti pembayaran anda ditolak, silahkan lakukan
+														<br />
+														<span class="position-relative d-inline-block text-danger">
+															<a href="<?=base_url('panel/pembayaran')?>" class="text-danger opacity-75-hover">pembayaran</a>
+                                                            <!--begin::Separator-->
+															<span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
+                                                            <!--end::Separator-->
+														</span></span> ulang</div>
+                                <!--end::Title-->
+                                <!--begin::Action-->
+                                <div class="text-center">
+                                    <a href='<?=base_url('panel/pembayaran')?>' class="btn btn-sm btn-dark fw-bold">Bayar Sekarang</a>
+                                </div>
+                                <!--begin::Action-->
+                            </div>
+                            <!--begin::Wrapper-->
+
+                            <!--begin::Illustration-->
+                            <img class="mx-auto h-150px h-lg-250px theme-light-show" src="/media/illustrations/unitedpalms-1/4.png" alt="" />
+                            <img class="mx-auto h-150px h-lg-250px theme-dark-show" src="/media/illustrations/unitedpalms-1/4-dark.png" alt="" />
                             <!--end::Illustration-->
                         </div>
                         <!--end::Body-->

@@ -9,10 +9,12 @@ use App\Models\PekerjaanModel;
 use App\Models\PendidikanModel;
 use App\Models\PenghasilanModel;
 use App\Models\SiswaModel;
+use App\Models\StatusPpdbModel;
 
 class Panel extends BaseController
 {
     protected $siswaModel;
+    private $statusModel;
 
     public function __construct()
     {
@@ -22,6 +24,7 @@ class Panel extends BaseController
         $this->penghasilanModel = new PenghasilanModel();
         $this->kompetensiModel = new KompetensiModel();
         $this->pekerjaanModel = new PekerjaanModel();
+        $this->statusModel = new StatusPpdbModel();
     }
 
     public function index()
@@ -29,6 +32,7 @@ class Panel extends BaseController
         $data = [
             'title' => 'Dashboard',
             'lembaga' => $this->lembaga,
+            'status' => $this->statusModel->first(),
         ];
         if (in_groups('siswa')) {
             $data += [

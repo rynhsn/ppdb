@@ -363,13 +363,13 @@
                         <!--end::Menu item-->
                         <!--begin::Menu separator-->
                         <div class="separator my-2"></div>
+                        <?php if (in_groups('siswa')): ?>
                         <!--end::Menu separator-->
                             <!--begin::Menu item-->
                             <div class="menu-item px-5">
                                 <a href="<?= base_url('panel/profile') ?>" class="menu-link px-5">Profil Saya</a>
                             </div>
                             <!--end::Menu item-->
-                        <?php if (in_groups('siswa')): ?>
                             <!--begin::Menu separator-->
                             <div class="separator my-2"></div>
                             <!--end::Menu separator-->

@@ -94,7 +94,11 @@
                         <!--end::Menu wrapper-->
                         <!--begin::Toolbar-->
                         <div class="flex-equal text-end ms-1">
-                            <a href="<?= base_url('login'); ?>" class="btn btn-success">Sign In</a>
+                            <?php if(!logged_in()):?>
+                            <a href="<?= base_url('login'); ?>" class="btn btn-success">Masuk</a>
+                            <?php else: ?>
+                            <a href="<?= base_url('panel'); ?>" class="btn btn-warning">Panel</a>
+                            <?php endif ?>
                         </div>
                         <!--end::Toolbar-->
                     </div>
