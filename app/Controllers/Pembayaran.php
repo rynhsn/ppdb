@@ -16,9 +16,11 @@ class Pembayaran extends BaseController
 {
     protected $pembayaranModel;
     protected $siswaModel;
+    protected $request;
 
     public function __construct()
     {
+        $this->request = Services::request();
         $this->pembayaranModel = new PembayaranModel();
         $this->siswaModel = new SiswaModel();
     }
@@ -31,6 +33,7 @@ class Pembayaran extends BaseController
             'validation' => Services::validation(),
             'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
         ];
+//        dd($data['validation']);
         return view('pembayaran/index', $data);
     }
 
@@ -52,8 +55,7 @@ class Pembayaran extends BaseController
                 ]
             ],
         ])) {
-            dd($this->validator->getErrors());
-            return redirect()->back()->withInput()->with('error', $this->validator->getErrors());
+            return redirect()->back()->withInput()->with('validation', $this->validator->getErrors());
         }
 
         //ambil gambar

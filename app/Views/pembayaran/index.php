@@ -53,7 +53,7 @@
                         <!--end::Header-->
                         <!--begin::Card body-->
                         <div class="card-body text-dark opacity-75 fw-bold pt-0 mt-10">
-                            Rekening atas nama<h1> <?= $lembaga['nama_lembaga'] ?></h1>
+                            Rekening atas nama<h2> <?= $lembaga['nama_lembaga'] ?></h2>
                             <h1 class="mb-10">Biaya registrasi:
                                 <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">Rp.</span><span
                                     class="text-danger"><?= BIAYA_PENDAFTARAN[$siswa['jenjang_daftar']] ?></span></h1>
@@ -74,7 +74,7 @@
                 </div>
                 <!--end::Col-->
                 <!--begin::Col-->
-                <div class="col-xl-4">
+                <div class="col-xl-6">
                     <!--begin::Card widget 17-->
                     <div class="card h-100">
                         <!--begin::Header-->
@@ -106,8 +106,11 @@
                                 <label class="form-label required fw-semibold fs-6">Akun Pengirim</label>
                                 <!--end::Label-->
                                 <input type="number" name="dari"
-                                       class="form-control form-control-lg form-control-solid"
+                                       class="form-control form-control-lg form-control-solid <?= ($validation->hasError('dari')) ? 'is-invalid' : ''; ?>"
                                        placeholder="No. Rekening" required/>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('dari'); ?>
+                                </div>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
@@ -123,6 +126,9 @@
                                         <option value="<?= $key ?>"><?= $key ?> | <?= $value ?></option>
                                     <?php endforeach; ?>
                                 </select>
+                                <div class="invalid-feedback">
+                                    <?= validation_show_error('ke'); ?>
+                                </div>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
@@ -131,9 +137,11 @@
                                 <label class="form-label required fw-semibold fs-6">Tanggal</label>
                                 <!--end::Label-->
                                 <input name="tanggal" id="kt_datepicker_flat"
-                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0 <?= ($validation->hasError('tanggal')) ? 'is-invalid' : ''; ?>"
+                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0 <?= ($validation->hasError('tanggal')) ? 'is-invalid' : ''; ?>" value="<?= old('tanggal') ?>"
                                        required/>
-                                <div class="invalid-feedback"><?= $validation->getError('tanggal'); ?></div>
+                                <div class="invalid-feedback">
+                                    <?= $validation->getError('tanggal'); ?>
+                                </div>
                             </div>
                             <!--end::Input group-->
                             <!--begin::Input group-->
@@ -142,9 +150,10 @@
                                 <label class="form-label required fw-semibold fs-6">Foto Bukti Transfer</label>
                                 <!--end::Label-->
                                 <input name="bukti" type="file" accept="image/*"
-                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0 <?= ($validation->hasError('bukti')) ? 'is-invalid' : ''; ?>"
-                                       required/>
-                                <div class="invalid-feedback"><?= $validation->getError('bukti'); ?></div>
+                                       class="form-control form-control-lg form-control-solid mb-3 mb-lg-0 <?= ($validation->hasError('bukti')) ? 'is-invalid' : ''; ?>" max required/>
+                                <small
+                                class="form-text text-muted required"> Ukuran maksimal 1MB</small>
+
                             </div>
                             <!--end::Input group-->
                         </div>

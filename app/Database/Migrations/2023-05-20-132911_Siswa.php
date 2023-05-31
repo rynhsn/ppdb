@@ -311,15 +311,20 @@ class Siswa extends Migration
                 'type'       => 'DATETIME',
                 'null'       => true,
             ],
+            'status_kelulusan' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '20',
+                'default'    => '0',
+            ],
             'status_verifikasi' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '30',
-                'null'       => true,
+                'default'    => '0',
             ],
             'status_pendaftaran' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '20',
-                'null'       => true,
+                'default'    => '0',
             ],
             'created_at' => [
                 'type'       => 'DATETIME',

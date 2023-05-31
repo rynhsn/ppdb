@@ -8,6 +8,7 @@ use App\Models\KompetensiModel;
 use App\Models\PekerjaanModel;
 use App\Models\PendidikanModel;
 use App\Models\PenghasilanModel;
+use App\Models\PengumumanModel;
 use App\Models\SiswaModel;
 use App\Models\StatusPpdbModel;
 
@@ -15,10 +16,12 @@ class Panel extends BaseController
 {
     protected $siswaModel;
     private $statusModel;
+    protected $pengumumanModel;
 
     public function __construct()
     {
         $this->siswaModel = new SiswaModel();
+        $this->pengumumanModel = new PengumumanModel();
         $this->pendidikanModel = new PendidikanModel();
         $this->jenjangModel = new JenjangModel();
         $this->penghasilanModel = new PenghasilanModel();
@@ -37,6 +40,7 @@ class Panel extends BaseController
         if (in_groups('siswa')) {
             $data += [
                 'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
+                'pengumuman' => $this->pengumumanModel->findAll()
             ];
             if ($data['siswa']['status_pendaftaran'] != 2) {
                 return view('panel/index-siswa-belum-bayar', $data);

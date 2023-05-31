@@ -14,6 +14,10 @@ class Pengumuman extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'judul_pengumuman' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'ket_pengumuman' => [
                 'type'       => 'TEXT',
                 'null'       => true,

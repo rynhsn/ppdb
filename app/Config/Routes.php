@@ -53,9 +53,17 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
 
     $routes->group('helpers', ['filter' => 'permission:manage-site'], static function ($routes) {
         $routes->get('', 'Helpers::index');
+        $routes->get('status-ppdb/(:segment)', 'Helpers::status/$1');
         $routes->post('(:segment)', 'Helpers::save/$1');
         $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2');
         $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2');
+    });
+
+    $routes->group('pengumuman', static function ($routes) {
+        $routes->get('', 'Pengumuman::index');
+        $routes->post('', 'Pengumuman::save', ['filter' => 'permission:manage-site']);
+        $routes->put('(:num)', 'Pengumuman::save/$1', ['filter' => 'permission:manage-site']);
+        $routes->delete('(:num)', 'Pengumuman::delete/$1', ['filter' => 'permission:manage-site']);
     });
 
     $routes->group('lembaga', ['filter' => 'permission:manage-site'], static function ($routes) {

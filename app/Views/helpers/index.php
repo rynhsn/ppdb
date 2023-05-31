@@ -32,6 +32,36 @@
             <!--end::Notice-->
         <?php endif; ?>
 
+        <!--begin::Notice-->
+        <div class="notice d-flex bg-light-<?=($statusPpdb['status'] == 'buka')?'success':'danger'?> rounded border-<?=($statusPpdb['status'] == 'buka')?'success':'danger'?> border border-dashed mb-9 p-6">
+            <!--begin::Icon-->
+            <i class="ki-duotone ki-<?=($statusPpdb['status'] == 'buka')?'check':'cross'?>-square fs-2tx text-<?=($statusPpdb['status'] == 'buka')?'success':'danger'?> me-4">
+                <span class="path1"></span>
+                <span class="path2"></span>
+                <span class="path3"></span>
+            </i>
+            <!--end::Icon-->
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1">
+                <!--begin::Content-->
+                <div class="fw-semibold">
+                    <h4 class="text-gray-900 fw-bold">PPDB Online</h4>
+                    <div class="fs-6 text-gray-700">Masih di<?=$statusPpdb['status']?>, terakhir diubah pada <?=$statusPpdb['updated_at']?></div>
+                    <!-- tombol -->
+                    <div class="d-flex flex-stack mt-3">
+                        <?php if($statusPpdb['status'] == 'buka'): ?>
+                            <a href="/panel/helpers/status-ppdb/tutup" class="btn btn-sm btn-danger" onclick="return confirm('PPDB Online akan ditutup, yakin?')">Tutup</a>
+                        <?php else: ?>
+                            <a href="/panel/helpers/status-ppdb/buka" class="btn btn-sm btn-success" onclick="return confirm('PPDB Online akan dibuka, yakin?')">Buka</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        <!--end::Notice-->
+
         <!--begin::Row-->
         <div class="row g-5 g-xl-8">
             <!--begin::Col-->
@@ -63,7 +93,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr>
-                                    <th class="p-0 min-w-200px"></th>
+                                    <th class="p-0 min-w-100px"></th>
                                     <th class="p-0 min-w-40px"></th>
                                 </tr>
                                 </thead>
@@ -146,7 +176,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr>
-                                    <th class="p-0 min-w-200px"></th>
+                                    <th class="p-0 min-w-100px"></th>
                                     <th class="p-0 min-w-40px"></th>
                                 </tr>
                                 </thead>
@@ -169,7 +199,7 @@
                                                     <span class="path2"></span>
                                                 </i>
                                             </a>
-                                            <?= form_open('/helpers/kompetensi/' . $entity['id'], ['class' => 'd-inline']) ?>
+                                            <?= form_open('/panel/helpers/kompetensi/' . $entity['id'], ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
                                             <button type="submit"
@@ -229,7 +259,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr>
-                                    <th class="p-0 min-w-200px"></th>
+                                    <th class="p-0 min-w-100px"></th>
                                     <th class="p-0 min-w-40px"></th>
                                 </tr>
                                 </thead>
@@ -252,7 +282,7 @@
                                                     <span class="path2"></span>
                                                 </i>
                                             </a>
-                                            <?= form_open('/helpers/penghasilan/' . $entity['id'], ['class' => 'd-inline']) ?>
+                                            <?= form_open('/panel/helpers/penghasilan/' . $entity['id'], ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
                                             <button type="submit"
@@ -316,7 +346,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr>
-                                    <th class="p-0 min-w-200px"></th>
+                                    <th class="p-0 min-w-100px"></th>
                                     <th class="p-0 min-w-40px"></th>
                                 </tr>
                                 </thead>
@@ -339,7 +369,7 @@
                                                     <span class="path2"></span>
                                                 </i>
                                             </a>
-                                            <?= form_open('/helpers/pendidikan/' . $entity['id'], ['class' => 'd-inline']) ?>
+                                            <?= form_open('/panel/helpers/pendidikan/' . $entity['id'], ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
                                             <button type="submit"
@@ -399,8 +429,8 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr>
-                                    <th class="p-0 min-w-200px"></th>
-                                    <th class="p-0 min-w-40px"></th>
+                                    <th class="p-0 min-w-70px"></th>
+                                    <th class="p-0 min-w-100px"></th>
                                 </tr>
                                 </thead>
                                 <!--end::Table head-->
@@ -422,7 +452,7 @@
                                                     <span class="path2"></span>
                                                 </i>
                                             </a>
-                                            <?= form_open('/helpers/pekerjaan/' . $entity['id'], ['class' => 'd-inline']) ?>
+                                            <?= form_open('/panel/helpers/pekerjaan/' . $entity['id'], ['class' => 'd-inline']) ?>
                                             <?= csrf_field(); ?>
                                             <?= form_hidden('_method', 'DELETE'); ?>
                                             <button type="submit"

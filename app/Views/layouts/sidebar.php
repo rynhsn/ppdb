@@ -82,7 +82,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--end:Menu item-->
                 <?php endif ?>
 
-                <?php if (has_permission('manage-site') || has_permission('manage-accounts')): ?>
+                <?php if (has_permission('manage-site') || has_permission('manage-accounts') || in_groups('admin')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item pt-5">
                         <!--begin:Menu content-->
@@ -186,13 +186,33 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         </div>
                         <!--end:Menu item-->
                     <?php endif ?>
+
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="<?= base_url('panel/pengumuman') ?>">
+                        <span class="menu-icon">
+                            <i class="ki-duotone ki-notification-on fs-2">
+                                 <i class="path1"></i>
+                                 <i class="path2"></i>
+                                 <i class="path3"></i>
+                                 <i class="path4"></i>
+                                 <i class="path5"></i>
+                                </i>
+                        </span>
+                            <span class="menu-title">Pengumuman</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+
                 <?php endif ?>
 
                 <?php if (has_permission('akses-fitur-siswa')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="<?= base_url('ujian') ?>">
+                        <a class="menu-link" href="<?= base_url('panel/jadwal') ?>">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-book-open fs-2">
                                  <i class="path1"></i>
@@ -201,7 +221,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                  <i class="path4"></i>
                                 </i>
                         </span>
-                            <span class="menu-title">Jadwal Ujian</span>
+                            <span class="menu-title">Jadwal PPDB</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -209,7 +229,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="<?= base_url('pengumuman') ?>">
+                        <a class="menu-link" href="<?= base_url('panel/pengumuman') ?>">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-call fs-2">
                                 <i class="path1"></i>

@@ -29,9 +29,9 @@
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
             <!--begin::Notice-->
-            <div class="notice d-flex bg-light-success rounded border-success border border-dashed mb-9 p-6">
+            <div class="notice d-flex bg-light-<?=($status['status'] == 'buka')?'success':'danger'?> rounded border-<?=($status['status'] == 'buka')?'success':'danger'?> border border-dashed mb-9 p-6">
                 <!--begin::Icon-->
-                <i class="ki-duotone ki-check-square fs-2tx text-success me-4">
+                <i class="ki-duotone ki-<?=($status['status'] == 'buka')?'check':'cross'?>-square fs-2tx text-<?=($status['status'] == 'buka')?'success':'danger'?> me-4">
                     <span class="path1"></span>
                     <span class="path2"></span>
                     <span class="path3"></span>

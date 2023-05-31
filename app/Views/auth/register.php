@@ -7,7 +7,7 @@
             <!--begin::Aside-->
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
-                <a href="../../demo1/dist/index.html" class="mb-7">
+                <a href="<?= base_url(); ?>" class="mb-7">
                     <img alt="Logo" src="<?= base_url(); ?>/media/logos/custom-3.svg"/>
                 </a>
                 <!--end::Logo-->

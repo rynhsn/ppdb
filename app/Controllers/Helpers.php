@@ -8,6 +8,7 @@ use App\Models\JenjangModel;
 use App\Models\PenghasilanModel;
 use App\Models\KompetensiModel;
 use App\Models\PekerjaanModel;
+use App\Models\StatusPpdbModel;
 use \Config\Database;
 
 class Helpers extends BaseController
@@ -17,6 +18,7 @@ class Helpers extends BaseController
     protected $penghasilan;
     protected $kompetensi;
     protected $pekerjaan;
+    protected $statusPpdb;
     protected $db;
 
     public function __construct()
@@ -26,6 +28,7 @@ class Helpers extends BaseController
         $this->penghasilan = new PenghasilanModel();
         $this->kompetensi = new KompetensiModel();
         $this->pekerjaan = new PekerjaanModel();
+        $this->statusPpdb = new StatusPpdbModel();
         $this->db = Database::connect();
     }
 
@@ -38,9 +41,19 @@ class Helpers extends BaseController
             'penghasilan' => $this->penghasilan->findAll(),
             'kompetensi' => $this->kompetensi->findAll(),
             'pekerjaan' => $this->pekerjaan->findAll(),
+            'statusPpdb' => $this->statusPpdb->find(1),
             'lembaga' => $this->lembaga,
             ];
         return view('helpers/index', $data);
+    }
+
+    public function status($status){
+        $this->statusPpdb->save([
+            'id' => 1,
+            'status' => $status,
+        ]);
+        session()->setFlashdata('pesan', 'Pendaftaran berhasil di'.$status.'.');
+        return redirect()->back();
     }
 
     public function save($table, $id = null){

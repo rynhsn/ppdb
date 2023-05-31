@@ -161,6 +161,7 @@
 <!--end::Javascript-->
 <script>
     $("#kt_datepicker_flat").flatpickr();
+    $("#kt_datatable_simple").DataTable();
     $("#kt_datatable_pekerjaan").DataTable();
     $("#kt_datatable_pendidikan").DataTable();
     // $("#kt_datatable_siswa").DataTable();
