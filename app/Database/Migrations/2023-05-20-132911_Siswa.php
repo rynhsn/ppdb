@@ -326,6 +326,11 @@ class Siswa extends Migration
                 'constraint' => '20',
                 'default'    => '0',
             ],
+            'nilai'=>[
+                'type'       => 'INT',
+                'contraint'  => '5',
+                'null'       => true,
+            ],
             'created_at' => [
                 'type'       => 'DATETIME',
                 'null'       => true,

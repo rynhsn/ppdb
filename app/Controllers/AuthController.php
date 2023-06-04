@@ -5,10 +5,11 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
 use Myth\Auth\Config\Auth as AuthConfig;
-use Myth\Auth\Entities\User;
-use Myth\Auth\Models\UserModel;
+use App\Entities\User;
+use App\Models\UserModel;
+use App\Controllers\BaseController;
 
-class AuthController extends Controller
+class AuthController extends BaseController
 {
     protected $auth;
 
@@ -55,7 +56,7 @@ class AuthController extends Controller
         // Set a return URL if none is specified
         $_SESSION['redirect_url'] = session('redirect_url') ?? previous_url() ?? site_url('/panel');
 
-        return $this->_render($this->config->views['login'], ['config' => $this->config]);
+        return $this->_render($this->config->views['login'], ['config' => $this->config, 'lembaga' => $this->lembaga]);
     }
 
     /**

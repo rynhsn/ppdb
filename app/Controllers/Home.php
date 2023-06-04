@@ -165,7 +165,7 @@ class Home extends BaseController
             //tambahkan 1
             $no_pendaftaran = $last_no_pendaftaran + 1;
             //format nomor baru
-            $no_pendaftaran = 'PD-' . $tahun . $no_pendaftaran;
+            $no_pendaftaran = 'PD-' . $tahun . $no_pendaftaran.str_pad($no_pendaftaran, 4, "0", STR_PAD_LEFT);
         }
 
         return $no_pendaftaran;

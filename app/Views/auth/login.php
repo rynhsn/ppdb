@@ -8,11 +8,11 @@
             <div class="d-flex flex-center flex-lg-start flex-column">
                 <!--begin::Logo-->
                 <a href="<?= base_url(); ?>" class="mb-7">
-                    <img alt="Logo" src="<?= base_url(); ?>/media/logos/custom-3.svg"/>
+                    <img alt="Logo" src="<?= base_url(); ?>/media/logos/logo.png" width="150vh"/>
                 </a>
                 <!--end::Logo-->
                 <!--begin::Title-->
-                <h2 class="text-white fw-normal m-0">Branding tools designed for your business</h2>
+                <h2 class="text-white fw-normal m-0">Portal PPDB Online <?=$lembaga['nama_lembaga']?></h2>
                 <!--end::Title-->
             </div>
             <!--begin::Aside-->

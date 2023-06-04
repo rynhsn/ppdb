@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\PengumumanModel;
+use CodeIgniter\I18n\Time;
 use Config\Services;
 
 class Pengumuman extends BaseController
@@ -19,11 +20,10 @@ class Pengumuman extends BaseController
     {
         $data = [
             'title' => 'Pengumuman',
-            'pengumuman' => $this->pengumumanModel->findAll(),
+            'pengumuman' => $this->pengumumanModel->orderBy('id', 'DESC')->findAll(),
             'lembaga' => $this->lembaga,
         ];
         if (has_permission('akses-fitur-siswa')){
-            $data['pengumuman'] = $this->pengumumanModel->findAll();
             return view('siswa/pengumuman', $data);
         }
         return view('panel/pengumuman', $data);
@@ -34,7 +34,7 @@ class Pengumuman extends BaseController
         $data = [
             'judul_pengumuman' => $this->request->getVar('judul_pengumuman'),
             'ket_pengumuman' => $this->request->getVar('ket_pengumuman'),
-            'tgl_pengumuman' => date('Y-m-d H:i:s'),
+            'tgl_pengumuman' => Time::now('Asia/Jakarta', 'id_ID')
         ];
         if ($id){
             $data['id'] = $id;

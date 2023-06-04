@@ -15,7 +15,12 @@ class JenjangSeeder extends Seeder
                 'updated_at'  => date('Y-m-d H:i:s'),
             ],
             [
-                'description'     => 'SMA',
+                'description'     => 'SMK',
+                'created_at'  => date('Y-m-d H:i:s'),
+                'updated_at'  => date('Y-m-d H:i:s'),
+            ],
+            [
+                'description'     => 'Madrasah Aliyah',
                 'created_at'  => date('Y-m-d H:i:s'),
                 'updated_at'  => date('Y-m-d H:i:s'),
             ],

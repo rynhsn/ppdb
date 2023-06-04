@@ -8,6 +8,7 @@ use Config\Database;
 use App\Entities\User;
 use App\Models\UserModel;
 use Myth\Auth\Models\GroupModel;
+use Myth\Auth\Models\PermissionModel;
 use Myth\Auth\Password;
 
 class Users extends BaseController
@@ -17,6 +18,7 @@ class Users extends BaseController
     protected $groupModel;
     protected $db;
     protected $config;
+    protected $permissionModel;
 
     public function __construct()
     {
@@ -24,6 +26,7 @@ class Users extends BaseController
         $this->db = Database::connect();
         $this->userModel = new UserModel();
         $this->groupModel = new GroupModel();
+        $this->permissionModel = new PermissionModel();
         $this->config = config('Auth');
     }
 
@@ -66,12 +69,15 @@ class Users extends BaseController
         }
         $allowedPostFields = array_merge(['password'], $this->config->validFields, $this->config->personalFields);
         $user = new User($this->request->getPost($allowedPostFields));
-
         $user->activate();
 
         if (!$this->userModel->withGroup($this->request->getVar('group'))->save($user)) {
             return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
         }
+
+        $user = $this->userModel->where('username', $this->request->getVar('username'))->first();
+        $permission = $this->permissionModel->where('name', 'manage-profile')->first();
+        $this->permissionModel->addPermissionToUser($permission->id, $user->id);
         // Success!
         session()->setFlashdata('pesan', 'Pengguna baru telah ditambahkan.');
         return redirect()->to('/panel/user');

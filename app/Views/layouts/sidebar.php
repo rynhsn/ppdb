@@ -82,6 +82,86 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--end:Menu item-->
                 <?php endif ?>
 
+
+                <?php if (has_permission('manage-seleksi') || in_groups('seleksi')): ?>
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="ki-duotone ki-text-number fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                        <span class="path5"></span>
+                                        <span class="path6"></span>
+                                    </i>
+                                </span>
+                                <span class="menu-title">Materi dan Jadwal Ujian</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <?php foreach (JENJANG as $key => $value):?>
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="<?= base_url('panel/materi/'.$key); ?>">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                <span class="menu-title"><?=$value?></span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <?php endforeach; ?>
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+
+                <!--begin:Menu item-->
+                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                    <!--begin:Menu link-->
+                    <span class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="ki-duotone ki-people fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                        <span class="path5"></span>
+                                    </i>
+                                </span>
+                                <span class="menu-title">Hasil Seleksi</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                    <!--end:Menu link-->
+                    <!--begin:Menu sub-->
+                    <div class="menu-sub menu-sub-accordion">
+                        <?php foreach (JENJANG as $key => $value):?>
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="<?= base_url('panel/hasil-seleksi/'.$key); ?>">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                <span class="menu-title"><?=$value?></span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
+                        <?php endforeach; ?>
+                    </div>
+                    <!--end:Menu sub-->
+                </div>
+                <!--end:Menu item-->
+                <?php endif ?>
+
                 <?php if (has_permission('manage-site') || has_permission('manage-accounts') || in_groups('admin')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item pt-5">
@@ -188,6 +268,44 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <?php endif ?>
 
                     <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
+                                <span class="menu-icon">
+                                    <i class="ki-duotone ki-calendar-2 fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                        <span class="path4"></span>
+                                        <span class="path5"></span>
+                                    </i>
+                                </span>
+                                <span class="menu-title">Jadwal PPDB</span>
+                                <span class="menu-arrow"></span>
+                            </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <?php foreach (JENJANG as $key => $value):?>
+                                <!--begin:Menu item-->
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link" href="<?= base_url('panel/jadwal/'.$key); ?>">
+                                        <span class="menu-bullet">
+                                            <span class="bullet bullet-dot"></span>
+                                        </span>
+                                        <span class="menu-title"><?=$value?></span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                                <!--end:Menu item-->
+                            <?php endforeach; ?>
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <!--end:Menu item-->
+
+                    <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link" href="<?= base_url('panel/pengumuman') ?>">
@@ -205,14 +323,13 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
-
                 <?php endif ?>
 
                 <?php if (has_permission('akses-fitur-siswa')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="<?= base_url('panel/jadwal') ?>">
+                        <a class="menu-link" href="<?= base_url('panel/jadwal-ppdb') ?>">
                         <span class="menu-icon">
                             <i class="ki-duotone ki-book-open fs-2">
                                  <i class="path1"></i>
@@ -249,6 +366,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--end:Menu item-->
                 <?php endif; ?>
 
+                <!-- one click -->
                 <!--begin:Menu item-->
                 <div class="menu-item pt-5">
                     <!--begin:Menu content-->

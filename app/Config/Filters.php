@@ -8,9 +8,9 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
-use Myth\Auth\Filters\LoginFilter;
-use Myth\Auth\Filters\PermissionFilter;
-use Myth\Auth\Filters\RoleFilter;
+use App\Filters\LoginFilter;
+use App\Filters\PermissionFilter;
+use App\Filters\RoleFilter;
 
 class Filters extends BaseConfig
 {

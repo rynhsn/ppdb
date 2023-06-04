@@ -122,7 +122,7 @@
                                 <!--begin::Table head-->
                                 <thead>
                                 <tr class="fw-bold text-muted bg-light">
-                                    <th class="ps-4 min-w-325px rounded-start">Pengguna</th>
+                                    <th class="ps-4 min-w-225px rounded-start">Pengguna</th>
                                     <th class="min-w-200px">Email</th>
                                     <th class="min-w-50px">Grup</th>
                                     <th class="min-w-50px">Aktif?</th>

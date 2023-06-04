@@ -15,6 +15,9 @@ class TestSeeder extends Seeder
         $this->call('PenghasilanSeeder');
         $this->call('ProfileLembagaSeeder');
         $this->call('StatusPpdbSeeder');
+        $this->call('LinkTestSeeder');
+        $this->call('JadwalPpdbSeeder');
+        $this->call('KisiKisiSeeder');
         $this->call('AuthGroupsSeeder');
         $this->call('AuthPermissionsSeeder');
 

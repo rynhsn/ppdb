@@ -1,3 +1,8 @@
+<?php
+
+use CodeIgniter\I18n\Time;
+
+?>
 <?= $this->extend('layouts/index') ?>
 <?= $this->section('page-content') ?>
     <!--begin::Toolbar-->
@@ -21,56 +26,115 @@
         </div>
         <!--end::Toolbar container-->
     </div>
-    <!--end::Toolbar-->
-    <!--begin::Content-->
-    <div id="kt_app_content" class="app-content flex-column-fluid">
-        <!--begin::Content container-->
-        <div id="kt_app_content_container" class="app-container container-fluid">
+<!--end::Toolbar-->
+<!--begin::Content-->
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <!--begin::Content container-->
+    <div id="kt_app_content_container" class="app-container container-fluid">
 
-            <?php if (session('pesan')): ?>
-                <!--begin::Notice-->
-                <div class="notice d-flex bg-light-success rounded border-success border border-dashed mb-9 p-6">
-                    <!--begin::Icon-->
-                    <i class="ki-duotone ki-check-square fs-2tx text-success me-4">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                        <span class="path3"></span>
-                    </i>
-                    <!--end::Icon-->
-                    <!--begin::Wrapper-->
-                    <div class="d-flex flex-stack flex-grow-1">
-                        <!--begin::Content-->
-                        <div class="fw-semibold">
-                            <h4 class="text-gray-900 fw-bold">Berhasil</h4>
-                            <div class="fs-6 text-gray-700"><?= session('pesan'); ?></div>
-                        </div>
-                        <!--end::Content-->
+        <?php if (session('pesan')): ?>
+            <!--begin::Notice-->
+            <div class="notice d-flex bg-light-success rounded border-success border border-dashed mb-9 p-6">
+                <!--begin::Icon-->
+                <i class="ki-duotone ki-check-square fs-2tx text-success me-4">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                    <span class="path3"></span>
+                </i>
+                <!--end::Icon-->
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-stack flex-grow-1">
+                    <!--begin::Content-->
+                    <div class="fw-semibold">
+                        <h4 class="text-gray-900 fw-bold">Berhasil</h4>
+                        <div class="fs-6 text-gray-700"><?= session('pesan'); ?></div>
                     </div>
-                    <!--end::Wrapper-->
+                    <!--end::Content-->
                 </div>
-                <!--end::Notice-->
-            <?php endif; ?>
+                <!--end::Wrapper-->
+            </div>
+            <!--end::Notice-->
+        <?php endif; ?>
 
-            <!--begin::Row-->
-            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-                <!--begin::Col-->
-                <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-                    <!--begin::Card widget 17-->
-                    <div id="kt_sliders_widget_2_slider"
-                         class="card card-flush carousel carousel-custom carousel-stretch slide h-md-50 h-sm-50 h-xl-10 mb-10"
-                         data-bs-ride="carousel" data-bs-interval="5500">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
+        <!--begin::Row-->
+        <div class="row gy-5 g-xl-10 mb-5 mb-xl-10">
+            <!--begin::Col-->
+            <div class="col-xl-4">
+                <!--begin::Engage widget 1-->
+                <div class="card h-md-100 bg-success" dir="ltr">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column flex-center">
+                        <!--begin::Heading-->
+                        <div class="mb-2">
                             <!--begin::Title-->
-                            <h4 class="card-title d-flex align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Pengumuman</span>
-                                <span class="text-gray-400 mt-1 fw-bold fs-7"><?= date('d M Y') ?></span>
-                            </h4>
+                            <h1 class="fw-semibold text-light text-center lh-lg">Selamat Datang di PPDB Online
+                                <br>
+                                <span class="fw-bolder"><?= $lembaga['nama_lembaga'] ?></span></h1>
                             <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Carousel Indicators-->
-                                <ol class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-success">
+                            <!--begin::Illustration-->
+                            <div class="py-10 text-center">
+                                <img src="/media/svg/illustrations/easy/8.svg" class="theme-light-show w-200px"
+                                     alt="">
+                            </div>
+                            <!--end::Illustration-->
+                        </div>
+                        <!--end::Heading-->
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Engage widget 1-->
+            </div>
+
+            <!--begin::Col-->
+            <div class="col-xl-4 mb-5 mb-xl-10">
+                <!--begin::Card widget 7-->
+                <div class="card card-flush h-md-50 mb-md-5 mb-xl-10">
+                    <!--begin::Header-->
+                    <div class="card-header pt-5">
+                        <!--begin::Title-->
+                        <div class="card-title d-flex flex-column">
+                            <!--begin::Amount-->
+                            <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Hari ini</span>
+                            <!--end::Amount-->
+                            <!--begin::Subtitle-->
+                            <span
+                                class="text-gray-400 pt-1 fw-semibold fs-6"><?= Time::now('Asia/Jakarta', 'id-ID')->format('d M Y') ?></span>
+                            <!--end::Subtitle-->
+                        </div>
+                        <!--end::Title-->
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Card body-->
+                    <div class="card-body d-flex flex-column justify-content-end">
+                        <span class="text-gray-800">Tahapan yang sedang berlangsung</span>
+                        <span class="fw-bolder fs-1 text-danger mb-5"><?= $jadwal_hari_ini ?></span>
+                        <?php if ($jadwal_hari_ini == 'Tes Seleksi'): ?>
+                            <!--end::Title-->
+                            <div class="m-0">
+                                <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal"
+                                   data-bs-target="#kt_modal_create_app">Buka link ujian</a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card widget 7-->
+                <!--begin::Card widget 17-->
+                <div class="card bg-danger card-flush carousel carousel-custom carousel-stretch slide h-md-50"
+                     id="kt_sliders_widget_2_slider"
+                     data-bs-ride="carousel" data-bs-interval="5500">
+                    <!--begin::Header-->
+                    <div class="card-header pt-5">
+                        <!--begin::Title-->
+                        <h4 class="card-title d-flex align-items-start flex-column">
+                            <span class="fs-2hx fw-bold text-light me-2 lh-1 ls-n2">Pengumuman</span>
+                        </h4>
+                        <!--end::Title-->
+                        <!--begin::Toolbar-->
+                        <div class="card-toolbar">
+                            <!--begin::Carousel Indicators-->
+                            <ol class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-light">
+                                <?php if ($pengumuman): ?>
                                     <?php $i = 0;
                                     foreach ($pengumuman as $p): ?>
                                         <!--begin::Item-->
@@ -79,224 +143,171 @@
                                             class="ms-1 <?php if ($i == 0) echo 'active'; ?>" <?php if ($i == 0) echo 'aria-current="true"'; ?>></li>
                                         <!--end::Item-->
                                         <?php $i++; endforeach; ?>
-                                </ol>
-                                <!--end::Carousel Indicators-->
-                            </div>
-                            <!--end::Toolbar-->
+                                <?php else: ?>
+                                    <li data-bs-target="#kt_sliders_widget_2_slider"
+                                        data-bs-slide-to="1"
+                                        class="ms-1 active" aria-current="true"'></li>
+                                <?php endif ?>
+                            </ol>
+                            <!--end::Carousel Indicators-->
                         </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body py-6">
-                            <!--begin::Carousel-->
-                            <div class="carousel-inner">
-                                <?php $i = 0;
-                                foreach ($pengumuman as $p): ?>
-                                    <!--begin::Item-->
-                                    <div class="carousel-item <?php if ($i == 0) echo 'show active'; ?>">
-                                        <!--begin::Wrapper-->
-                                        <div class="d-flex align-items-center mb-9">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-70px symbol-circle me-5">
-                                                <span class="symbol-label bg-light-warning">
-                                                    <i class="ki-duotone ki-information fs-3x text-warning">
+                        <!--end::Toolbar-->
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body py-6">
+                        <!--begin::Carousel-->
+                        <div class="carousel-inner">
+                            <?php if($pengumuman):?>
+                            <?php $i = 0;
+                            foreach ($pengumuman as $p): ?>
+                            <!--begin::Item-->
+                            <div class="carousel-item <?php if ($i == 0) echo 'show active'; ?>">
+                                <!--begin::Wrapper-->
+                                <div class="d-flex align-items-center mb-9">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-50px symbol-circle me-5">
+                                                <span class="symbol-label bg-light-danger">
+                                                    <i class="ki-duotone ki-information fs-2x text-danger">
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                         <span class="path3"></span>
                                                     </i>
                                                 </span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Info-->
-                                            <div class="m-0">
-                                                <!--begin::Subtitle-->
-                                                <h5 class="fw-bold text-gray-800 mb-3"><?= $p['judul_pengumuman'] ?></h5>
-                                                <!--end::Subtitle-->
-                                                <!--begin::Items-->
-                                                <div class="d-flex d-grid gap-5">
-                                                    <!--begin::Item-->
-                                                    <span class="d-inline-block text-wrap text-break">
-                                                        <?= $p['ket_pengumuman'] ?>
-                                                    </span>
-                                                </div>
-                                                <!--end::Items-->
-
-                                            </div>
-                                            <!--end::Info-->
-                                        </div>
-                                        <!--end::Wrapper-->
                                     </div>
-                                    <!--end::Item-->
-                                    <?php $i++; endforeach; ?>
-                            </div>
-                            <!--end::Carousel-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Card widget 17-->
-                    <!--begin::Card widget 17-->
-                    <div id="kt_sliders_widget_2_slider"
-                         class="card card-flush carousel carousel-custom carousel-stretch slide h-md-50 h-xl-10 mb-5"
-                         data-bs-ride="carousel" data-bs-interval="5500">
-                        <!--begin::Header-->
-                        <div class="card-header pt-5">
-                            <!--begin::Title-->
-                            <h4 class="card-title d-flex align-items-start flex-column">
-                                <span class="card-label fw-bold text-gray-800">Pengumuman</span>
-                                <span class="text-gray-400 mt-1 fw-bold fs-7"><?= date('d M Y') ?></span>
-                            </h4>
-                            <!--end::Title-->
-                            <!--begin::Toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Carousel Indicators-->
-                                <ol class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-success">
-                                    <?php $i = 0;
-                                    foreach ($pengumuman as $p): ?>
-                                        <!--begin::Item-->
-                                        <li data-bs-target="#kt_sliders_widget_2_slider"
-                                            data-bs-slide-to="<?php echo $i; ?>"
-                                            class="ms-1 <?php if ($i == 0) echo 'active'; ?>" <?php if ($i == 0) echo 'aria-current="true"'; ?>></li>
-                                        <!--end::Item-->
-                                        <?php $i++; endforeach; ?>
-                                </ol>
-                                <!--end::Carousel Indicators-->
-                            </div>
-                            <!--end::Toolbar-->
-                        </div>
-                        <!--end::Header-->
-                        <!--begin::Body-->
-                        <div class="card-body py-6">
-                            <!--begin::Carousel-->
-                            <div class="carousel-inner">
-                                <?php $i = 0;
-                                foreach ($pengumuman as $p): ?>
-                                    <!--begin::Item-->
-                                    <div class="carousel-item <?php if ($i == 0) echo 'show active'; ?>">
-                                        <!--begin::Wrapper-->
-                                        <div class="d-flex align-items-center mb-9">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-70px symbol-circle me-5">
-																			<span class="symbol-label bg-light-warning">
-																				<i class="ki-duotone ki-information fs-3x text-warning">
-																					<span class="path1"></span>
-																					<span class="path2"></span>
-																					<span class="path3"></span>
-																				</i>
-																			</span>
-                                            </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Info-->
-                                            <div class="m-0">
-                                                <!--begin::Subtitle-->
-                                                <h5 class="fw-bold text-gray-800 mb-3"><?= $p['judul_pengumuman'] ?></h5>
-                                                <!--end::Subtitle-->
-                                                <!--begin::Items-->
-                                                <div class="d-flex d-grid gap-5">
-                                                    <!--begin::Item-->
-                                                    <div class="d-flex flex-column flex-shrink-0 me-4">
-                                                        <!--begin::Section-->
-                                                        <span
-                                                            class="d-flex align-items-center fs-7 fw-bold text-gray-400 mb-2">
-																					<i class="ki-duotone ki-right-square fs-6 text-gray-600 me-2">
-																						<span class="path1"></span>
-																						<span class="path2"></span>
-																					</i>5 Topics</span>
-                                                        <!--end::Section-->
-                                                        <!--begin::Section-->
-                                                        <span
-                                                            class="d-flex align-items-center text-gray-400 fw-bold fs-7">
-																					<i class="ki-duotone ki-right-square fs-6 text-gray-600 me-2">
-																						<span class="path1"></span>
-																						<span class="path2"></span>
-																					</i>1 Speakers</span>
-                                                        <!--end::Section-->
-                                                    </div>
-                                                    <!--end::Item-->
-                                                    <!--begin::Item-->
-                                                    <div class="d-flex flex-column flex-shrink-0">
-                                                        <!--begin::Section-->
-                                                        <span
-                                                            class="d-flex align-items-center fs-7 fw-bold text-gray-400 mb-2">
-																					<i class="ki-duotone ki-right-square fs-6 text-gray-600 me-2">
-																						<span class="path1"></span>
-																						<span class="path2"></span>
-																					</i>60 Min</span>
-                                                        <!--end::Section-->
-                                                        <!--begin::Section-->
-                                                        <span
-                                                            class="d-flex align-items-center text-gray-400 fw-bold fs-7">
-																					<i class="ki-duotone ki-right-square fs-6 text-gray-600 me-2">
-																						<span class="path1"></span>
-																						<span class="path2"></span>
-																					</i>137 students</span>
-                                                        <!--end::Section-->
-                                                    </div>
-                                                    <!--end::Item-->
-                                                </div>
-                                                <!--end::Items-->
-                                            </div>
-                                            <!--end::Info-->
+                                    <!--end::Symbol-->
+                                    <!--begin::Info-->
+                                    <div class="m-0">
+                                        <!--begin::Subtitle-->
+                                        <h5 class="fw-bold mb-3 text-light"><?= $p['judul_pengumuman'] ?>
+                                            <br>
+                                            <span
+                                                class="fw-semibold fs-7 text-white-50"><?= date('d M Y', strtotime($p['tgl_pengumuman'])) ?></span>
+                                        </h5>
+                                        <!--end::Subtitle-->
+                                        <!--begin::Items-->
+                                        <div class="d-flex d-grid gap-5">
+                                            <!--begin::Item-->
+                                            <span class="d-inline-block text-wrap text-light text-break">
+                                                                <?= $p['ket_pengumuman'] ?>
+                                                            </span>
                                         </div>
-                                        <!--end::Wrapper-->
-                                        <!--begin::Action-->
-                                        <div class="m-0">
-                                            <a href="#" class="btn btn-sm btn-light me-2 mb-2">Details</a>
-                                            <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal"
-                                               data-bs-target="#kt_modal_create_campaign">Join Event</a>
-                                        </div>
-                                        <!--end::Action-->
+                                        <!--end::Items-->
                                     </div>
-                                    <!--end::Item-->
-                                    <?php $i++; endforeach; ?>
-                            </div>
-                            <!--end::Carousel-->
-                        </div>
-                        <!--end::Body-->
-                    </div>
-                    <!--end::Card widget 17-->
-                </div>
-                <!--end::Col-->
-                <!--begin::Col-->
-                <div class="col-lg">
-                    <!--begin::Engage widget 10-->
-                    <div class="card card-flush h-md-70">
-                        <!--begin::Body-->
-                        <div
-                            class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0"
-                            style="background-position: 100% 50%; background-image:url('/media/stock/900x600/42.png')">
-                            <!--begin::Wrapper-->
-                            <div class="mb-10">
-                                <!--begin::Title-->
-                                <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
-                                    <span class="me-2">Selamat Datang di PPDB
-                                    <br/>
-                                    <span
-                                        class="me-2 text-success opacity-75-hover"><?= $lembaga['nama_lembaga'] ?>
-                                    <span
-                                        class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
-                                    </span>
-                                        <?= $lembaga['th_pelajaran'] ?>
-                                    </span>
+                                    <!--end::Info-->
                                 </div>
-                                <!--end::Title-->
+                                <!--end::Wrapper-->
                             </div>
-                            <!--begin::Wrapper-->
-
-                            <!--begin::Illustration-->
-                            <img class="mx-auto h-150px h-lg-300px theme-light-show"
-                                 src="/media/illustrations/unitedpalms-1/20.png" alt=""/>
-                            <img class="mx-auto h-150px h-lg-300px theme-dark-show"
-                                 src="/media/illustrations/unitedpalms-1/20-dark.png" alt=""/>
-                            <!--end::Illustration-->
+                            <!--end::Item-->
+                            <?php $i++; endforeach; ?>
+                            <?php else:?>
+                            <span class="text-light fs-2">Belum ada pengumuman</span>
+                            <?php endif?>
                         </div>
-                        <!--end::Body-->
+                        <!--end::Carousel-->
                     </div>
-                    <!--end::Engage widget 10-->
+                    <!--end::Body-->
                 </div>
-                <!--end::Col-->
+                <!--end::Card widget 17-->
             </div>
-            <!--end::Row-->
+            <!--end::Col-->
+
+            <!--begin::Col-->
+            <div class="col-xl-4">
+                <!--begin::List widget 10-->
+                <div class="card bg-primary card-flush h-md-100 mb-5 mb-xl-10">
+                    <!--begin::Header-->
+                    <div class="card-header pt-7">
+                        <!--begin::Title-->
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="fs-2hx fw-bold text-light  me-2 lh-1 ls-n2">Jadwal PPDB Online</span>
+                            <span
+                                class="text-white-50 mt-1 fw-semibold fs-6">Jenjang <?= $siswa['jenjang_daftar'] ?></span>
+                        </h3>
+                        <!--end::Title-->
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Body-->
+                    <div class="card-body">
+                        <!--begin::Timeline-->
+                        <div class="timeline">
+                            <?php foreach ($jadwal as $item) : ?>
+                            <!--begin::Timeline item-->
+                            <div class="timeline-item align-items-center mb-7">
+                                <!--begin::Timeline line-->
+                                <div class="timeline-line w-40px mt-6 mb-n12"></div>
+                                <!--end::Timeline line-->
+                                <!--begin::Timeline icon-->
+                                <div class="timeline-icon" style="margin-left: 11px">
+                                    <i class="ki-duotone ki-<?= ((Time::now('Asia/Jakarta') >= $item['tgl_mulai'] && Time::now('Asia/Jakarta') <= $item['tgl_selesai'])|| (Time::now('Asia/Jakarta')->toDateString() === $item['tgl_mulai']) && (Time::now('Asia/Jakarta')->toDateString() === $item['tgl_selesai'])
+                                    )  ? 'geolocation fs-2' : 'cd fs-3' ?> text-<?= ((Time::now('Asia/Jakarta') >= $item['tgl_mulai'] && Time::now('Asia/Jakarta') <= $item['tgl_selesai'])||(Time::now('Asia/Jakarta')->toDateString() === $item['tgl_mulai']) && (Time::now('Asia/Jakarta')->toDateString() === $item['tgl_selesai'])
+                                    ) ? 'danger' : 'success' ?>">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                    </i>
+                                </div>
+                                <!--end::Timeline icon-->
+                                <!--begin::Timeline content-->
+                                <div class="timeline-content m-0">
+                                    <!--begin::Title-->
+                                    <span
+                                        class="fs-9 text-white-50 fw-semibold d-block"><?= ($item['tgl_mulai'] == $item['tgl_selesai']) ? $item['tgl_mulai'] : $item['tgl_mulai'] . ' s/d ' . $item['tgl_selesai'] ?></span>
+                                    <!--end::Title-->
+                                    <!--begin::Title-->
+                                    <span class="fs-6 fw-bold text-white"><?= $item['judul'] ?></span>
+                                    <!--end::Title-->
+                                </div>
+                                <!--end::Timeline content-->
+                            </div>
+                            <!--end::Timeline item-->
+                            <?php endforeach; ?>
+                        </div>
+                        <!--end::Timeline-->
+                    </div>
+                    <!--end: Card Body-->
+                </div>
+                <!--end::List widget 10-->
+            </div>
+            <!--end::Col-->
+
         </div>
-        <!--end::Content container-->
+        <!--end::Row-->
+        <!--begin::Row-->
+        <div class="row g-lg-5 g-xl-10">
+            <!--begin::Col-->
+            <div class="col">
+                <!--begin::Card widget 10-->
+                <div class="card card-flush h-md-100">
+                    <!--begin::Header-->
+                    <div class="card-header pt-5">
+                        <!--begin::Title-->
+                        <div class="card-title d-flex flex-column">
+                            <!--begin::Amount-->
+                            <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Materi ujian</span>
+                            <!--end::Amount-->
+                            <!--begin::Subtitle-->
+                            <span
+                                class="text-gray-400 pt-1 fw-semibold fs-6">Untuk jenjang pendidikan <?= $siswa['jenjang_daftar'] ?></span>
+                            <!--end::Subtitle-->
+                        </div>
+                        <!--end::Title-->
+                    </div>
+                    <!--end::Header-->
+                    <!--begin::Card body-->
+                    <div class="card-body pt-0">
+                        <!--begin::Wrapper-->
+                        <?= $materi['isi'] ?>
+                        <!--end::Wrapper-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card widget 10-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
     </div>
-    <!--end::Content-->
+    <!--end::Content container-->
+</div>
+<!--end::Content-->
 <?= $this->endSection(); ?>

@@ -3,7 +3,7 @@
 <!--begin::Head-->
 <head data-bs-theme-mode="light">
     <base href="../"/>
-    <title><?=$title;?></title>
+    <title><?= $title; ?></title>
     <meta charset="utf-8"/>
     <meta name="description" content="PPDB Online"/>
     <meta name="keywords" content="PPDB Online"/>
@@ -79,23 +79,10 @@
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
                             <span class="text-muted fw-semibold me-1">2023&copy;</span>
-                            <a href="https://keenthemes.com" target="_blank" class="text-gray-800 text-hover-primary">Keenthemes</a>
+                            <a href="https://github.com/rynhsn" target="_blank"
+                               class="text-gray-800 text-hover-primary"><?= $lembaga['nama_lembaga'] ?></a>
                         </div>
                         <!--end::Copyright-->
-                        <!--begin::Menu-->
-                        <ul class="menu menu-gray-600 menu-hover-primary fw-semibold order-1">
-                            <li class="menu-item">
-                                <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="https://1.envato.market/EA4JP" target="_blank"
-                                   class="menu-link px-2">Purchase</a>
-                            </li>
-                        </ul>
-                        <!--end::Menu-->
                     </div>
                     <!--end::Footer container-->
                 </div>
@@ -152,19 +139,46 @@
 <script src="<?= base_url(); ?>/js/custom/utilities/modals/users-search.js"></script>
 
 <!-- data table users -->
-<script src="<?=base_url(); ?>js/custom/ppdb/datatables/users.js"></script>
-<script src="<?=base_url(); ?>js/custom/ppdb/datatables/siswa.js"></script>
+<script src="<?= base_url(); ?>js/custom/ppdb/datatables/users.js"></script>
+<script src="<?= base_url(); ?>js/custom/ppdb/datatables/siswa.js"></script>
 
 <!--untuk profil lembaga-->
 <script src="<?= base_url(); ?>/js/custom/account/settings/profile-details.js"></script>
 <!--end::Custom Javascript-->
+
+<script src="<?= base_url(); ?>/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
+
 <!--end::Javascript-->
 <script>
+    //    dii hal jadwal
+    <?php if ($title == 'Jadwal PPDB'): ?>
+    $("#kt_daterangepicker_add").daterangepicker();
+    <?php foreach ($jadwal as $j) : ?>
+    $("#kt_daterangepicker_<?=$j['id']?>").daterangepicker();
+    <?php endforeach; ?>
+    <?php endif; ?>
+
     $("#kt_datepicker_flat").flatpickr();
     $("#kt_datatable_simple").DataTable();
     $("#kt_datatable_pekerjaan").DataTable();
     $("#kt_datatable_pendidikan").DataTable();
     // $("#kt_datatable_siswa").DataTable();
+
+    <?php if ($title == 'Materi dan Jadwal Ujian'): ?>
+    ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .then(editor => {
+            console.log(editor);
+            editor.model.document.on('change:data', () => {
+                // Mengambil isi dari CKEditor
+                // Memperbarui konten pada elemen dengan id preview_materi
+                document.querySelector('#preview_materi').innerHTML = editor.getData();
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    <?php endif; ?>
 </script>
 </body>
 <!--end::Body-->

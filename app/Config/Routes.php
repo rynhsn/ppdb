@@ -38,6 +38,7 @@ $routes->post('/daftar', 'Home::saveDaftar');
 $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');
     $routes->get('profile', 'Panel::profile');
+    $routes->get('jadwal-ppdb', 'Panel::jadwal');
     $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
 
     $routes->group('validasi-registrasi', function ($routes){
@@ -57,6 +58,23 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
         $routes->post('(:segment)', 'Helpers::save/$1');
         $routes->put('(:segment)/(:num)', 'Helpers::save/$1/$2');
         $routes->delete('(:segment)/(:num)', 'Helpers::delete/$1/$2');
+    });
+
+    $routes->group('materi', ['filter' => 'permission:manage-seleksi'], static function ($routes) {
+        $routes->get('(:segment)', 'Materi::index/$1');
+        $routes->put('(:segment)', 'Materi::save/$1');
+    });
+
+    $routes->group('hasil-seleksi', ['filter' => 'permission:manage-seleksi'], static function ($routes){
+        $routes->get('(:segment)', 'HasilSeleksi::index/$1');
+        $routes->put('', 'HasilSeleksi::save');
+    });
+
+    $routes->group('jadwal', ['filter' => 'permission:manage-site'], static function ($routes) {
+        $routes->get('(:segment)', 'Jadwal::index/$1');
+        $routes->post('(:segment)', 'Jadwal::save/$1');
+        $routes->put('(:segment)/(:num)', 'Jadwal::save/$1/$2');
+        $routes->delete('(:segment)/(:num)', 'Jadwal::delete/$1/$2');
     });
 
     $routes->group('pengumuman', static function ($routes) {

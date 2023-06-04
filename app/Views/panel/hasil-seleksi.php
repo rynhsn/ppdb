@@ -116,11 +116,11 @@
                         <thead>
                         <tr class="fw-bold text-muted bg-light">
                             <th class="ps-4 min-w-50px rounded-start">No. Pendaftaran</th>
-                            <th class="min-w-75px">Jenjang</th>
-                            <th class="min-w-100px">Pembayaran</th>
-                            <th class="min-w-100px">Jumlah</th>
-                            <th class="min-w-10px">Tanggal</th>
-                            <th class="min-w-125px text-end rounded-end"></th>
+                            <th class="min-w-75px">NISN</th>
+                            <th class="min-w-100px">NIK</th>
+                            <th class="min-w-100px">Nama Lengkap</th>
+                            <th class="min-w-10px">Nilai</th>
+                            <th class="min-w-15px text-end rounded-end"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -129,47 +129,20 @@
                                 <td class="ps-4 fw-bold text-muted">
                                     <?= $item['no_pendaftaran'] ?>
                                 </td>
-                                <td class="fw-bold"><?= $item['jenjang_daftar'] ?></td>
-                                <td class="text-muted">
-                                    <span
-                                        class="badge badge-light-<?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][1] ?>">
-                                        <?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?>
-                                    </span>
-                                </td>
-                                <td class="fw-bold"><?= $item['jumlah'] ?></td>
-                                <td class="fw-bold"><?= $item['tanggal'] ?></td>
+                                <td class="fw-bold"><?= $item['nisn'] ?></td>
+                                <td class="fw-bold"><?= $item['nik'] ?></td>
+                                <td class="fw-bold"><?= $item['nama_lengkap'] ?></td>
+                                <td class="fw-bold"><?= $item['nilai'] ?></td>
                                 <td class="text-end">
                                     <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_konfirmasi_<?= $item['uid'] ?>"
-                                            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1 <?= $item['status_pendaftaran'] != 1 ? 'disabled' : '' ?>">
-                                        <i class="ki-duotone ki-check-square fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i>
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_tolak_<?= $item['uid'] ?>"
-                                            class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 <?= $item['status_pendaftaran'] != 1 ? 'disabled' : '' ?>">
-                                        <i class="ki-duotone ki-cross-square fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i>
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_detail_<?= $item['uid'] ?>"
-                                            class="btn btn-icon btn-bg-light btn-active-color-warning btn-sm me-1">
-                                        <i class="ki-duotone ki-eye fs-2">
+                                            data-bs-target="#kt_modal_<?= $item['id'] ?>"
+                                            class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1">
+                                        <i class="ki-duotone ki-password-check fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                             <span class="path3"></span>
-                                        </i>
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_view_<?= $item['uid'] ?>"
-                                            class="btn btn-icon btn-bg-light btn-active-color-info btn-sm me-1 <?= $item['status_pendaftaran'] == 0 ? 'disabled' : '' ?>">
-                                        <i class="ki-duotone ki-file fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
+                                            <span class="path4"></span>
+                                            <span class="path5"></span>
                                         </i>
                                     </button>
                                 </td>
@@ -186,14 +159,12 @@
         <!--end::Content container-->
     </div>
     <!--end::Content-->
-    <!--Modal detail-->
 <?php foreach ($siswa as $item): ?>
-    <div class="modal fade" tabindex="-1" id="kt_modal_detail_<?= $item['uid'] ?>">
+    <div class="modal fade" tabindex="-1" id="kt_modal_<?= $item['id'] ?>">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Detail Registrasi</h5>
-
+                    <h5 class="modal-title">Masukkan Nilai</h5>
                     <!--begin::Close-->
                     <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
                          aria-label="Close">
@@ -201,143 +172,31 @@
                     </div>
                     <!--end::Close-->
                 </div>
-
-                <div class="modal-body">
-                    <!--begin::Row-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">Nama Lengkap</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8">
-                            <span class="fw-bold fs-6 text-gray-800"><?= $item['nama_lengkap'] ?></span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">No. Pendaftaran</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold text-gray-800 fs-6"><?= $item['no_pendaftaran'] ?></span>
-
-                            <span
-                                class="badge badge-<?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][1] ?>"><?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?></span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">NIK</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold fs-6 text-gray-800"><?= $item['nik'] ?></span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row mb-10">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">NISN</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold fs-6 text-gray-800"><?= $item['nisn'] ?></span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                    <?php if ($item['status_pendaftaran'] > 0): ?>
-                        <hr class="text-muted">
-                        <!--begin::Input group-->
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-semibold text-muted">Akun Pengirim</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8">
-                                <span class="fw-bold fs-6 text-gray-800"><?= $item['dari'] ?></span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="row mb-7">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-semibold text-muted">Ke</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-8">
-                                <span class="fw-bold fs-6 text-gray-800"><?= $item['ke'] ?></span>
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="row mb-10">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-semibold text-muted">Jumlah</label>
-                            <!--begin::Label-->
-                            <!--begin::Label-->
-                            <div class="col-lg-8">
-                                <span class="fw-bold fs-6 text-gray-800"><?= $item['jumlah'] ?></span>
-                            </div>
-                            <!--begin::Label-->
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="row mb-10">
-                            <!--begin::Label-->
-                            <label class="col-lg-4 fw-semibold text-muted">Tanggal</label>
-                            <!--begin::Label-->
-                            <!--begin::Label-->
-                            <div class="col-lg-8">
-                                <span class="fw-bold fs-6 text-gray-800"><?= $item['tanggal'] ?></span>
-                            </div>
-                            <!--begin::Label-->
-                        </div>
-                        <!--end::Input group-->
-                    <?php endif ?>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
-
-<?php foreach ($siswa as $item): ?>
-    <div class="modal fade" tabindex="-1" id="kt_modal_konfirmasi_<?= $item['uid'] ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Konfirmasi Pembayaran</h5>
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                         aria-label="Close">
-                        <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                    </div>
-                    <!--end::Close-->
-                </div>
-                <?= form_open('panel/validasi-registrasi/konfirmasi')?>
+                <?= form_open('panel/hasil-seleksi')?>
                 <?= csrf_field() ?>
-                <?= form_hidden('uid', $item['uid']) ?>
+                <?= form_hidden('_method', 'PUT')?>
+                <?= form_hidden('id', $item['id']) ?>
                 <div class="modal-body">
                     <!--begin::Input group-->
-                    <div class="row mb-7">
+                    <div class="row mb-6">
                         <!--begin::Label-->
                         <label class="col-lg-4 fw-semibold text-muted">No. Pendaftaran</label>
                         <!--end::Label-->
                         <!--begin::Col-->
                         <div class="col-lg-8 fv-row">
                             <span class="fw-bold text-gray-800 fs-6"><?= $item['no_pendaftaran'] ?></span>
-                            <span
-                                class="badge badge-<?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][1] ?>"><?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?></span>
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="row mb-6">
+                        <!--begin::Label-->
+                        <label class="col-lg-4 col-form-label required fw-semibold fs-6">Nilai</label>
+                        <!--end::Label-->
+                        <!--begin::Col-->
+                        <div class="col-lg-8 fv-row">
+                            <input type="number" min="0" max="1000" name="nilai" class="form-control form-control-lg form-control-solid" value="<?=$item['nilai']?>" required>
                         </div>
                         <!--end::Col-->
                     </div>
@@ -346,7 +205,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-primary">Konfirmasi</button>
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
                 <?= form_close() ?>
             </div>
@@ -354,73 +213,4 @@
     </div>
 <?php endforeach ?>
 
-<?php foreach ($siswa as $item): ?>
-    <div class="modal fade" tabindex="-1" id="kt_modal_tolak_<?= $item['uid'] ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Tolak Pembayaran</h5>
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                         aria-label="Close">
-                        <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                    </div>
-                    <!--end::Close-->
-                </div>
-                <?= form_open('panel/validasi-registrasi/tolak')?>
-                <?= csrf_field() ?>
-                <?= form_hidden('uid', $item['uid']) ?>
-                <div class="modal-body">
-                    <!--begin::Input group-->
-                    <div class="row mb-7">
-                        <!--begin::Label-->
-                        <label class="col-lg-4 fw-semibold text-muted">No. Pendaftaran</label>
-                        <!--end::Label-->
-                        <!--begin::Col-->
-                        <div class="col-lg-8 fv-row">
-                            <span class="fw-bold text-gray-800 fs-6"><?= $item['no_pendaftaran'] ?></span>
-                            <span
-                                class="badge badge-<?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][1] ?>"><?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?></span>
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Input group-->
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger">Tolak</button>
-                </div>
-                <?= form_close() ?>
-            </div>
-        </div>
-    </div>
-<?php endforeach ?>
-
-    <!--Modal view file-->
-<?php foreach ($siswa as $item): ?>
-    <div class="modal fade" tabindex="-1" id="kt_modal_view_<?= $item['uid'] ?>">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"><?= $item['no_pendaftaran'] ?></h5>
-
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal"
-                         aria-label="Close">
-                        <i class="ki-duotone ki-cross fs-2x"><span class="path1"></span><span class="path2"></span></i>
-                    </div>
-                    <!--end::Close-->
-                </div>
-
-                <div class="modal-body">
-                    <div class="d-flex align-content-center justify-content-center">
-                        <img src="/img/pembayaran/<?= $item['bukti'] ?>" alt="<?= $item['no_pendaftaran'] ?>"
-                             width="250vw">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<?php endforeach; ?>
 <?= $this->endSection(); ?>
