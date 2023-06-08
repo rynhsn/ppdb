@@ -150,24 +150,15 @@ class Home extends BaseController
 
     private function _generateNoPendaftaran()
     {
-
-        //ambil no_pendaftaran terakhir dari tabel siswa di database
         $tahun = date('Y');
-        //format $no_pendaftaran = PD-tahun0001
         $no_pendaftaran = 'PD-' . $tahun . '0001';
-        //cek apakah no_pendaftaran sudah ada di database
         $cek = $this->siswaModel->where(['no_pendaftaran' => $no_pendaftaran])->first();
         if ($cek) {
-            //jika no_pendaftaran sudah ada, maka ambil no_pendaftaran terakhir
             $last_no_pendaftaran = $this->siswaModel->select('no_pendaftaran')->orderBy('no_pendaftaran', 'DESC')->first();
-            //ambil 4 digit terakhir dari no_pendaftaran terakhir
-            $last_no_pendaftaran = substr($last_no_pendaftaran['no_pendaftaran'], -4);
-            //tambahkan 1
+            $last_no_pendaftaran = (int) substr($last_no_pendaftaran['no_pendaftaran'], -4);
             $no_pendaftaran = $last_no_pendaftaran + 1;
-            //format nomor baru
-            $no_pendaftaran = 'PD-' . $tahun . $no_pendaftaran.str_pad($no_pendaftaran, 4, "0", STR_PAD_LEFT);
+            $no_pendaftaran = 'PD-' . $tahun . str_pad($no_pendaftaran, 4, "0", STR_PAD_LEFT);
         }
-
         return $no_pendaftaran;
     }
 
