@@ -38,6 +38,7 @@ $routes->post('/daftar', 'Home::saveDaftar');
 $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');
     $routes->get('profile', 'Panel::profile');
+    $routes->get('cetak-biodata', 'Panel::cetakBiodata');
     $routes->get('jadwal-ppdb', 'Panel::jadwal');
     $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
 
@@ -63,6 +64,7 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->group('materi', ['filter' => 'permission:manage-seleksi'], static function ($routes) {
         $routes->get('(:segment)', 'Materi::index/$1');
         $routes->put('(:segment)', 'Materi::save/$1');
+        $routes->put('link/(:segment)', 'Materi::saveLink/$1');
     });
 
     $routes->group('hasil-seleksi', ['filter' => 'permission:manage-seleksi'], static function ($routes){

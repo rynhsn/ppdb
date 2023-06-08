@@ -34,6 +34,58 @@
             <!--begin::Row-->
             <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
                 <!--begin::Col-->
+                <div class="col">
+                    <!--begin::Card widget 17-->
+                    <div class="card">
+                        <!--begin::Header-->
+                        <div class="card-header pt-5">
+                            <!--begin::Title-->
+                            <div class="card-title d-flex flex-column">
+                                <!--begin::Info-->
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Amount-->
+                                    <span
+                                        class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Link Test <?= JENJANG[$jenjang] ?></span>
+                                    <!--end::Amount-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Header-->
+                        <?= form_open('/panel/materi/link/' . $jenjang); ?>
+                        <?= csrf_field(); ?>
+                        <?= form_hidden('_method', 'PUT'); ?>
+                        <?= form_hidden('id', $materi['id']); ?>
+                        <!--begin::Card body-->
+                        <div class="card-body pt-2 pb-4 d-flex flex-wrap align-items-center mt-10">
+                            <!--begin::Input group-->
+                            <div class="fv-row col-12 mb-6">
+                                <input type="text" class="form-control form-control-lg form-control-solid" name="link"
+                                       value="<?= $link['link'] ?>"/>
+                            </div>
+                            <!--end::Input group-->
+                        </div>
+                        <!--end::Card body-->
+                        <!--begin::Actions-->
+                        <div class="card-footer d-flex justify-content-end py-6 px-9">
+                            <button type="reset" class="btn btn-light btn-active-light-primary me-2">Batal</button>
+
+                            <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Simpan
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                        <?= form_close(); ?>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card widget 17-->
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Row-->
+            <!--begin::Row-->
+            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                <!--begin::Col-->
                 <div class="col-xl-6">
                     <!--begin::Card widget 17-->
                     <div class="card h-100">
@@ -45,7 +97,7 @@
                                 <div class="d-flex align-items-center">
                                     <!--begin::Amount-->
                                     <span
-                                        class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Materi dan Jadwal Ujian untuk Jenjang <?=JENJANG[$jenjang]?></span>
+                                        class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">Materi dan Jadwal Ujian untuk Jenjang <?= JENJANG[$jenjang] ?></span>
                                     <!--end::Amount-->
                                 </div>
                                 <!--end::Info-->
@@ -53,7 +105,7 @@
                             <!--end::Title-->
                         </div>
                         <!--end::Header-->
-                        <?= form_open('/panel/materi/'.$jenjang); ?>
+                        <?= form_open('/panel/materi/' . $jenjang); ?>
                         <?= csrf_field(); ?>
                         <?= form_hidden('_method', 'PUT'); ?>
                         <?= form_hidden('id', $materi['id']); ?>
@@ -61,7 +113,7 @@
                         <div class="card-body pt-2 pb-4 d-flex flex-wrap align-items-center mt-10">
                             <!--begin::Input group-->
                             <div class="fv-row col-12 mb-6">
-                                <textarea name="isi" id="kt_docs_ckeditor_classic"><?=$materi['isi']?></textarea>
+                                <textarea name="isi" id="kt_docs_ckeditor_classic"><?= $materi['isi'] ?></textarea>
                             </div>
                             <!--end::Input group-->
                         </div>
@@ -93,7 +145,7 @@
                                 <!--end::Amount-->
                                 <!--begin::Subtitle-->
                                 <span
-                                    class="text-gray-400 pt-1 fw-semibold fs-6">Untuk jenjang pendidikan <?=JENJANG[$jenjang]?></span>
+                                    class="text-gray-400 pt-1 fw-semibold fs-6">Untuk jenjang pendidikan <?= JENJANG[$jenjang] ?></span>
                                 <!--end::Subtitle-->
                             </div>
                             <!--end::Title-->

@@ -54,7 +54,7 @@ class AuthController extends BaseController
         }
 
         // Set a return URL if none is specified
-        $_SESSION['redirect_url'] = session('redirect_url') ?? previous_url() ?? site_url('/panel');
+        $_SESSION['redirect_url'] = session('redirect_url') ?? site_url('/panel');
 
         return $this->_render($this->config->views['login'], ['config' => $this->config, 'lembaga' => $this->lembaga]);
     }

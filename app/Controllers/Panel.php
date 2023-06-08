@@ -14,6 +14,8 @@ use App\Models\PengumumanModel;
 use App\Models\SiswaModel;
 use App\Models\StatusPpdbModel;
 use CodeIgniter\I18n\Time;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class Panel extends BaseController
 {
@@ -94,5 +96,24 @@ class Panel extends BaseController
             'jadwal' => $this->jadwalModel->where('jenjang', $siswa['jenjang_daftar'])->orderBy('tgl_mulai', 'ASC')->findAll(),
         ];
         return view('panel/jadwal-siswa', $data);
+    }
+
+    public function cetakBiodata(){
+        $data=[
+            'title' => 'Cetak Biodata',
+            'lembaga' => $this->lembaga,
+            'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
+        ];
+//        return view('panel/cetak-biodata', $data);
+        $options = new Options();
+        $options->setChroot(FCPATH);
+
+        $dompdf = new Dompdf();
+        $html = view('panel/cetak-biodata', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setOptions($options);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        $dompdf->stream('biodata.pdf', array('Attachment' => false));
     }
 }
