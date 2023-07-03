@@ -15,13 +15,15 @@ use App\Models\UserModel;
 class Home extends BaseController
 {
     protected $request;
-    protected $jenjangModel;
-    protected $penghasilanModel;
-    protected $kompetensiModel;
-    protected $pekerjaanModel;
-    protected $siswaModel;
-    protected $userModel;
+    protected JenjangModel $jenjangModel;
+    protected PendidikanModel $pendidikanModel;
+    protected PenghasilanModel $penghasilanModel;
+    protected KompetensiModel $kompetensiModel;
+    protected PekerjaanModel $pekerjaanModel;
+    protected SiswaModel $siswaModel;
+    protected UserModel $userModel;
     protected $config;
+
 
     public function __construct()
     {
@@ -134,7 +136,7 @@ class Home extends BaseController
         $data = [
             'fullname' => $data['nama_lengkap'],
             'username' => $data['no_pendaftaran'],
-            'password' => $data['nik'],
+            'password' => $data['nisn'],
             'email' => $data['no_pendaftaran'] . '@gmail.com',
         ];
 

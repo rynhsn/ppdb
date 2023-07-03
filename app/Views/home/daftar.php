@@ -1486,7 +1486,7 @@
                                     <div class="mb-0">
                                         <!--begin::Text-->
                                         <div class="fs-6 text-gray-600 mb-5">Untuk masuk, anda memerlukan No.
-                                            Pendaftaran yang digunakan sebagai username dan NIK yang digunakan
+                                            Pendaftaran yang digunakan sebagai username dan NISN yang digunakan
                                             sebagai password.
                                         </div>
                                         <!--end::Text-->
