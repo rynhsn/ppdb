@@ -62,7 +62,7 @@
                                     <!--begin::Table head-->
                                     <thead>
                                     <tr class="fw-bold text-muted">
-                                        <th class="p-0 min-w-70px">Tanggal</th>
+                                        <th class="p-0 min-w-50px">Tanggal</th>
                                         <th class="p-0 min-w-70px">Judul</th>
                                         <th class="p-0 min-w-70px">Keterangan</th>
                                         <th class="p-0 min-w-100px"></th>
@@ -73,13 +73,13 @@
                                     <tbody>
                                     <?php foreach ($pengumuman as $item): ?>
                                         <tr>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
-                                                <?= $item['tgl_pengumuman']; ?>
+                                            <td>
+                                                <?= date('d M Y', strtotime($item['tgl_pengumuman'])); ?>
                                             </td>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
+                                            <td class="fw-bold text-dark">
                                                 <?= $item['judul_pengumuman']; ?>
                                             </td>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
+                                            <td class="text-dark">
                                                 <?= $item['ket_pengumuman']; ?>
                                             </td>
                                             <td class="text-end">

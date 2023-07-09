@@ -116,10 +116,12 @@
                         <thead>
                         <tr class="fw-bold text-muted bg-light">
                             <th class="ps-4 min-w-50px rounded-start">No. Pendaftaran</th>
-                            <th class="min-w-75px">NISN</th>
-                            <th class="min-w-100px">NIK</th>
+                            <th class="min-w-50px">NISN</th>
+                            <th class="min-w-50px">NIK</th>
                             <th class="min-w-100px">Nama Lengkap</th>
                             <th class="min-w-10px">Nilai</th>
+                            <th class="min-w-10px">Hasil</th>
+                            <th class="min-w-10px">Status</th>
                             <th class="min-w-15px text-end rounded-end"></th>
                         </tr>
                         </thead>
@@ -133,6 +135,24 @@
                                 <td class="fw-bold"><?= $item['nik'] ?></td>
                                 <td class="fw-bold"><?= $item['nama_lengkap'] ?></td>
                                 <td class="fw-bold"><?= $item['nilai'] ?></td>
+                                <td class="fw-bold">
+                                    <?php if ($item['status_kelulusan'] == '1'): ?>
+                                        <span class="badge badge-light-success">Lolos</span>
+                                    <?php elseif ($item['status_kelulusan'] == '0'): ?>
+                                        <span class="badge badge-light-warning">Belum dinilai</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-light-danger">Tidak lolos</span>
+                                    <?php endif; ?>
+                                </td>
+                                <td class="fw-bold">
+                                    <?php if ($item['status_verifikasi'] == '1'): ?>
+                                        <span class="badge badge-light-success">Diterima</span>
+                                    <?php elseif ($item['status_verifikasi'] == '0'): ?>
+                                        <span class="badge badge-light-warning">Belum ditentukan</span>
+                                    <?php else: ?>
+                                        <span class="badge badge-light-danger">Belum diterima</span>
+                                    <?php endif; ?>
+                                </td>
                                 <td class="text-end">
                                     <button type="button" data-bs-toggle="modal"
                                             data-bs-target="#kt_modal_<?= $item['id'] ?>"
@@ -145,6 +165,24 @@
                                             <span class="path5"></span>
                                         </i>
                                     </button>
+                                    <a href="<?= base_url('panel/hasil-seleksi/terima/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1 <?= $item['status_kelulusan'] != 1 ? 'disabled' : '' ?>" title="Terima" onclick="return confirm('Siswa akan diterima, yakin?')">
+                                        <i class="ki-duotone ki-check-square fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                            <span class="path5"></span>
+                                        </i>
+                                    </a>
+                                    <a href="<?= base_url('panel/hasil-seleksi/tolak/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 <?= $item['status_kelulusan'] != 1 ? 'disabled' : '' ?>" title="Tolak" onclick="return confirm('Siswa akan ditolak, yakin?')">
+                                        <i class="ki-duotone ki-cross-square fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                            <span class="path4"></span>
+                                            <span class="path5"></span>
+                                        </i>
+                                    </a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

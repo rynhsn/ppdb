@@ -93,6 +93,7 @@ define('EVENT_PRIORITY_NORMAL', 100);
  */
 define('EVENT_PRIORITY_HIGH', 10);
 
+define('NILAI_MIN', 75);
 define('JENJANG', ['smp' => 'SMP', 'smk' => 'SMK', 'ma' => 'Madrasah Aliyah']);
 define('AGAMA', ['Islam', 'Kristen', 'Katolik', 'Hindu', 'Budha', 'Konghucu']);
 define('JENIS_KELAMIN', ['Laki-laki', 'Perempuan']);

@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SiswaModel extends Model
+class DetailLaporanModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'siswa';
+    protected $table            = 'detail_laporan';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['no_pendaftaran', 'jenjang_daftar', 'nama_lengkap', 'nisn', 'nik', 'jk', 'tempat_lahir', 'tgl_lahir', 'agama', 'anak_ke', 'jml_saudara', 'no_hp_siswa', 'alamat_siswa', 'jenis_tinggal', 'desa', 'kec', 'kab', 'prov', 'kode_pos', 'jarak', 'trans', 'no_kk', 'nama_ayah', 'nik_ayah', 'pekerjaan_ayah', 'pdd_ayah', 'penghasilan_ayah', 'status_ayah', 'th_lahir_ayah', 'nama_ibu', 'nik_ibu', 'pekerjaan_ibu', 'pdd_ibu', 'penghasilan_ibu', 'status_ibu', 'th_lahir_ibu', 'nama_wali', 'nik_wali', 'pdd_wali', 'pekerjaan_wali', 'penghasilan_wali', 'th_lahir_wali', 'no_hp_ortu', 'npsn_sekolah', 'nama_sekolah', 'lokasi_sekolah', 'no_kks', 'no_pkh', 'no_kip', 'status_kelulusan', 'status_verifikasi', 'status_pendaftaran', 'nilai', 'created_at', 'updated_at'];
+    protected $allowedFields    = ['laporan_id', 'siswa_id', 'status_kelulusan', 'created_at', 'updated_at'];
 
     // Dates
     protected $useTimestamps = true;
@@ -38,4 +38,15 @@ class SiswaModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function getDetail($id)
+    {
+        $data = $this->db->table('detail_laporan')
+            ->join('siswa', 'siswa.id = detail_laporan.siswa_id')
+            ->where('detail_laporan.laporan_id', $id)
+//            ->where('status_pendaftaran', '2')
+            ->get()->getResultArray();
+
+        return $data;
+    }
 }

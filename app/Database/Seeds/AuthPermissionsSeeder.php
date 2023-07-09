@@ -34,6 +34,10 @@ class AuthPermissionsSeeder extends Seeder
                 'name'            => 'akses-fitur-siswa',
                 'description'     => 'Akses Fitur Siswa',
             ],
+            [
+                'name'            => 'laporan',
+                'description'     => 'Laporan',
+            ]
         ];
 
         // Using Query Builder

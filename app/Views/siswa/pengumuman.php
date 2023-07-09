@@ -30,9 +30,9 @@
                                     <!--begin::Table head-->
                                     <thead>
                                     <tr class="fw-bold text-muted">
-                                        <th class="p-0 min-w-200px"></th>
                                         <th class="p-0 min-w-70px"></th>
-                                        <th class="p-0 min-w-70px"></th>
+                                        <th class="p-0 min-w-100px"></th>
+                                        <th class="p-0 min-w-250px"></th>
                                     </tr>
                                     </thead>
                                     <!--end::Table head-->
@@ -40,13 +40,13 @@
                                     <tbody>
                                     <?php foreach ($pengumuman as $item): ?>
                                         <tr>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
+                                            <td>
                                                 <?= date('d M Y', strtotime($item['tgl_pengumuman'])); ?>
                                             </td>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
+                                            <td class="fw-bold text-dark">
                                                 <?= $item['judul_pengumuman']; ?>
                                             </td>
-                                            <td class="fw-bold text-dark mb-1 fs-6">
+                                            <td class="text-dark">
                                                 <?= $item['ket_pengumuman']; ?>
                                             </td>
                                         </tr>

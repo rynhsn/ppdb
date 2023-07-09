@@ -28,12 +28,34 @@ class HasilSeleksi extends BaseController
 
     public function save(){
         $data = [
-          'id'      => $this->request->getVar('id'),
-          'nilai'   => $this->request->getVar('nilai'),
+            'id'      => $this->request->getVar('id'),
+            'nilai'   => $this->request->getVar('nilai'),
+            'status_kelulusan' => ($this->request->getVar('nilai') >= NILAI_MIN) ? 1 : 2
         ];
+//        dd($data);
 //        dd($data);
         $this->siswaModel->save($data);
         session()->setFlashdata('pesan', 'Nilai berhasil disimpan.');
+        return redirect()->back();
+    }
+
+    public function terima($id)
+    {
+        $data = [
+            'id' => $id,
+            'status_verifikasi' => 1
+        ];
+        $this->siswaModel->save($data);
+        session()->setFlashdata('pesan', 'Siswa berhasil diterima.');
+        return redirect()->back();
+    }
+    public function tolak($id){
+        $data = [
+            'id'      => $id,
+            'status_verifikasi' => 2
+        ];
+        $this->siswaModel->save($data);
+        session()->setFlashdata('pesan', 'Siswa ditolak.');
         return redirect()->back();
     }
 }

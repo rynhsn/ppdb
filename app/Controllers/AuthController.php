@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\GroupModel;
 use CodeIgniter\Controller;
 use CodeIgniter\Session\Session;
 use Myth\Auth\Config\Auth as AuthConfig;
@@ -22,6 +23,8 @@ class AuthController extends BaseController
      * @var Session
      */
     protected $session;
+    protected GroupModel $roleModel;
+    protected UserModel $userModel;
 
     public function __construct()
     {
@@ -31,6 +34,8 @@ class AuthController extends BaseController
 
         $this->config = config('Auth');
         $this->auth   = service('authentication');
+        $this->roleModel = new GroupModel();
+        $this->userModel = new UserModel();
     }
 
     //--------------------------------------------------------------------
@@ -88,6 +93,8 @@ class AuthController extends BaseController
         if (! $this->auth->attempt([$type => $login, 'password' => $password], $remember)) {
             return redirect()->back()->withInput()->with('error', $this->auth->error() ?? lang('Auth.badAttempt'));
         }
+
+//        $this->roleModel->getGroupsForUser(user()->id)[0]['group_id'];
 
         // Is the user being forced to reset their password?
         if ($this->auth->user()->force_pass_reset === true) {

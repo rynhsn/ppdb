@@ -70,6 +70,8 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->group('hasil-seleksi', ['filter' => 'permission:manage-seleksi'], static function ($routes){
         $routes->get('(:segment)', 'HasilSeleksi::index/$1');
         $routes->put('', 'HasilSeleksi::save');
+        $routes->get('terima/(:num)', 'HasilSeleksi::terima/$1');
+        $routes->get('tolak/(:num)', 'HasilSeleksi::tolak/$1');
     });
 
     $routes->group('jadwal', ['filter' => 'permission:manage-site'], static function ($routes) {
@@ -108,6 +110,17 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
         $routes->get('delete/(:num)', 'Siswa::delete/$1');
         $routes->get('edit/(:num)', 'Siswa::edit/$1');
         $routes->put('update/(:num)', 'Siswa::update/$1');
+    });
+
+    //laporan
+    $routes->group('laporan', ['filter' => 'permission:laporan'], function ($routes) {
+        $routes->get('', 'Laporan::index');
+        $routes->post('create', 'Laporan::create');
+        $routes->get('detail/(:num)', 'Laporan::detail/$1');
+        $routes->get('cetak/(:num)', 'Laporan::cetak/$1');
+        $routes->put('terima/(:num)', 'Laporan::terima/$1');
+        $routes->put('perbarui/(:num)', 'Laporan::perbarui/$1');
+        $routes->put('tolak/(:num)', 'Laporan::tolak/$1');
     });
 });
 

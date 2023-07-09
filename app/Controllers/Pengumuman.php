@@ -23,7 +23,7 @@ class Pengumuman extends BaseController
             'pengumuman' => $this->pengumumanModel->orderBy('id', 'DESC')->findAll(),
             'lembaga' => $this->lembaga,
         ];
-        if (has_permission('akses-fitur-siswa')){
+        if (has_permission('akses-fitur-siswa') && in_groups('siswa')){
             return view('siswa/pengumuman', $data);
         }
         return view('panel/pengumuman', $data);

@@ -1,4 +1,4 @@
-<div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
+<div id="kt_app_sidebar" class="app-sidebar flex-column bg-success" data-kt-drawer="true"
      data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
      data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start"
      data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
@@ -62,6 +62,39 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                 </div>
                 <!--end:Menu item-->
 
+
+                <?php if (has_permission('laporan') || in_groups('pimpinan')): ?>
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="<?= base_url('panel/laporan') ?>">
+                                <span class="menu-icon">
+                                    <i class="ki-duotone ki-tablet-text-down fs-2">
+                                        <i class="path1"></i>
+                                        <i class="path2"></i>
+                                        <i class="path3"></i>
+                                        <i class="path4"></i>
+                                    </i>
+                                </span>
+                            <span class="menu-title">Laporan</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                <?php endif; ?>
+
+                <?php if (has_permission('manage-keuangan') && in_groups('admin')): ?>
+                    <!--begin:Menu item-->
+                    <div class="menu-item pt-3">
+                        <!--begin:Menu content-->
+                        <div class="menu-content">
+                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Keuangan</span>
+                        </div>
+                        <!--end:Menu content-->
+                    </div>
+                    <!--end:Menu item-->
+                <?php endif ?>
+
                 <?php if (has_permission('manage-keuangan') || in_groups('keuangan')): ?>
                     <!--begin:Menu item-->
                     <div class="menu-item">
@@ -83,11 +116,23 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                 <?php endif ?>
 
 
+                <?php if (has_permission('manage-seleksi') && in_groups('admin')): ?>
+                    <!--begin:Menu item-->
+                    <div class="menu-item pt-3">
+                        <!--begin:Menu content-->
+                        <div class="menu-content">
+                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Seleksi</span>
+                        </div>
+                        <!--end:Menu content-->
+                    </div>
+                    <!--end:Menu item-->
+                <?php endif ?>
+
                 <?php if (has_permission('manage-seleksi') || in_groups('seleksi')): ?>
-                <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
                                 <span class="menu-icon">
                                     <i class="ki-duotone ki-text-number fs-2">
                                         <span class="path1"></span>
@@ -101,32 +146,32 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="menu-title">Materi dan Jadwal Ujian</span>
                                 <span class="menu-arrow"></span>
                             </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <?php foreach (JENJANG as $key => $value):?>
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link-->
-                            <a class="menu-link" href="<?= base_url('panel/materi/'.$key); ?>">
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <?php foreach (JENJANG as $key => $value): ?>
+                                <!--begin:Menu item-->
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link" href="<?= base_url('panel/materi/' . $key); ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                <span class="menu-title"><?=$value?></span>
-                            </a>
-                            <!--end:Menu link-->
+                                        <span class="menu-title"><?= $value ?></span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                                <!--end:Menu item-->
+                            <?php endforeach; ?>
                         </div>
-                        <!--end:Menu item-->
-                        <?php endforeach; ?>
+                        <!--end:Menu sub-->
                     </div>
-                    <!--end:Menu sub-->
-                </div>
-                <!--end:Menu item-->
+                    <!--end:Menu item-->
 
-                <!--begin:Menu item-->
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <!--begin:Menu link-->
-                    <span class="menu-link">
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                        <!--begin:Menu link-->
+                        <span class="menu-link">
                                 <span class="menu-icon">
                                     <i class="ki-duotone ki-people fs-2">
                                         <span class="path1"></span>
@@ -139,32 +184,32 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="menu-title">Hasil Seleksi</span>
                                 <span class="menu-arrow"></span>
                             </span>
-                    <!--end:Menu link-->
-                    <!--begin:Menu sub-->
-                    <div class="menu-sub menu-sub-accordion">
-                        <?php foreach (JENJANG as $key => $value):?>
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link-->
-                            <a class="menu-link" href="<?= base_url('panel/hasil-seleksi/'.$key); ?>">
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion">
+                            <?php foreach (JENJANG as $key => $value): ?>
+                                <!--begin:Menu item-->
+                                <div class="menu-item">
+                                    <!--begin:Menu link-->
+                                    <a class="menu-link" href="<?= base_url('panel/hasil-seleksi/' . $key); ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                <span class="menu-title"><?=$value?></span>
-                            </a>
-                            <!--end:Menu link-->
+                                        <span class="menu-title"><?= $value ?></span>
+                                    </a>
+                                    <!--end:Menu link-->
+                                </div>
+                                <!--end:Menu item-->
+                            <?php endforeach; ?>
                         </div>
-                        <!--end:Menu item-->
-                        <?php endforeach; ?>
+                        <!--end:Menu sub-->
                     </div>
-                    <!--end:Menu sub-->
-                </div>
-                <!--end:Menu item-->
+                    <!--end:Menu item-->
                 <?php endif ?>
 
                 <?php if (has_permission('manage-site') || has_permission('manage-accounts') || in_groups('admin')): ?>
                     <!--begin:Menu item-->
-                    <div class="menu-item pt-5">
+                    <div class="menu-item pt-3">
                         <!--begin:Menu content-->
                         <div class="menu-content">
                             <span class="menu-heading fw-bold text-uppercase fs-7">Management</span>
@@ -286,15 +331,15 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
                         <div class="menu-sub menu-sub-accordion">
-                            <?php foreach (JENJANG as $key => $value):?>
+                            <?php foreach (JENJANG as $key => $value): ?>
                                 <!--begin:Menu item-->
                                 <div class="menu-item">
                                     <!--begin:Menu link-->
-                                    <a class="menu-link" href="<?= base_url('panel/jadwal/'.$key); ?>">
+                                    <a class="menu-link" href="<?= base_url('panel/jadwal/' . $key); ?>">
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title"><?=$value?></span>
+                                        <span class="menu-title"><?= $value ?></span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -321,6 +366,20 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <span class="menu-title">Pengumuman</span>
                         </a>
                         <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+
+                <?php endif ?>
+
+
+                <?php if (has_permission('akses-fitur-siswa') && in_groups('admin')): ?>
+                    <!--begin:Menu item-->
+                    <div class="menu-item pt-3">
+                        <!--begin:Menu content-->
+                        <div class="menu-content">
+                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Siswa</span>
+                        </div>
+                        <!--end:Menu content-->
                     </div>
                     <!--end:Menu item-->
                 <?php endif ?>
@@ -364,32 +423,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
-                <?php endif; ?>
-
-                <!-- one click -->
-                <!--begin:Menu item-->
-                <div class="menu-item pt-5">
-                    <!--begin:Menu content-->
-                    <div class="menu-content">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">One Click</span>
-                    </div>
-                    <!--end:Menu content-->
-                </div>
-                <!--end:Menu item-->
-                <div class="menu-item">
-                    <!--begin:Menu link-->
-                    <a class="menu-link" href="https://preview.keenthemes.com/html/metronic/docs/base/utilities"
-                       target="_blank">
-											<span class="menu-icon">
-												<i class="ki-duotone ki-rocket fs-2">
-													<span class="path1"></span>
-													<span class="path2"></span>
-												</i>
-											</span>
-                        <span class="menu-title">Components</span>
-                    </a>
-                    <!--end:Menu link-->
-                </div>
+                <?php endif ?>
             </div>
             <!--end::Menu-->
         </div>

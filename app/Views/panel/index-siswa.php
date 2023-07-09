@@ -56,6 +56,74 @@ use CodeIgniter\I18n\Time;
             <!--end::Notice-->
         <?php endif; ?>
 
+        <?php if (in_array('Pengumuman Seleksi', $jadwal_hari_ini)) : ?>
+        <!--begin::Row-->
+        <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+            <!--begin::Col-->
+            <div class="col-xxl <?=($siswa['status_verifikasi']!='1') ? 'd-none':'' ?>">
+                <!--begin::Engage widget 10-->
+                <div class="card card-flush h-md-100">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('/media/stock/900x600/42.png')">
+                        <!--begin::Wrapper-->
+                        <div class="mb-10">
+                            <!--begin::Title-->
+                            <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
+                                <span class="me-2">Selamat, kamu
+                                <span class="position-relative d-inline-block text-success">
+                                    <a href="<?=base_url('panel/pembayaran')?>" class="text-success opacity-75-hover">diterima</a>
+                                    <!--begin::Separator-->
+                                    <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-success border-bottom w-100"></span>
+                                    <!--end::Separator-->
+                                </span>
+                                    <br>
+                                </span> di <?= $lembaga['nama_lembaga'] ?></div>
+                            <!--end::Title-->
+                            <!--begin::Action-->
+                            <div class="text-center">
+                                <a href='<?=base_url('panel/pembayaran')?>' class="btn btn-sm btn-dark fw-bold">Cetak bukti</a>
+                            </div>
+                            <!--begin::Action-->
+                        </div>
+                        <!--begin::Wrapper-->
+
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Engage widget 10-->
+            </div>
+            <!--end::Col-->
+            <!--begin::Col-->
+            <div class="col-xxl <?=($siswa['status_verifikasi']!='2') ? 'd-none':'' ?>">
+                <!--begin::Engage widget 10-->
+                <div class="card card-flush h-md-100">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column justify-content-between mt-9 bgi-no-repeat bgi-size-cover bgi-position-x-center pb-0" style="background-position: 100% 50%; background-image:url('/media/stock/900x600/42.png')">
+                        <!--begin::Wrapper-->
+                        <div class="mb-10">
+                            <!--begin::Title-->
+                            <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
+                                <span class="me-2">Maaf, kamu
+                                <span class="position-relative d-inline-block text-danger">
+                                    <a href="<?=base_url('panel/pembayaran')?>" class="text-danger opacity-75-hover">belum diterima.</a>
+                                    <!--begin::Separator-->
+                                    <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
+                                    <!--end::Separator-->
+                                </span>
+                            <!--end::Title-->
+                        </div>
+                        <!--begin::Wrapper-->
+
+                    </div>
+                    <!--end::Body-->
+                </div>
+                <!--end::Engage widget 10-->
+            </div>
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
+        <?php endif ?>
+
         <!--begin::Row-->
         <div class="row gy-5 g-xl-10 mb-5 mb-xl-10">
             <!--begin::Col-->
@@ -79,6 +147,14 @@ use CodeIgniter\I18n\Time;
                             <!--end::Illustration-->
                         </div>
                         <!--end::Heading-->
+                        <div class="text-center">
+                            <!--begin::Link-->
+                            <a class="btn btn-sm btn-danger btn-color-white me-2" href="<?= base_url('panel/cetak-biodata') ?>">
+                                Unduh Biodata
+                            </a>
+                            <!--end::Link-->
+
+                        </div>
                     </div>
                     <!--end::Body-->
                 </div>
@@ -107,8 +183,27 @@ use CodeIgniter\I18n\Time;
                     <!--begin::Card body-->
                     <div class="card-body d-flex flex-column justify-content-end">
                         <span class="text-gray-800">Tahapan yang sedang berlangsung</span>
-                        <span class="fw-bolder fs-1 text-danger mb-5"><?= $jadwal_hari_ini ?></span>
-                        <?php if ($jadwal_hari_ini == 'Tes Seleksi'): ?>
+                        <?php foreach ($jadwal_hari_ini as $item) : ?>
+                            <div class="d-flex align-items-center mt-3">
+                                <!--begin::Symbol-->
+                                <div class="symbol symbol-50px me-5">
+                                    <span class="symbol-label bg-light">
+                                        <!--begin::Svg Icon | path: icons/duotone/General/User.svg-->
+                                        <span class="svg-icon svg-icon-2x svg-icon-dark-50">
+                                            <i class="bi bi-calendar3"></i>
+                                        </span>
+                                        <!--end::Svg Icon-->
+                                    </span>
+                                </div>
+                                <!--end::Symbol-->
+                                <!--begin::Text-->
+                                <div class="d-flex flex-column">
+                                    <p class="text-gray-800 text-hover-primary fs-6 fw-bolder"><?= $item ?></p>
+                                </div>
+                                <!--end::Text-->
+                            </div>
+                        <?php endforeach; ?>
+                        <?php if (in_array('Tes Seleksi', $jadwal_hari_ini)) : ?>
                             <!--end::Title-->
                             <div class="m-0">
                                 <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal"
@@ -146,7 +241,7 @@ use CodeIgniter\I18n\Time;
                                 <?php else: ?>
                                     <li data-bs-target="#kt_sliders_widget_2_slider"
                                         data-bs-slide-to="1"
-                                        class="ms-1 active" aria-current="true"'></li>
+                                        class="ms-1 active" aria-current="true"></li>
                                 <?php endif ?>
                             </ol>
                             <!--end::Carousel Indicators-->
