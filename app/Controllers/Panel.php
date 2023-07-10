@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Entities\User;
 use App\Models\JadwalModel;
 use App\Models\JenjangModel;
 use App\Models\KompetensiModel;
@@ -14,21 +15,26 @@ use App\Models\PengumumanModel;
 use App\Models\SiswaModel;
 use App\Models\StatusPpdbModel;
 use CodeIgniter\I18n\Time;
+use Config\Services;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Myth\Auth\Models\UserModel;
+use Myth\Auth\Password;
 
 class Panel extends BaseController
 {
-    protected $siswaModel;
-    private $statusModel;
-    protected $pengumumanModel;
-    protected $pendidikanModel;
-    protected $jenjangModel;
-    protected $penghasilanModel;
-    protected $kompetensiModel;
-    protected $pekerjaanModel;
-    protected $materiModel;
-    protected $jadwalModel;
+    protected SiswaModel $siswaModel;
+    private StatusPpdbModel $statusModel;
+    protected PengumumanModel $pengumumanModel;
+    protected PendidikanModel $pendidikanModel;
+    protected JenjangModel $jenjangModel;
+    protected PenghasilanModel $penghasilanModel;
+    protected KompetensiModel $kompetensiModel;
+    protected PekerjaanModel $pekerjaanModel;
+    protected MateriModel $materiModel;
+    protected JadwalModel $jadwalModel;
+    protected UserModel $userModel;
+    protected $config;
 
     public function __construct()
     {
@@ -42,6 +48,9 @@ class Panel extends BaseController
         $this->statusModel = new StatusPpdbModel();
         $this->materiModel = new MateriModel();
         $this->jadwalModel = new JadwalModel();
+        $this->userModel = new UserModel();
+
+        $this->config = config('Auth');
     }
 
     public function index()
@@ -122,5 +131,87 @@ class Panel extends BaseController
         $dompdf->setPaper('A4', 'potrait');
         $dompdf->render();
         $dompdf->stream('biodata.pdf', array('Attachment' => false));
+    }
+
+    public function accountSettings()
+    {
+        $data = [
+            'title' => 'Pengaturan Akun',
+            'validation' => Services::validation(),
+            'user' => $this->userModel->where('username', user()->username)->first(),
+            'lembaga' => $this->lembaga,
+        ];
+        return view('panel/edit-akun', $data);
+    }
+
+    public function updateAccountInfo()
+    {
+
+        $usernameLama = $this->request->getVar('usernameLama');
+        $usernameBaru = $this->request->getVar('username');
+
+        if ($usernameLama == $usernameBaru) {
+            return redirect()->back();
+        }
+
+        $rules = [
+            'username' => 'required|min_length[3]|max_length[30]|is_unique[users.username]',
+            'fullname' => 'required|alpha_space|min_length[3]|max_length[30]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $allowedPostFields = array_merge(['id'], $this->config->validFields, $this->config->personalFields);
+        $user = new User($this->request->getPost($allowedPostFields));
+
+        $user->activate();
+
+        if (!$this->userModel->skipValidation()->save($user)) {
+            return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+        }
+
+        // Success!
+        session()->setFlashdata('pesan', 'Info akun pengguna telah diperbarui.');
+        return redirect()->back();
+    }
+
+    public function updatePassword(){
+        //password tidak boleh = current password
+        $rules = [
+            'current_password' => 'required|min_length[5]|max_length[255]',
+            'password' => 'required|min_length[5]|max_length[255]',
+            'pass_confirm' => 'matches[password]',
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $user = $this->userModel->where('username', user()->username)->first();
+        $verify = Password::verify($this->request->getPost('current_password'), $user->password_hash);
+
+        if(!$verify){
+//            dd('verify');
+            return redirect()->back()->withInput()->with('errors', ['current_password' => 'Password lama tidak sesuai.']);
+        }
+
+        if ($this->request->getPost('password') == $this->request->getPost('current_password')) {
+            return redirect()->back()->withInput()->with('errors', ['password' => 'Password baru tidak boleh sama dengan password lama.']);
+        }
+
+
+        if (!$this->userModel->skipValidation()->save([
+            'id' => user()->id,
+            'password_hash' => Password::hash($this->request->getPost('password')),
+        ])) {
+//            dd('save');
+            return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
+        }
+
+        // Success!
+        session()->setFlashdata('pesan', 'Kata sandi telah diperbarui.');
+        return redirect()->back();
     }
 }

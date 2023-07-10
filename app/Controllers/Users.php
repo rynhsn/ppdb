@@ -119,7 +119,7 @@ class Users extends BaseController
 
         $user->activate();
 
-        if (!$this->userModel->save($user)) {
+        if (!$this->userModel->skipValidation()->save($user)) {
             return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
         }
 

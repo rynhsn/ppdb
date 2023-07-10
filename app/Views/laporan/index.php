@@ -17,7 +17,8 @@
                                     <select class="form-select form-select-solid" name="periode" required>
                                         <option value="">Pilih Periode</option>
                                         <?php foreach ($periode as $k): ?>
-                                            <option value="<?= $k ?>" <?= $tahun == $k ? 'selected' : '' ?>><?= $k . '-' . ($k + 1) ?></option>
+                                            <option
+                                                value="<?= $k ?>" <?= $tahun == $k ? 'selected' : '' ?>><?= $k . '-' . ($k + 1) ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -30,7 +31,8 @@
                                     <select class="form-select form-select-solid" name="jenjang" required>
                                         <option value="">Pilih Jenjang</option>
                                         <?php foreach (JENJANG as $k): ?>
-                                            <option value="<?= $k ?>" <?= $jenjang == $k ? 'selected' : '' ?>><?= $k ?></option>
+                                            <option
+                                                value="<?= $k ?>" <?= $jenjang == $k ? 'selected' : '' ?>><?= $k ?></option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
@@ -43,18 +45,18 @@
                                 Filter
                             </button>
                         </div>
-                        <?php if(in_groups('admin')): ?>
-                        <div class="col">
-                            <button type="button" class="btn btn-success" data-bs-target="#tambahLaporan"
-                                    data-bs-toggle="modal">
-                                <i class="ki-duotone ki-plus-square fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                </i>
-                                Buat Laporan
-                            </button>
-                        </div>
+                        <?php if (in_groups('admin')): ?>
+                            <div class="col">
+                                <button type="button" class="btn btn-success" data-bs-target="#tambahLaporan"
+                                        data-bs-toggle="modal">
+                                    <i class="ki-duotone ki-plus-square fs-2">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                        <span class="path3"></span>
+                                    </i>
+                                    Buat Laporan
+                                </button>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -170,40 +172,50 @@
                                 <td class="fw-bold"><?= date('d M Y', strtotime($item['created_at'])) ?></td>
                                 <td class="fw-bold"><?= date('d M Y', strtotime($item['updated_at'])) ?></td>
                                 <td class="text-end">
-                                    <a href="<?= base_url('panel/laporan/detail/'.$item['id']) ?>" class="btn btn-icon btn-active-color-warning btn-sm me-1" title="Detail">
+                                    <a href="<?= base_url('panel/laporan/detail/' . $item['id']) ?>"
+                                       class="btn btn-icon btn-active-color-warning btn-sm me-1" title="Detail">
                                         <i class="ki-duotone ki-eye fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
                                             <span class="path3"></span>
                                         </i>
                                     </a>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_perbarui_<?= $item['id'] ?>"
-                                            class="btn btn-icon btn-active-color-primary btn-sm me-1 <?= $item['status'] == '1' ? 'disabled' : '' ?>" title="Perbarui">
-                                        <i class="ki-duotone ki-arrows-circle fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i>
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_terima_<?= $item['id'] ?>"
-                                            class="btn btn-icon btn-active-color-success btn-sm me-1 <?= $item['status'] == 1 ? 'disabled' : '' ?>"
-                                            title="Terima">
-                                        <i class="ki-duotone ki-check-square fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                            <span class="path3"></span>
-                                        </i>
-                                    </button>
-                                    <button type="button" data-bs-toggle="modal"
-                                            data-bs-target="#kt_modal_tolak_<?= $item['id'] ?>"
-                                            class="btn btn-icon btn-active-color-danger btn-sm me-1 <?= $item['status'] == 99 ? 'disabled' : '' ?>" title="Tolak">
-                                        <i class="ki-duotone ki-cross-square fs-2">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i>
-                                    </button>
-                                    <a href="<?= base_url('panel/laporan/cetak/'.$item['id']) ?>" class="btn btn-icon btn-active-color-info btn-sm me-1" title="Unduh">
+                                    <?php if (in_groups('admin')): ?>
+                                        <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#kt_modal_perbarui_<?= $item['id'] ?>"
+                                                class="btn btn-icon btn-active-color-primary btn-sm me-1 <?= $item['status'] == '1' ? 'disabled' : '' ?>"
+                                                title="Perbarui">
+                                            <i class="ki-duotone ki-arrows-circle fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                        </button>
+                                    <?php endif; ?>
+
+                                    <?php if (in_groups('pimpinan')): ?>
+                                        <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#kt_modal_terima_<?= $item['id'] ?>"
+                                                class="btn btn-icon btn-active-color-success btn-sm me-1 <?= $item['status'] == 1 ? 'disabled' : '' ?>"
+                                                title="Terima">
+                                            <i class="ki-duotone ki-check-square fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                                <span class="path3"></span>
+                                            </i>
+                                        </button>
+                                        <button type="button" data-bs-toggle="modal"
+                                                data-bs-target="#kt_modal_tolak_<?= $item['id'] ?>"
+                                                class="btn btn-icon btn-active-color-danger btn-sm me-1 <?= $item['status'] == 99 ? 'disabled' : '' ?>"
+                                                title="Tolak">
+                                            <i class="ki-duotone ki-cross-square fs-2">
+                                                <span class="path1"></span>
+                                                <span class="path2"></span>
+                                            </i>
+                                        </button>
+                                    <?php endif; ?>
+                                    <a href="<?= base_url('panel/laporan/cetak/' . $item['id']) ?>"
+                                       class="btn btn-icon btn-active-color-info btn-sm me-1 <?= ($item['status'] != 1 ? 'disabled' : '') ?>"
+                                       title="Unduh">
                                         <i class="ki-duotone ki-file-down fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
@@ -280,8 +292,9 @@
                         <div class="row">
                             <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                             <div class="col-sm-9">
-<!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan" rows="3"></textarea>
+                                <!--                                textarea-->
+                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan"
+                                          rows="3"></textarea>
                             </div>
                         </div>
                     </div>
@@ -309,7 +322,7 @@
         </div>
     </div>
 
-    <?php foreach ($laporan as $item) : ?>
+<?php foreach ($laporan as $item) : ?>
     <div class="modal fade" id="kt_modal_perbarui_<?= $item['id'] ?>" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -342,7 +355,8 @@
                             <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                             <div class="col-sm-9">
                                 <!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan" rows="3"><?= $item['keterangan'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan"
+                                          rows="3"><?= $item['keterangan'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -369,8 +383,8 @@
             </div>
         </div>
     </div>
-    <?php endforeach ?>
-    <?php foreach ($laporan as $item) : ?>
+<?php endforeach ?>
+<?php foreach ($laporan as $item) : ?>
     <div class="modal fade" id="kt_modal_tolak_<?= $item['id'] ?>" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -403,7 +417,8 @@
                             <label for="komentar" class="col-sm-3 col-form-label">Komentar</label>
                             <div class="col-sm-9">
                                 <!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="komentar" id="komentar" rows="3"><?= $item['komentar'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="komentar" id="komentar"
+                                          rows="3"><?= $item['komentar'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -430,8 +445,8 @@
             </div>
         </div>
     </div>
-    <?php endforeach ?>
-    <?php foreach ($laporan as $item) : ?>
+<?php endforeach ?>
+<?php foreach ($laporan as $item) : ?>
     <div class="modal fade" id="kt_modal_terima_<?= $item['id'] ?>" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-centered mw-650px">
@@ -464,7 +479,8 @@
                             <label for="komentar" class="col-sm-3 col-form-label">Komentar</label>
                             <div class="col-sm-9">
                                 <!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="komentar" id="komentar" rows="3"><?= $item['komentar'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="komentar" id="komentar"
+                                          rows="3"><?= $item['komentar'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -491,5 +507,5 @@
             </div>
         </div>
     </div>
-    <?php endforeach ?>
+<?php endforeach ?>
 <?= $this->endSection(); ?>

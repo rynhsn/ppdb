@@ -63,42 +63,48 @@
                         <!--begin::Toolbar-->
                         <div class="d-flex justify-content-end" data-kt-siswa-table-toolbar="base">
                             <div class="card-toolbar flex-row-fluid justify-content-end gap-5">
-                                <button type="button" data-bs-toggle="modal"
-                                        data-bs-target="#kt_modal_perbarui"
-                                        class="btn btn-light-primary <?= $laporan['status'] == '1' ? 'disabled' : '' ?>">
-                                    <i class="ki-duotone ki-arrows-circle fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                    Perbarui
-                                </button>
-                                <button type="button" data-bs-toggle="modal"
-                                        data-bs-target="#kt_modal_terima"
-                                        class="btn btn-light-success <?= $laporan['status'] == 1 ? 'disabled' : '' ?>">
-                                    <i class="ki-duotone ki-check-square fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                    </i>
-                                    Terima
-                                </button>
-                                <button type="button" data-bs-toggle="modal"
-                                        data-bs-target="#kt_modal_tolak"
-                                        class="btn btn-light-danger <?= $laporan['status'] == 99 ? 'disabled' : '' ?>">
-                                    <i class="ki-duotone ki-cross-square fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                    </i>
-                                    Tolak
-                                </button>
-                                <a href="<?= base_url('panel/laporan/cetak/'.$laporan['id']) ?>" class="btn btn-light-info">
-                                    <i class="ki-duotone ki-file-down fs-2">
-                                        <span class="path1"></span>
-                                        <span class="path2"></span>
-                                        <span class="path3"></span>
-                                    </i>
-                                    Unduh
-                                </a>
+                                <?php if (in_groups('admin')): ?>
+                                    <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#kt_modal_perbarui"
+                                            class="btn btn-light-primary <?= $laporan['status'] == '1' ? 'disabled' : '' ?>">
+                                        <i class="ki-duotone ki-arrows-circle fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
+                                        Perbarui
+                                    </button>
+                                <?php endif; ?>
+                                <?php if (in_groups('pimpinan')): ?>
+                                    <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#kt_modal_terima"
+                                            class="btn btn-light-success <?= $laporan['status'] == 1 ? 'disabled' : '' ?>">
+                                        <i class="ki-duotone ki-check-square fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                        </i>
+                                        Terima
+                                    </button>
+                                    <button type="button" data-bs-toggle="modal"
+                                            data-bs-target="#kt_modal_tolak"
+                                            class="btn btn-light-danger <?= $laporan['status'] == 99 ? 'disabled' : '' ?>">
+                                        <i class="ki-duotone ki-cross-square fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                        </i>
+                                        Tolak
+                                    </button>
+                                <?php endif; ?>
+
+                                    <a href="<?= base_url('panel/laporan/cetak/' . $laporan['id']) ?>"
+                                       class="btn btn-light-info <?= ($laporan['status'] != 1 ?  'disabled' : '') ?>">
+                                        <i class="ki-duotone ki-file-down fs-2">
+                                            <span class="path1"></span>
+                                            <span class="path2"></span>
+                                            <span class="path3"></span>
+                                        </i>
+                                        Unduh
+                                    </a>
                             </div>
                         </div>
                         <!--end::Toolbar-->
@@ -269,7 +275,8 @@
                             <label for="keterangan" class="col-sm-3 col-form-label">Keterangan</label>
                             <div class="col-sm-9">
                                 <!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan" rows="3"><?= $laporan['keterangan'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="keterangan" id="keterangan"
+                                          rows="3"><?= $laporan['keterangan'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -329,7 +336,8 @@
                             <label for="komentar" class="col-sm-3 col-form-label">Komentar</label>
                             <div class="col-sm-9">
                                 <!--                                textarea-->
-                                <textarea class="form-control form-control-solid" name="komentar" id="komentar" rows="3"><?= $laporan['komentar'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="komentar" id="komentar"
+                                          rows="3"><?= $laporan['komentar'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -388,7 +396,8 @@
                         <div class="row">
                             <label for="komentar" class="col-sm-3 col-form-label">Komentar</label>
                             <div class="col-sm-9">
-                                <textarea class="form-control form-control-solid" name="komentar" id="komentar" rows="3"><?= $laporan['komentar'] ?></textarea>
+                                <textarea class="form-control form-control-solid" name="komentar" id="komentar"
+                                          rows="3"><?= $laporan['komentar'] ?></textarea>
                             </div>
                         </div>
                     </div>

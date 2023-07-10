@@ -40,7 +40,9 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('profile', 'Panel::profile');
     $routes->get('cetak-biodata', 'Panel::cetakBiodata');
     $routes->get('jadwal-ppdb', 'Panel::jadwal');
-    $routes->get('settings', 'Users::accountSettings', ['filter' => 'permission:manage-profile']);
+    $routes->get('settings', 'Panel::accountSettings', ['filter' => 'permission:manage-profile']);
+    $routes->put('settings/profile', 'Panel::updateAccountInfo', ['filter' => 'permission:manage-profile']);
+    $routes->post('settings/password', 'Panel::updatePassword', ['filter' => 'permission:manage-profile']);
 
     $routes->group('validasi-registrasi', function ($routes){
         $routes->get('', 'ValidasiRegistrasi::index');
