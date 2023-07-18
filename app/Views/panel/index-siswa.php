@@ -71,7 +71,7 @@ use CodeIgniter\I18n\Time;
                             <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
                                 <span class="me-2">Selamat, kamu
                                 <span class="position-relative d-inline-block text-success">
-                                    <a href="<?=base_url('panel/pembayaran')?>" class="text-success opacity-75-hover">diterima</a>
+                                    <span class="text-success opacity-75-hover">diterima</span>
                                     <!--begin::Separator-->
                                     <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-success border-bottom w-100"></span>
                                     <!--end::Separator-->
@@ -81,7 +81,7 @@ use CodeIgniter\I18n\Time;
                             <!--end::Title-->
                             <!--begin::Action-->
                             <div class="text-center">
-                                <a href='<?=base_url('panel/pembayaran')?>' class="btn btn-sm btn-dark fw-bold">Cetak bukti</a>
+                                <a href='<?=base_url('panel/cetak-bukti')?>' target="_blank" class="btn btn-sm btn-dark fw-bold">Cetak bukti</a>
                             </div>
                             <!--begin::Action-->
                         </div>
@@ -105,7 +105,7 @@ use CodeIgniter\I18n\Time;
                             <div class="fs-2hx fw-bold text-gray-800 text-center mb-13">
                                 <span class="me-2">Maaf, kamu
                                 <span class="position-relative d-inline-block text-danger">
-                                    <a href="<?=base_url('panel/pembayaran')?>" class="text-danger opacity-75-hover">belum diterima.</a>
+                                    <span class="text-danger opacity-75-hover">belum diterima.</span>
                                     <!--begin::Separator-->
                                     <span class="position-absolute opacity-15 bottom-0 start-0 border-4 border-danger border-bottom w-100"></span>
                                     <!--end::Separator-->

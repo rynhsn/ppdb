@@ -53,7 +53,7 @@
     </style>
 </head>
 <body>
-<table style="padding-top: 30px; border: 1px solid black ;">
+<table style="padding-top: 30px;">
     <tr>
         <th style="width: 50px; padding-left: 30px">
 <!--            <img src="--><?php //= FCPATH ?><!--media\logos\logo.png" alt="Logo Yayasan" class="logo">-->
