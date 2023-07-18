@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Entities\User;
 use App\Models\JadwalModel;
 use App\Models\JenjangModel;
+use App\Models\KeteranganBuktiModel;
 use App\Models\KompetensiModel;
 use App\Models\MateriModel;
 use App\Models\PekerjaanModel;
@@ -133,6 +134,29 @@ class Panel extends BaseController
         $dompdf->stream('biodata.pdf', array('Attachment' => false));
     }
 
+//    cetak bukti kelulusan
+    public function cetakBuktiKelulusan()
+    {
+        $keteranganBuktiModel = new KeteranganBuktiModel();
+        $data = [
+            'title' => 'Cetak Bukti Kelulusan',
+            'lembaga' => $this->lembaga,
+            'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
+        ];
+            $data['keterangan'] = $keteranganBuktiModel->where('jenjang', $data['siswa']['jenjang_daftar'])->first();
+        return view('panel/cetak-bukti-kelulusan', $data);
+        $options = new Options();
+        $options->setChroot(FCPATH);
+
+        $dompdf = new Dompdf();
+        $html = view('panel/cetak-bukti-kelulusan', $data);
+        $dompdf->loadHtml($html);
+        $dompdf->setOptions($options);
+        $dompdf->setPaper('A4', 'potrait');
+        $dompdf->render();
+        $dompdf->stream('bukti-kelulusan.pdf', array('Attachment' => false));
+    }
+
     public function accountSettings()
     {
         $data = [
@@ -193,7 +217,6 @@ class Panel extends BaseController
         $verify = Password::verify($this->request->getPost('current_password'), $user->password_hash);
 
         if(!$verify){
-//            dd('verify');
             return redirect()->back()->withInput()->with('errors', ['current_password' => 'Password lama tidak sesuai.']);
         }
 
@@ -206,7 +229,6 @@ class Panel extends BaseController
             'id' => user()->id,
             'password_hash' => Password::hash($this->request->getPost('password')),
         ])) {
-//            dd('save');
             return redirect()->back()->withInput()->with('errors', $this->userModel->errors());
         }
 

@@ -39,6 +39,7 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');
     $routes->get('profile', 'Panel::profile');
     $routes->get('cetak-biodata', 'Panel::cetakBiodata');
+    $routes->get('cetak-bukti', 'Panel::cetakBuktiKelulusan');
     $routes->get('jadwal-ppdb', 'Panel::jadwal');
     $routes->get('settings', 'Panel::accountSettings', ['filter' => 'permission:manage-profile']);
     $routes->put('settings/profile', 'Panel::updateAccountInfo', ['filter' => 'permission:manage-profile']);
