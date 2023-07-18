@@ -215,7 +215,7 @@
                                     <?php endif; ?>
                                     <a href="<?= base_url('panel/laporan/cetak/' . $item['id']) ?>"
                                        class="btn btn-icon btn-active-color-info btn-sm me-1 <?= ($item['status'] != 1 ? 'disabled' : '') ?>"
-                                       title="Unduh">
+                                       title="Unduh" target="_blank">
                                         <i class="ki-duotone ki-file-down fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>

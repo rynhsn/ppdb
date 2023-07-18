@@ -97,7 +97,7 @@
                                 <?php endif; ?>
 
                                     <a href="<?= base_url('panel/laporan/cetak/' . $laporan['id']) ?>"
-                                       class="btn btn-light-info <?= ($laporan['status'] != 1 ?  'disabled' : '') ?>">
+                                       class="btn btn-light-info <?= ($laporan['status'] != 1 ?  'disabled' : '') ?>" target="_blank">
                                         <i class="ki-duotone ki-file-down fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
