@@ -69,12 +69,12 @@ class Panel extends BaseController
 
             $data['jadwal'] = $this->jadwalModel->where('jenjang', $data['siswa']['jenjang_daftar'])->orderBy('tgl_mulai', 'ASC')->findAll();
             $data['materi'] = $this->materiModel->where('jenjang', $data['siswa']['jenjang_daftar'])->first();
-            $jadwal_hari_ini = $this->jadwalModel->select('judul')->where('jenjang', $data['siswa']['jenjang_daftar'])->where('tgl_mulai <=', Time::now('Asia/Jakarta')->toDateTimeString())->where('tgl_selesai >=', Time::now('Asia/Jakarta')->toDateTimeString())->findAll();
+            $jadwal_hari_ini = $this->jadwalModel->select('judul')->where('jenjang', $data['siswa']['jenjang_daftar'])->where('tgl_mulai <=', Time::now('Asia/Jakarta')->toDateString())->where('tgl_selesai >=', Time::now('Asia/Jakarta')->toDateString())->findAll();
 //            dd(end($data['jadwal_hari_ini'])['judul']);
 //            $data['jadwal_hari_ini'] = end($jadwal_hari_ini)['judul'];
             $data['jadwal_hari_ini'] = array_column($jadwal_hari_ini, 'judul');
 //            dd($jadwal_hari_ini);
-//            dd($data['jadwal_hari_ini']);
+//            dd(Time::now('Asia/Jakarta')->toDateString());
 
 //            cek array apakah include string
 
