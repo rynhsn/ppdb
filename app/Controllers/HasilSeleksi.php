@@ -3,15 +3,18 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\KeteranganBuktiModel;
 use App\Models\SiswaModel;
 
 class HasilSeleksi extends BaseController
 {
-    protected $siswaModel;
+    protected SiswaModel $siswaModel;
+    protected KeteranganBuktiModel $keteranganBuktiModel;
 
     public function __construct()
     {
         $this->siswaModel = new SiswaModel();
+        $this->keteranganBuktiModel = new KeteranganBuktiModel();
     }
 
     public function index($jenjang)
@@ -21,6 +24,8 @@ class HasilSeleksi extends BaseController
             'title'     => 'Hasil Seleksi',
             'lembaga'   => $this->lembaga,
             'siswa'     => $this->siswaModel->where('status_pendaftaran', '2')->where('jenjang_daftar', $jenjang)->findAll(),
+            'catatan'   => $this->keteranganBuktiModel->where('jenjang', $jenjang)->first(),
+            'jenjang'   => $jenjang
         ];
 
         return view('/panel/hasil-seleksi', $data);
@@ -56,6 +61,17 @@ class HasilSeleksi extends BaseController
         ];
         $this->siswaModel->save($data);
         session()->setFlashdata('pesan', 'Siswa ditolak.');
+        return redirect()->back();
+    }
+
+    public function updateCatatan($jenjang)
+    {
+        $data = [
+            'id' => $this->request->getVar('id'),
+            'isi' => $this->request->getVar('isi'),
+        ];
+        $this->keteranganBuktiModel->save($data);
+        session()->setFlashdata('pesan', 'Data berhasil disimpan.');
         return redirect()->back();
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Kop Surat</title>
+    <title><?= $title ?></title>
     <style>
         @page {
             size: A4;
@@ -33,7 +33,7 @@
         }
 
         .logo {
-            width: 90px;
+            width: 120px;
             height: auto;
         }
 
@@ -47,7 +47,7 @@
         }
 
         .address, .phone {
-            font-size: 12px;
+            font-size: 8px;
             font-weight: normal;
         }
     </style>
@@ -61,10 +61,12 @@
         </th>
         <th class="company-details">
             <div style="padding-right: 120px" class="company-name">PANITIA PENERIMAAN PESERTA DIDIK BARU (PPDB)</div>
-            <div style="padding-right: 120px" class="company-name"><?= strtoupper($lembaga['nama_lembaga']) ?></div>
-            <div style="padding-right: 120px" class="company-name">Tahun Pelajaran <?= $lembaga['th_pelajaran'] ?></div>
-            <div style="padding-right: 120px" class="address"><?= $lembaga['alamat'] ?></div>
-            <div style="padding-right: 120px" class="phone">No. Telp: <?= $lembaga['telp'] ?></div>
+            <div style="padding-right: 120px" class="company-name">YAYASAN PONDOK PESANTREN JAMIATUL IKHWAN</div>
+            <div style="padding-right: 120px" class="company-name">(SMP, MA, SMK)</div>
+            <div style="padding-right: 120px" class="company-name">MALANGGAH-TUNJUNG TEJA</div>
+            <div style="padding-right: 120px" class="company-name"><?= strtoupper("Tahun Pelajaran {$lembaga['th_pelajaran']}") ?></div>
+            <div style="padding-right: 120px" class="phone">Akta Notaris : <?= $lembaga['no_surat'] ?></div>
+            <div style="padding-right: 120px" class="address">Alamat : <?= $lembaga['alamat'] ?>, No. Telp: <?= $lembaga['telp'] ?></div>
         </th>
     </tr>
     <tr>
@@ -189,6 +191,24 @@
     </tr>
     <tr>
         <td colspan="2">Demikian surat keterangan kelulusan ini dibuat agar dapat digunakan sebagaimana mestinya.</td>
+    </tr>
+    <tr>
+        <td colspan="2"><br></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: right">Tunjung Teja, <?= date('d F Y') ?></td>
+    </tr>
+    <tr>
+        <td colspan="2"><br></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: right">Pimpinan Yayasan</td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: right"><img src="<?= base_url() ?>media/logos/ttd.png" width="150px"></td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: right"><?= $lembaga['kepsek']?></td>
     </tr>
     <tr>
         <td colspan="2">

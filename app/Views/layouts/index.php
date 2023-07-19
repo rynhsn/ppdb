@@ -179,6 +179,23 @@
             console.error(error);
         });
     <?php endif; ?>
+
+
+    <?php if ($title == 'Hasil Seleksi'): ?>
+    ClassicEditor
+        .create(document.querySelector('#kt_docs_ckeditor_classic'))
+        .then(editor => {
+            console.log(editor);
+            editor.model.document.on('change:data', () => {
+                // Mengambil isi dari CKEditor
+                // Memperbarui konten pada elemen dengan id preview_materi
+                document.querySelector('#preview_catatan').innerHTML = editor.getData();
+            });
+        })
+        .catch(error => {
+            console.error(error);
+        });
+    <?php endif; ?>
 </script>
 </body>
 <!--end::Body-->

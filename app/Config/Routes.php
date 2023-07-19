@@ -34,7 +34,6 @@ $routes->get('/', 'Home::index');
 $routes->get('/daftar', 'Home::daftar');
 $routes->post('/daftar', 'Home::saveDaftar');
 
-
 $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');
     $routes->get('profile', 'Panel::profile');
@@ -72,6 +71,7 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
 
     $routes->group('hasil-seleksi', ['filter' => 'permission:manage-seleksi'], static function ($routes){
         $routes->get('(:segment)', 'HasilSeleksi::index/$1');
+        $routes->put('(:segment)', 'HasilSeleksi::updateCatatan/$1');
         $routes->put('', 'HasilSeleksi::save');
         $routes->get('terima/(:num)', 'HasilSeleksi::terima/$1');
         $routes->get('tolak/(:num)', 'HasilSeleksi::tolak/$1');
