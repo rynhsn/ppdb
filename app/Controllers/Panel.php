@@ -60,6 +60,9 @@ class Panel extends BaseController
             'title' => 'Dashboard',
             'lembaga' => $this->lembaga,
             'status' => $this->statusModel->first(),
+            'pendaftar' => $this->siswaModel->where('status_pendaftaran', 2)->countAllResults(),
+            'totalLulus' => $this->siswaModel->where('status_kelulusan', 1)->countAllResults(),
+            'totalTidakLulus' => $this->siswaModel->where('status_kelulusan', 2)->countAllResults(),
         ];
         if (in_groups('siswa')) {
             $data += [

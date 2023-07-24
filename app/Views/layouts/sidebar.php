@@ -1,7 +1,7 @@
-<div id="kt_app_sidebar" class="app-sidebar flex-column bg-success" data-kt-drawer="true"
+<div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
      data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
      data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start"
-     data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+     data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle" style="background-color: #228b22">
     <!--begin::Logo-->
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <!--begin::Logo image-->
@@ -56,7 +56,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     <span class="path4"></span>
                                 </i>
                             </span>
-                        <span class="menu-title">Dashboard</span>
+                        <span class="menu-title text-white">Dashboard</span>
                     </a>
                     <!--end:Menu link-->
                 </div>
@@ -76,7 +76,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <i class="path4"></i>
                                     </i>
                                 </span>
-                            <span class="menu-title">Laporan</span>
+                            <span class="menu-title text-white">Laporan</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -87,8 +87,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--begin:Menu item-->
                     <div class="menu-item pt-3">
                         <!--begin:Menu content-->
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Keuangan</span>
+                        <div class="menu-content text-white">
+                            <span class="fw-bold text-uppercase fs-7">Menu Keuangan</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
@@ -108,7 +108,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                  <i class="path4"></i>
                                 </i>
                         </span>
-                            <span class="menu-title">Validasi Registrasi</span>
+                            <span class="menu-title text-white">Validasi Registrasi</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -120,8 +120,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--begin:Menu item-->
                     <div class="menu-item pt-3">
                         <!--begin:Menu content-->
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Seleksi</span>
+                        <div class="menu-content text-white">
+                            <span class="fw-bold text-uppercase fs-7">Menu Seleksi</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
@@ -143,8 +143,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="path6"></span>
                                     </i>
                                 </span>
-                                <span class="menu-title">Materi dan Jadwal Ujian</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-title text-white">Materi dan Jadwal Ujian</span>
+                                <span class="menu-arrow" ></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
@@ -157,7 +157,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title"><?= $value ?></span>
+                                        <span class="menu-title text-white"><?= $value ?></span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -181,8 +181,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="path5"></span>
                                     </i>
                                 </span>
-                                <span class="menu-title">Hasil Seleksi</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-title text-white">Hasil Seleksi</span>
+                                <span class="menu-arrow" ></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
@@ -195,7 +195,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title"><?= $value ?></span>
+                                        <span class="menu-title text-white"><?= $value ?></span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -211,8 +211,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--begin:Menu item-->
                     <div class="menu-item pt-3">
                         <!--begin:Menu content-->
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Management</span>
+                        <div class="menu-content text-white">
+                            <span class="fw-bold text-uppercase fs-7">Management</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
@@ -229,8 +229,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="path3"></span>
                                     </i>
                                 </span>
-                                <span class="menu-title">Site Management</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-title text-white">Site Management</span>
+                                <span class="menu-arrow" ></span>
                             </span>
                             <!--end:Menu link-->
                             <!--begin:Menu sub-->
@@ -242,7 +242,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                        <span class="menu-title">Profil lembaga</span>
+                                        <span class="menu-title text-white">Profil lembaga</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -254,7 +254,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                        <span class="menu-title">Helpers</span>
+                                        <span class="menu-title text-white">Helpers</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -276,8 +276,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="path3"></span>
                                     </i>
                                 </span>
-                                <span class="menu-title">Account Management</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-title text-white">Account Management</span>
+                                <span class="menu-arrow" ></span>
                             </span>
                             <!--end:Menu link-->
                             <!--begin:Menu sub-->
@@ -289,7 +289,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title">Pengguna</span>
+                                        <span class="menu-title text-white">Pengguna</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -301,7 +301,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 <span class="menu-bullet">
                                     <span class="bullet bullet-dot"></span>
                                 </span>
-                                        <span class="menu-title">Calon Siswa</span>
+                                        <span class="menu-title text-white">Calon Siswa</span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -325,8 +325,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="path5"></span>
                                     </i>
                                 </span>
-                                <span class="menu-title">Jadwal PPDB</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-title text-white">Jadwal PPDB</span>
+                                <span class="menu-arrow" ></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
@@ -339,7 +339,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <span class="menu-bullet">
                                             <span class="bullet bullet-dot"></span>
                                         </span>
-                                        <span class="menu-title"><?= $value ?></span>
+                                        <span class="menu-title text-white"><?= $value ?></span>
                                     </a>
                                     <!--end:Menu link-->
                                 </div>
@@ -363,7 +363,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                  <i class="path5"></i>
                                 </i>
                         </span>
-                            <span class="menu-title">Pengumuman</span>
+                            <span class="menu-title text-white">Pengumuman</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -376,8 +376,8 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                     <!--begin:Menu item-->
                     <div class="menu-item pt-3">
                         <!--begin:Menu content-->
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Menu Siswa</span>
+                        <div class="menu-content text-white">
+                            <span class="fw-bold text-uppercase fs-7">Menu Siswa</span>
                         </div>
                         <!--end:Menu content-->
                     </div>
@@ -397,7 +397,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                  <i class="path4"></i>
                                 </i>
                         </span>
-                            <span class="menu-title">Jadwal PPDB</span>
+                            <span class="menu-title text-white">Jadwal PPDB</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -418,7 +418,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                  <i class="path8"></i>
                                 </i>
                         </span>
-                            <span class="menu-title">Pengumuman</span>
+                            <span class="menu-title text-white">Pengumuman</span>
                         </a>
                         <!--end:Menu link-->
                     </div>

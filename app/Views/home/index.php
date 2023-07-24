@@ -5,11 +5,11 @@
     <!--begin::Daftar Section-->
     <div class="mb-0" id="daftar">
         <!--begin::Wrapper-->
-        <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg"
-             style="background-image: url(<?= base_url(); ?>/media/svg/illustrations/landing.svg)">
+        <div class="bgi-no-repeat bgi-size-cover bgi-position-x-center bgi-position-y-bottom landing-dark-bg"
+             style="background-image: url(<?= base_url(); ?>/media/misc/landing.jpg);">
             <!--begin::Header-->
             <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
-                 data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+                 data-kt-sticky-offset="{default: '200px', lg: '300px'}" style="background-image: url(<?= base_url(); ?>/media/misc/landing.jpg);">
                 <!--begin::Container-->
                 <div class="container">
                     <!--begin::Wrapper-->
@@ -26,11 +26,11 @@
                             </button>
                             <!--end::Mobile menu toggle-->
                             <!--begin::Logo image-->
-                            <a href="../../demo1/dist/landing.html">
-                                <img alt="Logo" src="<?= base_url(); ?>/media/logos/landing.svg"
-                                     class="logo-default h-25px h-lg-30px"/>
+                            <a href="<?= base_url() ?>">
+                                <img alt="Logo" src="<?= base_url(); ?>/media/logos/logo.png"
+                                     class="logo-default h-25px h-lg-50px"/>
                                 <img alt="Logo" src="<?= base_url(); ?>/media/logos/landing-dark.svg"
-                                     class="logo-sticky h-20px h-lg-25px"/>
+                                     class="logo-sticky h-20px h-lg-50px"/>
                             </a>
                             <!--end::Logo image-->
                         </div>
@@ -108,7 +108,7 @@
             </div>
             <!--end::Header-->
             <!--begin::Landing hero-->
-            <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9">
+            <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9 bgi-no-repeat bgi-size-cover bgi-position-x-center bgi-position-y-center landing-dark-bg" style="background-image: url(<?= base_url(); ?>/media/misc/landing.jpg);">
                 <!--begin::Heading-->
                 <div class="text-center mb-5 mb-lg-10 py-10 py-lg-20">
                     <!--begin::Title-->
@@ -124,54 +124,6 @@
                     <!--end::Action-->
                 </div>
                 <!--end::Heading-->
-                <!--begin::Clients-->
-                <div class="d-flex flex-center flex-wrap position-relative px-5">
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Fujifilm">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/fujifilm.svg" class="mh-30px mh-lg-40px"
-                             alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Vodafone">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/vodafone.svg" class="mh-30px mh-lg-40px"
-                             alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="KPMG International">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/kpmg.svg" class="mh-30px mh-lg-40px" alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Nasa">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/nasa.svg" class="mh-30px mh-lg-40px" alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Aspnetzero">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/aspnetzero.svg" class="mh-30px mh-lg-40px"
-                             alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="AON - Empower Results">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/aon.svg" class="mh-30px mh-lg-40px" alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Hewlett-Packard">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/hp-3.svg" class="mh-30px mh-lg-40px" alt=""/>
-                    </div>
-                    <!--end::Client-->
-                    <!--begin::Client-->
-                    <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Truman">
-                        <img src="<?= base_url(); ?>/media/svg/brand-logos/truman.svg" class="mh-30px mh-lg-40px"
-                             alt=""/>
-                    </div>
-                    <!--end::Client-->
-                </div>
-                <!--end::Clients-->
             </div>
             <!--end::Landing hero-->
         </div>
