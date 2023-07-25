@@ -56,8 +56,8 @@
 <table style="padding-top: 30px;">
     <tr>
         <th style="width: 50px; padding-left: 30px">
-<!--            <img src="--><?php //= FCPATH ?><!--media\logos\logo.png" alt="Logo Yayasan" class="logo">-->
-            <img src="<?= base_url() ?>media/logos/logo.png" alt="Logo Yayasan" class="logo">
+            <img src="<?= FCPATH ?>media\logos\logo.png" alt="Logo Yayasan" class="logo">
+<!--            <img src="--><?php //= base_url() ?><!--media/logos/logo.png" alt="Logo Yayasan" class="logo">-->
         </th>
         <th class="company-details">
             <div style="padding-right: 120px" class="company-name">PANITIA PENERIMAAN PESERTA DIDIK BARU (PPDB)</div>
@@ -205,7 +205,8 @@
         <td colspan="2" style="text-align: right">Pimpinan Yayasan</td>
     </tr>
     <tr>
-        <td colspan="2" style="text-align: right"><img src="<?= base_url() ?>media/logos/ttd.png" width="150px"></td>
+        <td colspan="2" style="text-align: right"><img src="<?= FCPATH ?>media\logos\ttd.png" width="150px"></td>
+<!--        <td colspan="2" style="text-align: right"><img src="--><?php //= base_url() ?><!--media/logos/ttd.png" width="150px"></td>-->
     </tr>
     <tr>
         <td colspan="2" style="text-align: right"><?= $lembaga['kepsek']?></td>

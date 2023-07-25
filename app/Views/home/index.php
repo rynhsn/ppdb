@@ -115,9 +115,10 @@
                     <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">Selamat Datang di PPDB Online
                         <br>
                         <span
-                            style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+                            style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">
 								<span id="kt_landing_hero_text"><?= ucwords($lembaga['nama_lembaga']) ?></span>
-							</span></h1>
+							</span>
+                    </h1>
                     <!--end::Title-->
                     <!--begin::Action-->
                     <a href="<?= base_url('daftar') ?>" class="btn btn-success">Daftar Sekarang</a>
