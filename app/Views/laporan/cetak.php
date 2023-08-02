@@ -3,8 +3,8 @@
     <title>Laporan PPDB <?= $tahun_ajaran ?></title>
     <style>
         @page {
-            size: A4;
-            margin: 0;
+            size: A4 landscape;
+            margin: 10px;
         }
 
         body {
