@@ -60,7 +60,7 @@
 <!--<h3 style="text-align: center">TAHUN AJARAN --><?php //= $tahun_ajaran ?><!--</h3>-->
 
 <table style="border: none">
-    <tr style="border: none">
+    <tr style="border: none; border-bottom: 3px solid #000;">
         <th style="width: 50px; padding-left: 30px;border: none">
                         <img src="<?= FCPATH ?>media\logos\logo.png" alt="Logo Yayasan" class="logo">
 <!--            <img src="--><?php //= base_url() ?><!--media/logos/logo.png" alt="Logo Yayasan" class="logo">-->
