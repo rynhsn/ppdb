@@ -9,7 +9,7 @@
         }
 
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Times New Roman", serif;
         }
 
         table {
@@ -27,7 +27,7 @@
         }
 
         td {
-            font-size: 12pts;
+            font-size: 12pt;
             /*margin: 0;*/
             padding: 0 0 0 10px;
         }

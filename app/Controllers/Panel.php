@@ -147,7 +147,7 @@ class Panel extends BaseController
             'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
         ];
             $data['keterangan'] = $keteranganBuktiModel->where('jenjang', $data['siswa']['jenjang_daftar'])->first();
-//        return view('panel/cetak-bukti-kelulusan', $data);
+        return view('panel/cetak-bukti-kelulusan', $data);
         $options = new Options();
         $options->setChroot(FCPATH);
 

@@ -232,53 +232,16 @@
                                     <!--end::Heading-->
                                     <!--begin::Input group-->
                                     <div class="mb-10 fv-row mb-5 pb-lg-5">
-                                        <!--begin::Title-->
-                                        <h2 class="fw-bold text-dark mb-7">Multisite License:</h2>
-                                        <!--end::Title-->
                                         <!--begin::List-->
                                         <ul>
-                                            <li>
-                                                <span class="fs-4 fw-semibold text-gray-700">It works the same as the Standard License, but you can use it in unlimited count of projects.</span>
-                                            </li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Calon Peserta Didik Baru hanya diijinkan mendaftar sekali, dan setelah terdaftar tidak dapat membatalkan pendaftaran.</span></li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Calon Peserta Didik Baru hanya dapat memilih 1 (satu) jenis satuan Pendidikan tujuan saja yaitu SMP, SMK atau Madrasah Aliyah.</span></li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Calon Peserta Didik Baru yang diterima, wajib menaati peraturan Pondok Pesantren yang berlaku.</span></li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Calon Peserta Didik Baru yang telah diterima wajib mendaftar ulang dengan menyerahkan tanda bukti pendaftaran dan berkas yang sudah diunggah (upload).</span></li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Dokumen yang diunggah (upload) adalah sesuai dengan dokumen asli, calon Peserta Didik tidak boleh menambah atau mengurangi dokumen asli.</span></li>
+                                            <li><span class="fs-4 fw-semibold text-gray-700">Memiliki Surat Keterangan Kelulusan yang dikeluarkan oleh sekolah asal dengan menunjukkan aslinya saat verifikasi berkas fisik.</span></li>
                                         </ul>
                                         <!--end::List-->
-                                        <!--begin::Text-->
-                                        <div class="fs-4 fw-semibold text-gray-700 mb-13">If users can free browse and
-                                            use your website is used only as interface(eCommerce site) to sell other's
-                                            products you can use Regular license. if you are going to use the item on
-                                            multiple domains, then you will need to purchase a Licence for each domain
-                                            or buy Multisite License.
-                                            <br>(ex: www.domain-site-
-                                            <span class="text-dark">one.com</span>– www.domain-site.
-                                            <span class="text-dark">two.com</span>– www.site-three-
-                                            <span class="text-dark">domain.com</span>).
-                                        </div>
-                                        <!--end::Text-->
-                                        <!--begin::Title-->
-                                        <h2 class="fw-bold text-dark mb-8">Extended License:</h2>
-                                        <!--end::Title-->
-                                        <!--begin::List-->
-                                        <ul class="fs-4 fw-semibold mb-6">
-                                            <li>
-                                                <span class="text-gray-700">SaaS projects</span>
-                                            </li>
-                                            <li class="my-2">
-                                                <span class="text-gray-700">Photo stock with PRO subscription</span>
-                                            </li>
-                                            <li>
-                                                <span class="text-gray-700">Cloud service with paid plans</span>
-                                            </li>
-                                        </ul>
-                                        <!--end::List-->
-                                        <!--begin::Text-->
-                                        <div class="fs-4 fw-semibold text-gray-700">E-commerce site Company business
-                                            activity dashboard Customer support center If users can free browse and use
-                                            your website is used only as interface(eCommerce site) to sell other's
-                                            products you can use Regular license. If you are going to use the item on
-                                            one domain and multiple subdomains, you only require one Licence . (ex:
-                                            www.domain.com/site1 – site2.domain.com – site.3.domain.com).
-                                        </div>
-                                        <!--end::Text-->
                                     </div>
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
