@@ -9,7 +9,7 @@
         }
 
         body {
-            font-family: "Times New Roman", sans-serif;
+            font-family: "Times New Roman", serif;
         }
 
         table {
