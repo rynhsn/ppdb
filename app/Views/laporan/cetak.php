@@ -39,6 +39,7 @@
 
         .company-details {
             text-align: center;
+            border: none;
         }
 
         .company-name {
@@ -59,8 +60,8 @@
 <!--<h3 style="text-align: center">TAHUN AJARAN --><?php //= $tahun_ajaran ?><!--</h3>-->
 
 <table style="border: none">
-    <tr>
-        <th style="width: 50px; padding-left: 30px">
+    <tr style="border: none">
+        <th style="width: 50px; padding-left: 30px;border: none">
                         <img src="<?= FCPATH ?>media\logos\logo.png" alt="Logo Yayasan" class="logo">
 <!--            <img src="--><?php //= base_url() ?><!--media/logos/logo.png" alt="Logo Yayasan" class="logo">-->
         </th>
@@ -72,7 +73,7 @@
     </tr>
 </table>
 
-Tanggal Pembuatan : <?= date('d M Y', strtotime($laporan['created_at'])) ?>
+<p style="margin-left: 25px">Tanggal Pembuatan : <?= date('d M Y', strtotime($laporan['created_at'])) ?>
 
 <table>
     <thead>
