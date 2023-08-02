@@ -58,11 +58,11 @@
 <!--<h3 style="text-align: center">JENJANG PENDIDIKAN --><?php //= $jenjang ?><!--</h3>-->
 <!--<h3 style="text-align: center">TAHUN AJARAN --><?php //= $tahun_ajaran ?><!--</h3>-->
 
-<table>
+<table style="border: none">
     <tr>
         <th style="width: 50px; padding-left: 30px">
-            <!--            <img src="--><?php //= FCPATH ?><!--media\logos\logo.png" alt="Logo Yayasan" class="logo">-->
-            <img src="<?= base_url() ?>media/logos/logo.png" alt="Logo Yayasan" class="logo">
+                        <img src="<?= FCPATH ?>media\logos\logo.png" alt="Logo Yayasan" class="logo">
+<!--            <img src="--><?php //= base_url() ?><!--media/logos/logo.png" alt="Logo Yayasan" class="logo">-->
         </th>
         <th class="company-details">
             <div style="padding-right: 120px" class="company-name">LAPORAN DATA PESERTA DIDIK</div>
@@ -72,11 +72,10 @@
     </tr>
 </table>
 
+Tanggal Pembuatan : <?= date('d M Y', strtotime($laporan['created_at'])) ?>
+
 <table>
     <thead>
-    <tr>
-        <th colspan="5">Tanggal Pembuatan : <?= date('d M Y', strtotime($laporan['created_at'])) ?></th>
-    </tr>
     <tr>
         <th>NISN</th>
         <th>Nama Siswa</th>
