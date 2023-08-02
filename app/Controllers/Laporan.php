@@ -171,6 +171,8 @@ class Laporan extends BaseController
             'detail' => $this->detailLaporanModel->getDetail($id),
         ];
 
+        dd($data);
+
         $data['jenjang'] = $data['laporan']['jenjang'];
         $data['tahun_ajaran'] = $data['laporan']['periode_awal'] . '/' . $data['laporan']['periode_akhir'];
         //buat nama file karakter acak
