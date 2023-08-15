@@ -72,11 +72,21 @@ class Home extends BaseController
             ]);
         }
 
+
         $no_pendaftaran = $this->_generateNoPendaftaran();
+
+        $nama_file_surat_kelulusan = null;
+        $nama_file_kk = null;
+        $nama_file_ktp_ayah = null;
+        $nama_file_ktp_ibu = null;
+        $nama_file_akta = null;
+        $nama_file_foto = null;
+        $nama_file_ijazah = null;
+        $nama_file_kip = null;
+
 
         $data = array(
             'no_pendaftaran' => $no_pendaftaran,
-            'jenjang_daftar' => $this->request->getVar('jenjang'),
             'nama_lengkap' => $this->request->getVar('nama_lengkap'),
             'nisn' => $this->request->getVar('nisn'),
             'nik' => $this->request->getVar('nik'),
@@ -84,9 +94,9 @@ class Home extends BaseController
             'tempat_lahir' => $this->request->getVar('tempat_lahir'),
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
             'agama' => $this->request->getVar('agama'),
-            'anak_ke' => $this->request->getVar('anak_ke'),
-            'jml_saudara' => $this->request->getVar('jml_saudara'),
-            'no_hp_siswa' => $this->request->getVar('no_telp'),
+//            'anak_ke' => $this->request->getVar('anak_ke'),
+//            'jml_saudara' => $this->request->getVar('jml_saudara'),
+//            'no_hp_siswa' => $this->request->getVar('no_telp'),
 
             'alamat_siswa' => $this->request->getVar('alamat'),
             'jenis_tinggal' => $this->request->getVar('jenis_tinggal'),
@@ -95,37 +105,53 @@ class Home extends BaseController
             'kab' => $this->request->getVar('kabupaten'),
             'prov' => $this->request->getVar('provinsi'),
             'kode_pos' => $this->request->getVar('kode_pos'),
-            'jarak' => $this->request->getVar('jarak'),
-            'trans' => $this->request->getVar('kendaraan'),
+//            'jarak' => $this->request->getVar('jarak'),
+//            'trans' => $this->request->getVar('kendaraan'),
 
-            'no_kk' => $this->request->getVar('no_kk'),
+//            'no_kk' => $this->request->getVar('no_kk'),
             'nama_ayah' => $this->request->getVar('nama_ayah'),
-            'nik_ayah' => $this->request->getVar('nik_ayah'),
-            'pekerjaan_ayah' => $this->request->getVar('pekerjaan_ayah'),
-            'pdd_ayah' => $this->request->getVar('pdd_ayah'),
-            'penghasilan_ayah' => $this->request->getVar('penghasilan_ayah'),
-            'status_ayah' => $this->request->getVar('status_hidup_ayah'),
-            'th_lahir_ayah' => $this->request->getVar('th_lahir_ayah'),
+//            'nik_ayah' => $this->request->getVar('nik_ayah'),
+//            'pekerjaan_ayah' => $this->request->getVar('pekerjaan_ayah'),
+//            'pdd_ayah' => $this->request->getVar('pdd_ayah'),
+//            'penghasilan_ayah' => $this->request->getVar('penghasilan_ayah'),
+//            'status_ayah' => $this->request->getVar('status_hidup_ayah'),
+//            'th_lahir_ayah' => $this->request->getVar('th_lahir_ayah'),
             'nama_ibu' => $this->request->getVar('nama_ibu'),
-            'nik_ibu' => $this->request->getVar('nik_ibu'),
-            'pekerjaan_ibu' => $this->request->getVar('pekerjaan_ibu'),
-            'pdd_ibu' => $this->request->getVar('pdd_ibu'),
-            'penghasilan_ibu' => $this->request->getVar('penghasilan_ibu'),
-            'status_ibu' => $this->request->getVar('status_hidup_ibu'),
-            'th_lahir_ibu' => $this->request->getVar('th_lahir_ibu'),
-            'nama_wali' => $this->request->getVar('nama_wali'),
-            'nik_wali' => $this->request->getVar('nik_wali'),
-            'pdd_wali' => $this->request->getVar('pdd_wali'),
-            'pekerjaan_wali' => $this->request->getVar('pekerjaan_wali'),
-            'penghasilan_wali' => $this->request->getVar('penghasilan_wali'),
-            'th_lahir_wali' => $this->request->getVar('th_lahir_wali'),
-            'no_hp_ortu' => $this->request->getVar('no_telp_ot'),
-            'npsn_sekolah' => $this->request->getVar('npsn'),
+//            'nik_ibu' => $this->request->getVar('nik_ibu'),
+//            'pekerjaan_ibu' => $this->request->getVar('pekerjaan_ibu'),
+//            'pdd_ibu' => $this->request->getVar('pdd_ibu'),
+//            'penghasilan_ibu' => $this->request->getVar('penghasilan_ibu'),
+//            'status_ibu' => $this->request->getVar('status_hidup_ibu'),
+//            'th_lahir_ibu' => $this->request->getVar('th_lahir_ibu'),
+//            'nama_wali' => $this->request->getVar('nama_wali'),
+//            'nik_wali' => $this->request->getVar('nik_wali'),
+//            'pdd_wali' => $this->request->getVar('pdd_wali'),
+//            'pekerjaan_wali' => $this->request->getVar('pekerjaan_wali'),
+//            'penghasilan_wali' => $this->request->getVar('penghasilan_wali'),
+//            'th_lahir_wali' => $this->request->getVar('th_lahir_wali'),
+            'no_hp_ortu' => $this->request->getVar('no_telp'),
+//            'npsn_sekolah' => $this->request->getVar('npsn'),
             'nama_sekolah' => $this->request->getVar('nama_sekolah'),
             'lokasi_sekolah' => $this->request->getVar('lokasi_sekolah'),
-            'no_kks' => $this->request->getVar('kks'),
-            'no_pkh' => $this->request->getVar('pkh'),
-            'no_kip' => $this->request->getVar('kip'),
+//            'no_kks' => $this->request->getVar('kks'),
+//            'no_pkh' => $this->request->getVar('pkh'),
+//            'no_kip' => $this->request->getVar('kip'),
+            'no_un' => $this->request->getVar('no_un'),
+            'no_seri_ijazah' => $this->request->getVar('no_seri_ijazah'),
+            'no_seri_skhun' => $this->request->getVar('no_seri_skhun'),
+            'sttb_lulus' => $this->request->getVar('sttb_lulus'),
+
+            'file_surat_kelulusan' => $nama_file_surat_kelulusan,
+            'file_kk' => $nama_file_kk,
+            'file_ktp_ayah' => $nama_file_ktp_ayah,
+            'file_ktp_ibu' => $nama_file_ktp_ibu,
+            'file_akta' => $nama_file_akta,
+            'file_foto' => $nama_file_foto,
+            'file_ijazah' => $nama_file_ijazah,
+            'file_kip' => $nama_file_kip,
+
+            'jenjang_daftar' => $this->request->getVar('jenjang'),
+            'tgl_siswa' => date('Y-m-d H:i:s'),
             'status_verifikasi' => '0',
             'status_pendaftaran' => '0',
         );
@@ -157,7 +183,7 @@ class Home extends BaseController
         $cek = $this->siswaModel->where(['no_pendaftaran' => $no_pendaftaran])->first();
         if ($cek) {
             $last_no_pendaftaran = $this->siswaModel->select('no_pendaftaran')->orderBy('no_pendaftaran', 'DESC')->first();
-            $last_no_pendaftaran = (int) substr($last_no_pendaftaran['no_pendaftaran'], -4);
+            $last_no_pendaftaran = (int)substr($last_no_pendaftaran['no_pendaftaran'], -4);
             $no_pendaftaran = $last_no_pendaftaran + 1;
             $no_pendaftaran = 'PD-' . $tahun . str_pad($no_pendaftaran, 4, "0", STR_PAD_LEFT);
         }

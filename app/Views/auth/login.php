@@ -89,9 +89,9 @@
                         <!--end::Submit button-->
                         <?php if ($config->allowRegistration) : ?>
                             <!--begin::Sign up-->
-                            <div class="text-gray-500 text-center fw-semibold fs-6">
-                                <a href="<?= url_to('register') ?>"
-                                   class="link-primary"><?= lang('Auth.needAnAccount') ?></a></div>
+<!--                            <div class="text-gray-500 text-center fw-semibold fs-6">-->
+<!--                                <a href="--><?php //= url_to('register') ?><!--"-->
+<!--                                   class="link-primary">--><?php //= lang('Auth.needAnAccount') ?><!--</a></div>-->
                             <!--end::Sign up-->
                         <?php endif; ?>
                     </form>

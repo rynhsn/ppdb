@@ -22,11 +22,11 @@ var KTCreateAccount = function () {
 
         // Stepper change event
         stepperObj.on('kt.stepper.changed', function (stepper) {
-            if (stepperObj.getCurrentStepIndex() === 7) {
+            if (stepperObj.getCurrentStepIndex() === 5) {
                 formSubmitButton.classList.remove('d-none');
                 formSubmitButton.classList.add('d-inline-block');
                 formContinueButton.classList.add('d-none');
-            } else if (stepperObj.getCurrentStepIndex() === 8) {
+            } else if (stepperObj.getCurrentStepIndex() === 6) {
                 formSubmitButton.classList.add('d-none');
                 formContinueButton.classList.add('d-none');
             } else {
@@ -52,6 +52,12 @@ var KTCreateAccount = function () {
 
                         KTUtil.scrollTop();
                     } else {
+                        console.log('Gagal!');
+                        //tampilkan di console field yang gagal
+                        validator.getElements().forEach(function (input) {
+                            console.log(input.name);
+                        });
+
                         Swal.fire({
                             text: "Kayaknya ada yang salah deh, cek lagi ya.",
                             icon: "error",
@@ -67,7 +73,6 @@ var KTCreateAccount = function () {
                 });
             } else {
                 stepper.goNext();
-
                 KTUtil.scrollTop();
             }
         });
@@ -138,6 +143,7 @@ var KTCreateAccount = function () {
                                     document.querySelector('#username_siswa').innerHTML = response.data.username;
                                     document.querySelector('#password_siswa').innerHTML = response.data.password;
                                 }else{
+                                    console.log(response.data);
                                     document.querySelector('#berhasil').classList.add('d-none');
                                     document.querySelector('#gagal').classList.remove('d-none');
                                 }
@@ -307,69 +313,36 @@ var KTCreateAccount = function () {
                             }
                         }
                     },
-                    'anak_ke': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Harus diisi'
-                            },
-                            digits: {
-                                message: 'Hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 1,
-                                max: 2,
-                                message: 'Minimal 1 digit dan maksimal 2 digit'
-                            }
-                        }
-                    },
-                    'jml_saudara': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Jumlah saudara harus diisi'
-                            },
-                            digits: {
-                                message: 'Jumlah saudara hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 1,
-                                max: 2,
-                                message: 'Jumlah saudara minimal 1 digit dan maksimal 2 digit'
-                            }
-                        }
-                    },
-                    'no_telp': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Nomor telepon harus diisi'
-                            },
-                            digits: {
-                                message: 'Nomor telepon hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 10,
-                                max: 15,
-                                message: 'No. Telepon minimal 10 digit dan maksimal 15 digit'
-                            }
-                        }
-                    },
-                },
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    // Bootstrap Framework Integration
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-                    })
-                }
-            }
-        ));
-
-        // Step alamat
-        validations.push(FormValidation.formValidation(
-            form,
-            {
-                fields: {
+                    // 'anak_ke': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Harus diisi'
+                    //         },
+                    //         digits: {
+                    //             message: 'Hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 1,
+                    //             max: 2,
+                    //             message: 'Minimal 1 digit dan maksimal 2 digit'
+                    //         }
+                    //     }
+                    // },
+                    // 'jml_saudara': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Jumlah saudara harus diisi'
+                    //         },
+                    //         digits: {
+                    //             message: 'Jumlah saudara hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 1,
+                    //             max: 2,
+                    //             message: 'Jumlah saudara minimal 1 digit dan maksimal 2 digit'
+                    //         }
+                    //     }
+                    // },
                     'alamat': {
                         validators: {
                             notEmpty: {
@@ -427,252 +400,51 @@ var KTCreateAccount = function () {
                             }
                         }
                     },
-                    'jarak': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Jarak rumah ke sekolah harus diisi.'
-                            }
-                        },
-                    },
-                    'kendaraan': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pilih salah satu.'
-                            }
-                        }
-                    }
-                },
+                    // 'jarak': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Jarak rumah ke sekolah harus diisi.'
+                    //         }
+                    //     },
+                    // },
+                    // 'kendaraan': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pilih salah satu.'
+                    //         }
+                    //     }
+                    // },
+                    // 'no_kk': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Nomor KK harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'Nomor KK hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 16,
+                    //             max: 16,
+                    //             message: 'Nomor KK harus berisi 16 angka'
+                    //         }
+                    //     }
+                    // },
 
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    // Bootstrap Framework Integration
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-                    })
-                }
-            }
-        ));
-
-        // Step data orang tua
-        validations.push(FormValidation.formValidation(
-            form,
-            {
-                fields: {
-                    'no_kk': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Nomor KK harus diisi.'
-                            },
-                            digits: {
-                                message: 'Nomor KK hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 16,
-                                max: 16,
-                                message: 'Nomor KK harus berisi 16 angka'
-                            }
-                        }
-                    },
-                    'nama_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Nama ayah harus diisi.'
-                            }
-                        }
-                    },
-                    'nik_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'NIK ayah harus diisi.'
-                            },
-                            digits: {
-                                message: 'NIK ayah hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 16,
-                                max: 16,
-                                message: 'NIK ayah harus berisi 16 angka'
-                            }
-                        }
-                    },
-                    'pekerjaan_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pekerjaan ayah harus diisi.'
-                            }
-                        }
-                    },
-                    'pdd_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pendidikan ayah harus diisi.'
-                            }
-                        }
-                    },
-                    'penghasilan_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Penghasilan ayah harus diisi.'
-                            },
-                        }
-                    },
-                    'status_hidup_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pilih salah satu.'
-                            },
-                        }
-                    },
-                    'th_lahir_ayah': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Tahun lahir ayah harus diisi.'
-                            },
-                            digits: {
-                                message: 'Tahun lahir ayah hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 4,
-                                max: 4,
-                                message: 'Tahun lahir ayah harus berisi 4 angka'
-                            }
-                        }
-                    },
-                    'nama_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Nama ibu harus diisi.'
-                            }
-                        }
-                    },
-                    'nik_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'NIK ibu harus diisi.'
-                            },
-                            digits: {
-                                message: 'NIK ibu hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 16,
-                                max: 16,
-                                message: 'NIK ibu harus berisi 16 angka'
-                            }
-                        }
-                    },
-                    'pekerjaan_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pekerjaan ibu harus diisi.'
-                            }
-                        }
-                    },
-                    'pdd_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pendidikan ibu harus diisi.'
-                            }
-                        }
-                    },
-                    'penghasilan_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Penghasilan ibu harus diisi.'
-                            },
-                        }
-                    },
-                    'status_hidup_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Pilih salah satu.'
-                            },
-                        }
-                    },
-                    'th_lahir_ibu': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Tahun lahir ibu harus diisi.'
-                            },
-                            digits: {
-                                message: 'Tahun lahir ibu hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 4,
-                                max: 4,
-                                message: 'Tahun lahir ibu harus berisi 4 angka'
-                            }
-                        }
-                    },
-                    'nik_wali': {
-                        validators: {
-                            digits: {
-                                message: 'NIK wali hanya boleh berisi angka'
-                            }
-                        }
-                    },
-                    'th_lahir_wali': {
-                        validators: {
-                            digits: {
-                                message: 'Tahun lahir wali hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 4,
-                                max: 4,
-                                message: 'Tahun lahir wali harus berisi 4 angka'
-                            }
-                        }
-                    },
-                    'no_telp_ot': {
-                        validators: {
-                            notEmpty: {
-                                message: 'Nomor telepon orang tua / wali harus diisi.'
-                            },
-                            digits: {
-                                message: 'Nomor telepon orang tua / wali hanya boleh berisi angka.'
-                            },
-                            stringLength: {
-                                min: 10,
-                                max: 13,
-                                message: 'Nomor telepon orang tua / wali harus berisi 10-13 angka.'
-                            }
-                        }
-                    }
-                },
-
-                plugins: {
-                    trigger: new FormValidation.plugins.Trigger(),
-                    // Bootstrap Framework Integration
-                    bootstrap: new FormValidation.plugins.Bootstrap5({
-                        rowSelector: '.fv-row',
-                        eleInvalidClass: '',
-                        eleValidClass: ''
-                    })
-                }
-            }
-        ));
-
-        // Step data sekolah asal
-        validations.push(FormValidation.formValidation(
-            form,
-            {
-                fields: {
-                    'npsn': {
-                        validators: {
-                            notEmpty: {
-                                message: 'NPSN sekolah harus diisi.'
-                            },
-                            digits: {
-                                message: 'NPSN sekolah hanya boleh berisi angka'
-                            },
-                            stringLength: {
-                                min: 8,
-                                max: 8,
-                                message: 'NPSN sekolah harus berisi 8 angka'
-                            }
-                        }
-                    },
+                    // 'npsn': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'NPSN sekolah harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'NPSN sekolah hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 8,
+                    //             max: 8,
+                    //             message: 'NPSN sekolah harus berisi 8 angka'
+                    //         }
+                    //     }
+                    // },
                     'nama_sekolah': {
                         validators: {
                             notEmpty: {
@@ -687,32 +459,273 @@ var KTCreateAccount = function () {
                             }
                         }
                     },
-                    'pkh':{
+                    'no_un':{
+                            validators:{
+                                notEmpty: {
+                                    message: 'Nomor No. Ujian Nasional harus diisi.'
+                                },
+                                digits: {
+                                    message: 'Nomor No. Ujian Nasional hanya boleh berisi angka'
+                                }
+                            }
+                        },
+                    'no_seri_ijazah':{
+                            validators:{
+                                notEmpty: {
+                                    message: 'Nomor No. Seri Ijazah harus diisi.'
+                                },
+                                digits: {
+                                    message: 'Nomor No. Seri Ijazah hanya boleh berisi angka'
+                                }
+                            }
+                        },
+                    'no_seri_skhun':{
+                            validators:{
+                                notEmpty: {
+                                    message: 'Nomor No. Seri SKHUN harus diisi.'
+                                },
+                                digits: {
+                                    message: 'Nomor No. Seri SKHUN hanya boleh berisi angka'
+                                }
+                            }
+                        },
+                    'sttb_lulus':{
                         validators:{
-                            digits: {
-                                message: 'Nomor PKH hanya boleh berisi angka'
+                            notEmpty: {
+                                message: 'Nomor STTB harus diisi.'
                             }
                         }
                     },
-                    'kip':{
-                        validators:{
-                            digits: {
-                                message: 'Nomor KIP hanya boleh berisi angka'
+                    // 'pkh':{
+                    //     validators:{
+                    //         digits: {
+                    //             message: 'Nomor PKH hanya boleh berisi angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'kip':{
+                    //     validators:{
+                    //         digits: {
+                    //             message: 'Nomor KIP hanya boleh berisi angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'kks':{
+                    //     validators:{
+                    //         digits: {
+                    //             message: 'Nomor KKS hanya boleh berisi angka'
+                    //         }
+                    //     }
+                    // }
+
+                    'nama_ayah': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Nama ayah harus diisi.'
                             }
                         }
                     },
-                    'kks':{
-                        validators:{
-                            digits: {
-                                message: 'Nomor KKS hanya boleh berisi angka'
+                    // 'nik_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'NIK ayah harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'NIK ayah hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 16,
+                    //             max: 16,
+                    //             message: 'NIK ayah harus berisi 16 angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'pekerjaan_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pekerjaan ayah harus diisi.'
+                    //         }
+                    //     }
+                    // },
+                    // 'pdd_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pendidikan ayah harus diisi.'
+                    //         }
+                    //     }
+                    // },
+                    // 'penghasilan_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Penghasilan ayah harus diisi.'
+                    //         },
+                    //     }
+                    // },
+                    // 'status_hidup_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pilih salah satu.'
+                    //         },
+                    //     }
+                    // },
+                    // 'th_lahir_ayah': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Tahun lahir ayah harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'Tahun lahir ayah hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 4,
+                    //             max: 4,
+                    //             message: 'Tahun lahir ayah harus berisi 4 angka'
+                    //         }
+                    //     }
+                    // },
+                    'nama_ibu': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Nama ibu harus diisi.'
                             }
                         }
-                    }
+                    },
+                    // 'nik_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'NIK ibu harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'NIK ibu hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 16,
+                    //             max: 16,
+                    //             message: 'NIK ibu harus berisi 16 angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'pekerjaan_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pekerjaan ibu harus diisi.'
+                    //         }
+                    //     }
+                    // },
+                    // 'pdd_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pendidikan ibu harus diisi.'
+                    //         }
+                    //     }
+                    // },
+                    // 'penghasilan_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Penghasilan ibu harus diisi.'
+                    //         },
+                    //     }
+                    // },
+                    // 'status_hidup_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Pilih salah satu.'
+                    //         },
+                    //     }
+                    // },
+                    // 'th_lahir_ibu': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Tahun lahir ibu harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'Tahun lahir ibu hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 4,
+                    //             max: 4,
+                    //             message: 'Tahun lahir ibu harus berisi 4 angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'nik_wali': {
+                    //     validators: {
+                    //         digits: {
+                    //             message: 'NIK wali hanya boleh berisi angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'th_lahir_wali': {
+                    //     validators: {
+                    //         digits: {
+                    //             message: 'Tahun lahir wali hanya boleh berisi angka'
+                    //         },
+                    //         stringLength: {
+                    //             min: 4,
+                    //             max: 4,
+                    //             message: 'Tahun lahir wali harus berisi 4 angka'
+                    //         }
+                    //     }
+                    // },
+                    // 'no_telp_ot': {
+                    //     validators: {
+                    //         notEmpty: {
+                    //             message: 'Nomor telepon orang tua / wali harus diisi.'
+                    //         },
+                    //         digits: {
+                    //             message: 'Nomor telepon orang tua / wali hanya boleh berisi angka.'
+                    //         },
+                    //         stringLength: {
+                    //             min: 10,
+                    //             max: 13,
+                    //             message: 'Nomor telepon orang tua / wali harus berisi 10-13 angka.'
+                    //         }
+                    //     }
+                    // },
+                    'no_telp': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Nomor telepon harus diisi'
+                            },
+                            digits: {
+                                message: 'Nomor telepon hanya boleh berisi angka'
+                            },
+                            stringLength: {
+                                min: 10,
+                                max: 15,
+                                message: 'No. Telepon minimal 10 digit dan maksimal 15 digit'
+                            }
+                        }
+                    },
                 },
 
                 plugins: {
                     trigger: new FormValidation.plugins.Trigger(),
                     // Bootstrap Framework Integration
+                    bootstrap: new FormValidation.plugins.Bootstrap5({
+                        rowSelector: '.fv-row',
+                        eleInvalidClass: '',
+                        eleValidClass: ''
+                    })
+                }
+            }
+        ));
+
+        //step Berkas
+        validations.push(FormValidation.formValidation(
+            form,
+            {
+                fields: {
+                    'file_ijazah': {
+                        validators: {
+                            notEmpty: {
+                                message: 'Coba cek lagi ya.'
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
                     bootstrap: new FormValidation.plugins.Bootstrap5({
                         rowSelector: '.fv-row',
                         eleInvalidClass: '',
