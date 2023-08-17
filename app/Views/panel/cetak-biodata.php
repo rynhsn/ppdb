@@ -145,21 +145,6 @@
                                 <td>:</td>
                                 <td><?= $siswa['kode_pos'] ?></td>
                             </tr>
-                            <tr>
-                                <td>Anak ke</td>
-                                <td>:</td>
-                                <td><?= $siswa['anak_ke'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Jumlah Saudara</td>
-                                <td>:</td>
-                                <td><?= $siswa['jml_saudara'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>No. Hp</td>
-                                <td>:</td>
-                                <td><?= $siswa['no_hp_siswa'] ?></td>
-                            </tr>
                         </table>
                         <!-- End:Data Siswa -->
                     </td>
@@ -180,16 +165,6 @@
                                 <td>:</td>
                                 <td><?= date('d-m-Y', strtotime($siswa['created_at'])) ?></td>
                             </tr>
-                            <tr>
-                                <td>Jarak ke sekolah</td>
-                                <td>:</td>
-                                <td><?= $siswa['jarak'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Transportasi ke sekolah</td>
-                                <td>:</td>
-                                <td><?= $siswa['trans'] ?></td>
-                            </tr>
                         </table>
                     </td>
                 </tr>
@@ -205,16 +180,11 @@
                             <tr>
                                 <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;" colspan="3">
                                     Data Orang
-                                    Tua/Wali
+                                    Tua
                                 </td>
                             </tr>
                             <tr>
-                                <td style="width: 150px">No. KK</td>
-                                <td style="width: 10px">:</td>
-                                <td><?= $siswa['no_kk'] ?></td>
-                            </tr>
-                            <tr>
-                                <td style="width: 150px">No. Hp Orang Tua/Wali</td>
+                                <td style="width: 150px">No. Hp Orang Tua</td>
                                 <td style="width: 10px">:</td>
                                 <td><?= $siswa['no_hp_ortu'] ?></td>
                             </tr>
@@ -240,42 +210,6 @@
                                 <td style="width: 10px">:</td>
                                 <td><?= $siswa['nama_ayah'] ?></td>
                             </tr>
-                            <!--nik ayah-->
-                            <tr>
-                                <td>NIK Ayah</td>
-                                <td>:</td>
-                                <td><?= $siswa['nik_ayah'] ?></td>
-                            </tr>
-                            <!--status ayah-->
-                            <tr>
-                                <td>Status</td>
-                                <td>:</td>
-                                <td><?= $siswa['status_ayah'] ?></td>
-                            </tr>
-                            <!--tahun lahir ayah-->
-                            <tr>
-                                <td>Tahun Lahir</td>
-                                <td>:</td>
-                                <td><?= $siswa['th_lahir_ayah'] ?></td>
-                            </tr>
-                            <!--pendidikan ayah-->
-                            <tr>
-                                <td>Pendidikan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pdd_ayah'] ?></td>
-                            </tr>
-                            <!--pekerjaan ayah-->
-                            <tr>
-                                <td>Pekerjaan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pekerjaan_ayah'] ?></td>
-                            </tr>
-                            <!--penghasilan ayah-->
-                            <tr>
-                                <td>Penghasilan</td>
-                                <td>:</td>
-                                <td><?= $siswa['penghasilan_ayah'] ?></td>
-                            </tr>
                             <tr>
                                 <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;" colspan="3">
                                     Data Ibu
@@ -285,86 +219,6 @@
                                 <td>Nama Ibu</td>
                                 <td>:</td>
                                 <td><?= $siswa['nama_ibu'] ?></td>
-                            </tr>
-                            <!--nik ibu-->
-                            <tr>
-                                <td>NIK Ibu</td>
-                                <td>:</td>
-                                <td><?= $siswa['nik_ibu'] ?></td>
-                            </tr>
-                            <!--status ibu-->
-                            <tr>
-                                <td>Status</td>
-                                <td>:</td>
-                                <td><?= $siswa['status_ibu'] ?></td>
-                            </tr>
-                            <!--tahun lahir ibu-->
-                            <tr>
-                                <td>Tahun Lahir</td>
-                                <td>:</td>
-                                <td><?= $siswa['th_lahir_ibu'] ?></td>
-                            </tr>
-                            <!--pendidikan ibu-->
-                            <tr>
-                                <td>Pendidikan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pdd_ibu'] ?></td>
-                            </tr>
-                            <!--pekerjaan ibu-->
-                            <tr>
-                                <td>Pekerjaan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pekerjaan_ibu'] ?></td>
-                            </tr>
-                            <!--penghasilan ibu-->
-                            <tr>
-                                <td>Penghasilan</td>
-                                <td>:</td>
-                                <td><?= $siswa['penghasilan_ibu'] ?></td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td style="vertical-align: top;">
-                        <table>
-                            <tr>
-                                <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;" colspan="3">
-                                    Data Wali
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 150px">Nama Wali</td>
-                                <td style="width: 10px">:</td>
-                                <td><?= $siswa['nama_wali'] ?></td>
-                            </tr>
-                            <!--nik wali-->
-                            <tr>
-                                <td>NIK Wali</td>
-                                <td>:</td>
-                                <td><?= $siswa['nik_wali'] ?></td>
-                            </tr>
-                            <!--tahun lahir wali-->
-                            <tr>
-                                <td>Tahun Lahir</td>
-                                <td>:</td>
-                                <td><?= $siswa['th_lahir_wali'] ?></td>
-                            </tr>
-                            <!--pendidikan wali-->
-                            <tr>
-                                <td>Pendidikan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pdd_wali'] ?></td>
-                            </tr>
-                            <!--pekerjaan wali-->
-                            <tr>
-                                <td>Pekerjaan</td>
-                                <td>:</td>
-                                <td><?= $siswa['pekerjaan_wali'] ?></td>
-                            </tr>
-                            <!--penghasilan wali-->
-                            <tr>
-                                <td>Penghasilan</td>
-                                <td>:</td>
-                                <td><?= $siswa['penghasilan_wali'] ?></td>
                             </tr>
                         </table>
                     </td>
@@ -384,19 +238,14 @@
                     <td>
                         <table>
                             <tr>
-                                <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;"
-                                    colspan="3">Data Asal Sekolah
+                                <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;" colspan="3">
+                                    Data Asal Sekolah
                                 </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 150px">NPSN Sekolah</td>
-                                <td style="width: 10px">:</td>
-                                <td><?= $siswa['npsn_sekolah'] ?></td>
                             </tr>
                             <!--nama sekolah-->
                             <tr>
-                                <td>Nama Sekolah</td>
-                                <td>:</td>
+                                <td style="width: 150px">Nama Sekolah</td>
+                                <td style="width: 10px">:</td>
                                 <td><?= $siswa['nama_sekolah'] ?></td>
                             </tr>
                             <!--alamat sekolah-->
@@ -405,32 +254,25 @@
                                 <td>:</td>
                                 <td><?= $siswa['lokasi_sekolah'] ?></td>
                             </tr>
-                        </table>
-                    </td>
-                    <td>
-                        <table>
                             <tr>
-                                <td style="font-weight: bold; text-decoration: underline; padding-bottom: 10px; padding-top: 20px;" colspan="3">
-                                    Data Kepemilikan
-                                    Kartu
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="width: 150px">No. KKS</td>
-                                <td style="width: 10px">:</td>
-                                <td><?= $siswa['no_kks'] ?></td>
-                            </tr>
-                            <!--no. kps-->
-                            <tr>
-                                <td>No. PKH</td>
+                                <td>No. Ujian Nasional</td>
                                 <td>:</td>
-                                <td><?= $siswa['no_pkh'] ?></td>
+                                <td><?= $siswa['no_un'] ?></td>
                             </tr>
-                            <!--no. kip-->
                             <tr>
-                                <td>No. KIP</td>
+                                <td>No. Seri Ijazah</td>
                                 <td>:</td>
-                                <td><?= $siswa['no_kip'] ?></td>
+                                <td><?= $siswa['no_seri_ijazah'] ?></td>
+                            </tr>
+                            <tr>
+                                <td>No. Seri SKHUN</td>
+                                <td>:</td>
+                                <td><?= $siswa['no_seri_skhun'] ?></td>
+                            </tr>
+                            <tr>
+                                <td>No. STTB / Tahun Lulus</td>
+                                <td>:</td>
+                                <td><?= $siswa['sttb_lulus'] ?></td>
                             </tr>
                         </table>
                     </td>

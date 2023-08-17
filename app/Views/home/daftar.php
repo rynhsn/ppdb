@@ -164,8 +164,7 @@
                     <!--begin::Wrapper-->
                     <div class="w-lg-650px w-xl-700px p-10 p-lg-15 mx-auto">
                         <!--begin::Form-->
-                        <form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form"
-                              action="<?= base_url('daftar') ?>" method="post">
+                        <form class="my-auto pb-5" novalidate="novalidate" id="kt_create_account_form" enctype="multipart/form-data" action="<?= base_url('daftar') ?>" method="post">
                             <!--begin::Step 1-->
                             <div class="current" data-kt-stepper-element="content">
                                 <!--begin::Wrapper-->
@@ -759,13 +758,13 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <!--begin::Label-->
-                                                <label class="form-label required" for="file_ijazah">Ijazah</label>
+                                                <label class="form-label required" for="file_surat_kelulusan">Surat Kelulusan</label>
                                                 <!--end::Label-->
                                             </div>
                                             <div class="col">
                                                 <!--begin::Input-->
-                                                <input name="file_ijazah" id="file_ijazah" type="file"
-                                                       class="form-control form-control-lg form-control-solid"/>
+                                                <input name="file_surat_kelulusan" id="file_surat_kelulusan" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
                                                 <!--end::Input-->
                                             </div>
                                         </div>
@@ -776,13 +775,115 @@
                                         <div class="row">
                                             <div class="col-4">
                                                 <!--begin::Label-->
-                                                <label class="form-label required" for="file_skhun">SKHUN</label>
+                                                <label class="form-label required" for="file_kk">Kartu Keluarga</label>
                                                 <!--end::Label-->
                                             </div>
                                             <div class="col">
                                                 <!--begin::Input-->
-                                                <input name="file_skhun" id="file_skhun" type="file"
-                                                       class="form-control form-control-lg form-control-solid"/>
+                                                <input name="file_kk" id="file_kk" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label required" for="file_ktp_ayah">KTP Ayah</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_ktp_ayah" id="file_ktp_ayah" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label required" for="file_ktp_ibu">KTP Ibu</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_ktp_ibu" id="file_ktp_ibu" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label required" for="file_akta">Akta Kelahiran</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_akta" id="file_akta" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label required" for="file_foto">Pas Foto</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_foto" id="file_foto" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*" required/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label" for="file_ijazah">Ijazah</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_ijazah" id="file_ijazah" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*"/>
+                                                <!--end::Input-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Input group-->
+                                    <div class="fv-row mb-10">
+                                        <div class="row">
+                                            <div class="col-4">
+                                                <!--begin::Label-->
+                                                <label class="form-label" for="file_kip">KIP</label>
+                                                <!--end::Label-->
+                                            </div>
+                                            <div class="col">
+                                                <!--begin::Input-->
+                                                <input name="file_kip" id="file_kip" type="file"
+                                                       class="form-control form-control-lg form-control-solid" accept="image/*"/>
                                                 <!--end::Input-->
                                             </div>
                                         </div>

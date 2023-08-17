@@ -14,7 +14,7 @@
         <!--end::Sidebar mobile toggle-->
         <!--begin::Mobile logo-->
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-            <a href="../../demo1/dist/index.html" class="d-lg-none">
+            <a href="<?= base_url('panel')?>" class="d-lg-none">
                 <img alt="Logo" src="<?= base_url(); ?>media/logos/<?=$lembaga['logo']?>" class="h-30px"/>
             </a>
         </div>

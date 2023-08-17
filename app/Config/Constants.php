@@ -100,7 +100,7 @@ define('JENIS_KELAMIN', ['Laki-laki', 'Perempuan']);
 define('PROVINSI', ['Aceh', 'Sumatera Utara', 'Sumatera Barat', 'Riau', 'Kepulauan Riau', 'Jambi', 'Bengkulu', 'Sumatera Selatan', 'Kepulauan Bangka Belitung', 'Lampung', 'Banten', 'Jawa Barat', 'DKI Jakarta', 'Jawa Tengah', 'DI Yogyakarta', 'Jawa Timur', 'Bali', 'Nusa Tenggara Barat', 'Nusa Tenggara Timur', 'Kalimantan Barat', 'Kalimantan Tengah', 'Kalimantan Selatan', 'Kalimantan Timur', 'Kalimantan Utara', 'Sulawesi Utara', 'Sulawesi Tengah', 'Sulawesi Selatan', 'Sulawesi Tenggara', 'Sulawesi Barat', 'Gorontalo', 'Maluku', 'Maluku Utara', 'Papua Barat', 'Papua']);
 define('JENIS_TINGGAL', ['Bersama Orang Tua', 'Wali', 'Kos', 'Asrama', 'Panti Asuhan', 'Lainnya']);
 define('KENDARAAN', ['Sepeda Motor', 'Mobil', 'Sepeda', 'Jalan Kaki', 'Ojek', 'Angkutan Umum', 'Lainnya']);
-define('STATUS_PEMBAYARAN', ['0' => ['Belum Bayar', 'danger'], '1' => ['Menunggu Konfirmasi', 'warning'], '2' => ['Sudah Bayar', 'success'], '3' => ['Ditolak', 'dark']]);
-define('STATUS_KELULUSAN', [0 => 'Belum Melakukan Ujian', 1 => 'Lulus', 2 => 'Tidak Lulus']);
+define('STATUS_PEMBAYARAN', ['0' => ['Belum Bayar', 'danger'], '1' => ['Menunggu Konfirmasi', 'warning'], '2' => ['Sudah Bayar', 'success'], '3' => ['Ditolak', 'dark']]); //status pendaftaran
+define('STATUS_KELULUSAN', [0 => 'Belum Melakukan Ujian', 1 => 'Lulus', 2 => 'Tidak Lulus']); //status_kelulusan
 define('REKENING', ['BCA' => '1234567', 'BNI' => '09876554', 'BRI' => '91823647', 'Mandiri' => '102938475627289']);
 define('BIAYA_PENDAFTARAN', ['SMP' => '100.000,-', 'SMK' => '150.000,-', 'Madrasah Aliyah' => '200.000,-']);

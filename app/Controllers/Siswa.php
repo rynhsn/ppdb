@@ -61,63 +61,7 @@ class Siswa extends BaseController
 
     public function update($id)
     {
-        $data = [
-            'id' => $id,
-            'jenjang_daftar' => $this->request->getVar('jenjang_daftar'),
-
-            'nama_lengkap' => $this->request->getVar('nama_lengkap'),
-            'nisn' => $this->request->getVar('nisn'),
-            'nik' => $this->request->getVar('nik'),
-            'jk' => $this->request->getVar('jk'),
-            'tempat_lahir' => $this->request->getVar('tempat_lahir'),
-            'tgl_lahir' => $this->request->getVar('tgl_lahir'),
-            'agama' => $this->request->getVar('agama'),
-            'anak_ke' => $this->request->getVar('anak_ke'),
-            'jml_saudara' => $this->request->getVar('jml_saudara'),
-            'no_hp_siswa' => $this->request->getVar('no_hp_siswa'),
-
-            'alamat_siswa' => $this->request->getVar('alamat_siswa'),
-            'jenis_tinggal' => $this->request->getVar('jenis_tinggal'),
-            'desa' => $this->request->getVar('desa'),
-            'kec' => $this->request->getVar('kec'),
-            'kab' => $this->request->getVar('kab'),
-            'prov' => $this->request->getVar('prov'),
-            'kode_pos' => $this->request->getVar('kode_pos'),
-            'jarak' => $this->request->getVar('jarak'),
-            'trans' => $this->request->getVar('trans'),
-
-
-            'no_kk' => $this->request->getVar('no_kk'),
-            'nama_ayah' => $this->request->getVar('nama_ayah'),
-            'nik_ayah' => $this->request->getVar('nik_ayah'),
-            'pekerjaan_ayah' => $this->request->getVar('pekerjaan_ayah'),
-            'pdd_ayah' => $this->request->getVar('pdd_ayah'),
-            'penghasilan_ayah' => $this->request->getVar('penghasilan_ayah'),
-            'status_ayah' => $this->request->getVar('status_ayah'),
-            'th_lahir_ayah' => $this->request->getVar('th_lahir_ayah'),
-            'nama_ibu' => $this->request->getVar('nama_ibu'),
-            'nik_ibu' => $this->request->getVar('nik_ibu'),
-            'pekerjaan_ibu' => $this->request->getVar('pekerjaan_ibu'),
-            'pdd_ibu' => $this->request->getVar('pdd_ibu'),
-            'penghasilan_ibu' => $this->request->getVar('penghasilan_ibu'),
-            'status_ibu' => $this->request->getVar('status_ibu'),
-            'th_lahir_ibu' => $this->request->getVar('th_lahir_ibu'),
-            'nama_wali' => $this->request->getVar('nama_wali'),
-            'nik_wali' => $this->request->getVar('nik_wali'),
-            'pdd_wali' => $this->request->getVar('pdd_wali'),
-            'pekerjaan_wali' => $this->request->getVar('pekerjaan_wali'),
-            'penghasilan_wali' => $this->request->getVar('penghasilan_wali'),
-            'th_lahir_wali' => $this->request->getVar('th_lahir_wali'),
-            'no_hp_ortu' => $this->request->getVar('no_hp_ortu'),
-
-            'npsn_sekolah' => $this->request->getVar('npsn_sekolah'),
-            'nama_sekolah' => $this->request->getVar('nama_sekolah'),
-            'lokasi_sekolah' => $this->request->getVar('lokasi_sekolah'),
-            'no_kks' => $this->request->getVar('no_kks'),
-            'no_pkh' => $this->request->getVar('no_pkh'),
-            'no_kip' => $this->request->getVar('no_kip'),
-        ];
-        $this->siswaModel->save($data);
+        $this->siswaModel->save($this->request->getVar());
         session()->setFlashdata('pesan', 'Data berhasil diubah.');
         return redirect()->to('/panel/calon-siswa/edit/' . $id);
     }
@@ -127,9 +71,36 @@ class Siswa extends BaseController
         $siswa = $this->siswaModel->find($id);
         $user = $this->userModel->where('username', $siswa['no_pendaftaran'])->first();
         //hapus dari users juga
-        $this->groupModel->removeUserFromAllGroups($user->id);
-        $this->userModel->delete($user->id);
+//        $this->groupModel->removeUserFromAllGroups($user->id);
+//        $this->userModel->delete($user->id);
         //hapus dari siswa
+
+        //hapus file
+        if ($siswa['file_foto'] != 'default.jpg') {
+            unlink('uploads/foto/' . $siswa['file_foto']);
+        }
+        if ($siswa['file_surat_kelulusan'] != 'default.jpg') {
+            unlink('uploads/sk/' . $siswa['file_surat_kelulusan']);
+        }
+        if ($siswa['file_ijazah'] != 'default.jpg') {
+            unlink('uploads/ijazah/' . $siswa['file_ijazah']);
+        }
+        if ($siswa['file_ktp_ayah'] != 'default.jpg') {
+            unlink('uploads/ktp_ayah/' . $siswa['file_ktp_ayah']);
+        }
+        if ($siswa['file_ktp_ibu'] != 'default.jpg') {
+            unlink('uploads/ktp_ibu/' . $siswa['file_ktp_ibu']);
+        }
+        if ($siswa['file_kk'] != 'default.jpg') {
+            unlink('uploads/kk/' . $siswa['file_kk']);
+        }
+        if ($siswa['file_akta'] != 'default.jpg') {
+            unlink('uploads/akta/' . $siswa['file_akta']);
+        }
+        if ($siswa['file_kip'] != 'default.jpg') {
+            unlink('uploads/kip/' . $siswa['file_kip']);
+        }
+
         $this->siswaModel->delete($id);
         session()->setFlashdata('pesan', 'Data berhasil dihapus.');
         return redirect()->to('/panel/calon-siswa');

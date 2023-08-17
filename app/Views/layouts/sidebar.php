@@ -109,6 +109,12 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                 </i>
                         </span>
                             <span class="menu-title text-white">Validasi Registrasi</span>
+                            <span class="menu-badge">
+                                <span class="badge badge-warning"><?= get_total_pending_students() ?></span>
+                            </span>
+<!--                            <span class="menu-badge">-->
+<!--                                <span class="badge badge-danger">--><?php //= get_total_pending_students() ?><!--</span>-->
+<!--                            </span>-->
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -144,7 +150,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     </i>
                                 </span>
                                 <span class="menu-title text-white">Materi dan Jadwal Ujian</span>
-                                <span class="menu-arrow" ></span>
+                                <span class="menu-arrow"></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
@@ -182,7 +188,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     </i>
                                 </span>
                                 <span class="menu-title text-white">Hasil Seleksi</span>
-                                <span class="menu-arrow" ></span>
+                                <span class="menu-arrow"></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->
@@ -230,7 +236,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     </i>
                                 </span>
                                 <span class="menu-title text-white">Site Management</span>
-                                <span class="menu-arrow" ></span>
+                                <span class="menu-arrow"></span>
                             </span>
                             <!--end:Menu link-->
                             <!--begin:Menu sub-->
@@ -277,7 +283,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     </i>
                                 </span>
                                 <span class="menu-title text-white">Account Management</span>
-                                <span class="menu-arrow" ></span>
+                                <span class="menu-arrow"></span>
                             </span>
                             <!--end:Menu link-->
                             <!--begin:Menu sub-->
@@ -326,7 +332,7 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                     </i>
                                 </span>
                                 <span class="menu-title text-white">Jadwal PPDB</span>
-                                <span class="menu-arrow" ></span>
+                                <span class="menu-arrow"></span>
                             </span>
                         <!--end:Menu link-->
                         <!--begin:Menu sub-->

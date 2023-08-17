@@ -75,15 +75,65 @@ class Home extends BaseController
 
         $no_pendaftaran = $this->_generateNoPendaftaran();
 
-        $nama_file_surat_kelulusan = null;
-        $nama_file_kk = null;
-        $nama_file_ktp_ayah = null;
-        $nama_file_ktp_ibu = null;
-        $nama_file_akta = null;
-        $nama_file_foto = null;
-        $nama_file_ijazah = null;
-        $nama_file_kip = null;
+        $file_surat_kelulusan = $this->request->getFile('file_surat_kelulusan');
+        //generate nama sampul random
+        $nama_file_surat_kelulusan = $file_surat_kelulusan->getRandomName();
+        //pindahkan file ke folder img
+        $file_surat_kelulusan->move('uploads/sk', $nama_file_surat_kelulusan);
 
+        $file_kk = $this->request->getFile('file_kk');
+        //generate nama sampul random
+        $nama_file_kk = $file_kk->getRandomName();
+        //pindahkan file ke folder img
+        $file_kk->move('uploads/kk', $nama_file_kk);
+
+        $file_ktp_ayah = $this->request->getFile('file_ktp_ayah');
+        //generate nama sampul random
+        $nama_file_ktp_ayah = $file_ktp_ayah->getRandomName();
+        //pindahkan file ke folder img
+        $file_ktp_ayah->move('uploads/ktp_ayah', $nama_file_ktp_ayah);
+
+        $file_ktp_ibu = $this->request->getFile('file_ktp_ibu');
+        //generate nama sampul random
+        $nama_file_ktp_ibu = $file_ktp_ibu->getRandomName();
+        //pindahkan file ke folder img
+        $file_ktp_ibu->move('uploads/ktp_ibu', $nama_file_ktp_ibu);
+
+        $file_akta = $this->request->getFile('file_akta');
+        //generate nama sampul random
+        $nama_file_akta = $file_akta->getRandomName();
+        //pindahkan file ke folder img
+        $file_akta->move('uploads/akta', $nama_file_akta);
+
+        $file_foto = $this->request->getFile('file_foto');
+        //generate nama sampul random
+        $nama_file_foto = $file_foto->getRandomName();
+        //pindahkan file ke folder img
+        $file_foto->move('uploads/foto', $nama_file_foto);
+
+
+
+        $file_ijazah = $this->request->getFile('file_ijazah');
+        //cek apakah tidak ada gambar yang diupload
+        if ($file_ijazah->getError() == 4) {
+            $nama_file_ijazah = 'default.jpg';
+        } else {
+            //generate nama sampul random
+            $nama_file_ijazah = $file_ijazah->getRandomName();
+            //pindahkan file ke folder img
+            $file_ijazah->move('uploads/ijazah', $nama_file_ijazah);
+        }
+
+        $file_kip = $this->request->getFile('file_kip');
+        //cek apakah tidak ada gambar yang diupload
+        if ($file_kip->getError() == 4) {
+            $nama_file_kip = 'default.jpg';
+        } else {
+            //generate nama sampul random
+            $nama_file_kip = $file_kip->getRandomName();
+            //pindahkan file ke folder img
+            $file_kip->move('uploads/kip', $nama_file_kip);
+        }
 
         $data = array(
             'no_pendaftaran' => $no_pendaftaran,
@@ -94,9 +144,6 @@ class Home extends BaseController
             'tempat_lahir' => $this->request->getVar('tempat_lahir'),
             'tgl_lahir' => $this->request->getVar('tgl_lahir'),
             'agama' => $this->request->getVar('agama'),
-//            'anak_ke' => $this->request->getVar('anak_ke'),
-//            'jml_saudara' => $this->request->getVar('jml_saudara'),
-//            'no_hp_siswa' => $this->request->getVar('no_telp'),
 
             'alamat_siswa' => $this->request->getVar('alamat'),
             'jenis_tinggal' => $this->request->getVar('jenis_tinggal'),
@@ -105,37 +152,11 @@ class Home extends BaseController
             'kab' => $this->request->getVar('kabupaten'),
             'prov' => $this->request->getVar('provinsi'),
             'kode_pos' => $this->request->getVar('kode_pos'),
-//            'jarak' => $this->request->getVar('jarak'),
-//            'trans' => $this->request->getVar('kendaraan'),
-
-//            'no_kk' => $this->request->getVar('no_kk'),
             'nama_ayah' => $this->request->getVar('nama_ayah'),
-//            'nik_ayah' => $this->request->getVar('nik_ayah'),
-//            'pekerjaan_ayah' => $this->request->getVar('pekerjaan_ayah'),
-//            'pdd_ayah' => $this->request->getVar('pdd_ayah'),
-//            'penghasilan_ayah' => $this->request->getVar('penghasilan_ayah'),
-//            'status_ayah' => $this->request->getVar('status_hidup_ayah'),
-//            'th_lahir_ayah' => $this->request->getVar('th_lahir_ayah'),
             'nama_ibu' => $this->request->getVar('nama_ibu'),
-//            'nik_ibu' => $this->request->getVar('nik_ibu'),
-//            'pekerjaan_ibu' => $this->request->getVar('pekerjaan_ibu'),
-//            'pdd_ibu' => $this->request->getVar('pdd_ibu'),
-//            'penghasilan_ibu' => $this->request->getVar('penghasilan_ibu'),
-//            'status_ibu' => $this->request->getVar('status_hidup_ibu'),
-//            'th_lahir_ibu' => $this->request->getVar('th_lahir_ibu'),
-//            'nama_wali' => $this->request->getVar('nama_wali'),
-//            'nik_wali' => $this->request->getVar('nik_wali'),
-//            'pdd_wali' => $this->request->getVar('pdd_wali'),
-//            'pekerjaan_wali' => $this->request->getVar('pekerjaan_wali'),
-//            'penghasilan_wali' => $this->request->getVar('penghasilan_wali'),
-//            'th_lahir_wali' => $this->request->getVar('th_lahir_wali'),
             'no_hp_ortu' => $this->request->getVar('no_telp'),
-//            'npsn_sekolah' => $this->request->getVar('npsn'),
             'nama_sekolah' => $this->request->getVar('nama_sekolah'),
             'lokasi_sekolah' => $this->request->getVar('lokasi_sekolah'),
-//            'no_kks' => $this->request->getVar('kks'),
-//            'no_pkh' => $this->request->getVar('pkh'),
-//            'no_kip' => $this->request->getVar('kip'),
             'no_un' => $this->request->getVar('no_un'),
             'no_seri_ijazah' => $this->request->getVar('no_seri_ijazah'),
             'no_seri_skhun' => $this->request->getVar('no_seri_skhun'),
@@ -203,6 +224,6 @@ class Home extends BaseController
     {
         $user = new User($data);
         $user->activate();
-        $this->userModel->withGroup('siswa')->save($user);
+        $this->userModel->withGroup('siswa')->skipValidation(true)->protect(false)->save($user);
     }
 }
