@@ -24,8 +24,6 @@ class SiswaModel extends Model
         'tgl_lahir',
         'agama',
         'anak_ke',
-//        'jml_saudara',
-//        'no_hp_siswa',
         'alamat_siswa',
         'jenis_tinggal',
         'desa',
@@ -33,36 +31,11 @@ class SiswaModel extends Model
         'kab',
         'prov',
         'kode_pos',
-//        'jarak',
-//        'trans',
-//        'no_kk',
         'nama_ayah',
-//        'nik_ayah',
-//        'pekerjaan_ayah',
-//        'pdd_ayah',
-//        'penghasilan_ayah',
-//        'status_ayah',
-//        'th_lahir_ayah',
         'nama_ibu',
-//        'nik_ibu',
-//        'pekerjaan_ibu',
-//        'pdd_ibu',
-//        'penghasilan_ibu',
-//        'status_ibu',
-//        'th_lahir_ibu',
-//        'nama_wali',
-//        'nik_wali',
-//        'pdd_wali',
-//        'pekerjaan_wali',
-//        'penghasilan_wali',
-//        'th_lahir_wali',
         'no_hp_ortu',
-//        'npsn_sekolah',
         'nama_sekolah',
         'lokasi_sekolah',
-//        'no_kks',
-//        'no_pkh',
-//        'no_kip',
         'no_un',
         'no_seri_ijazah',
         'no_seri_skhun',
@@ -106,4 +79,13 @@ class SiswaModel extends Model
     protected $afterFind = [];
     protected $beforeDelete = [];
     protected $afterDelete = [];
+
+    //get jumlah siswa 3 tahun terakhir group by tahun
+    public function getJumlahSiswa()
+    {
+        return $this->db->table('siswa')
+            ->select('YEAR(created_at) as tahun, COUNT(*) as jumlah')
+            ->groupBy('YEAR(created_at)')
+            ->get()->getResultArray();
+    }
 }
