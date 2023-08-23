@@ -25,25 +25,25 @@ var KTDatatablesSiswa = function () {
 
     // Hook export buttons
     var exportButtons = () => {
-        const documentTitle = 'Laporan Pengguna';
+        const documentTitle = 'Data Calon Siswa';
         var buttons = new $.fn.dataTable.Buttons(table, {
             buttons: [
-                {
-                    extend: 'copyHtml5',
-                    title: documentTitle
-                },
+                // {
+                //     extend: 'copyHtml5',
+                //     title: documentTitle
+                // },
                 {
                     extend: 'excelHtml5',
                     title: documentTitle
                 },
-                {
-                    extend: 'csvHtml5',
-                    title: documentTitle
-                },
-                {
-                    extend: 'pdfHtml5',
-                    title: documentTitle
-                }
+                // {
+                //     extend: 'csvHtml5',
+                //     title: documentTitle
+                // },
+                // {
+                //     extend: 'pdfHtml5',
+                //     title: documentTitle
+                // }
             ]
         }).container().appendTo($('#kt_datatable_siswa_buttons'));
 

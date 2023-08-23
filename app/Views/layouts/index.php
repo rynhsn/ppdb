@@ -128,7 +128,7 @@
 <!--end::Global Javascript Bundle-->
 <!--begin::Vendors Javascript(used for this page only)-->
 <script src="<?= base_url(); ?>/plugins/custom/datatables/datatables.bundle.js"></script>
-<script src="<?= base_url(); ?>/js/custom/documentation/charts/apexcharts.js"></script>
+<!--<script src="--><?php //= base_url(); ?><!--/js/custom/documentation/charts/apexcharts.js"></script>-->
 <!--end::Vendors Javascript-->
 <!--begin::Custom Javascript(used for this page only)-->
 <!--<script src="--><?php //= base_url(); ?><!--/js/widgets.bundle.js"></script>-->
