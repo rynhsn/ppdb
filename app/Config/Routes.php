@@ -33,6 +33,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/daftar', 'Home::daftar');
 $routes->post('/daftar', 'Home::saveDaftar');
+$routes->get('/getChartData', 'Chart::getChartData');
 
 $routes->group('panel', ['filter' => 'login'], static function ($routes) {
     $routes->get('', 'Panel::index');

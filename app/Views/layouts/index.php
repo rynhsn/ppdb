@@ -128,10 +128,11 @@
 <!--end::Global Javascript Bundle-->
 <!--begin::Vendors Javascript(used for this page only)-->
 <script src="<?= base_url(); ?>/plugins/custom/datatables/datatables.bundle.js"></script>
+<script src="<?= base_url(); ?>/js/custom/documentation/charts/apexcharts.js"></script>
 <!--end::Vendors Javascript-->
 <!--begin::Custom Javascript(used for this page only)-->
-<script src="<?= base_url(); ?>/js/widgets.bundle.js"></script>
-<script src="<?= base_url(); ?>/js/custom/widgets.js"></script>
+<!--<script src="--><?php //= base_url(); ?><!--/js/widgets.bundle.js"></script>-->
+<!--<script src="--><?php //= base_url(); ?><!--/js/custom/widgets.js"></script>-->
 
 <script src="<?= base_url(); ?>/js/custom/apps/chat/chat.js"></script>
 <script src="<?= base_url(); ?>/js/custom/utilities/modals/upgrade-plan.js"></script>
@@ -147,6 +148,7 @@
 <!--end::Custom Javascript-->
 
 <script src="<?= base_url(); ?>/plugins/custom/ckeditor/ckeditor-classic.bundle.js"></script>
+<script src="<?= base_url(); ?>/js/widgets/charts/widget-siswa.js"></script>
 
 <!--end::Javascript-->
 <script>
@@ -196,6 +198,8 @@
             console.error(error);
         });
     <?php endif; ?>
+
+
 </script>
 </body>
 <!--end::Body-->

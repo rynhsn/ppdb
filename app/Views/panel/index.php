@@ -29,9 +29,9 @@
         <!--begin::Content container-->
         <div id="kt_app_content_container" class="app-container container-xxl">
             <!--begin::Notice-->
-            <div class="notice d-flex bg-light-<?=($status['status'] == 'buka')?'success':'danger'?> rounded border-<?=($status['status'] == 'buka')?'success':'danger'?> border border-dashed mb-9 p-6">
+            <div class="notice d-flex bg-light-<?= ($status['status'] == 'buka') ? 'success' : 'danger' ?> rounded border-<?= ($status['status'] == 'buka') ? 'success' : 'danger' ?> border border-dashed mb-9 p-6">
                 <!--begin::Icon-->
-                <i class="ki-duotone ki-<?=($status['status'] == 'buka')?'check':'cross'?>-square fs-2tx text-<?=($status['status'] == 'buka')?'success':'danger'?> me-4">
+                <i class="ki-duotone ki-<?= ($status['status'] == 'buka') ? 'check' : 'cross' ?>-square fs-2tx text-<?= ($status['status'] == 'buka') ? 'success' : 'danger' ?> me-4">
                     <span class="path1"></span>
                     <span class="path2"></span>
                     <span class="path3"></span>
@@ -51,15 +51,17 @@
             </div>
             <!--end::Notice-->
 
-            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+            <div class="row g-10 g-xl-10 mb-5 mb-xl-10">
                 <!--begin::Col-->
-                <div class="col-xl-3">
+                <div class="col-xl-4">
                     <!--begin::Card widget 3-->
-                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100" style="background-color: #1BC5BD;background-image:url('assets/media/svg/shapes/wave-bg-dark.svg')">
+                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
+                         style="background-color: #1BC5BD;background-image:url('assets/media/svg/shapes/wave-bg-dark.svg')">
                         <!--begin::Header-->
                         <div class="card-header pt-5 mb-3">
                             <!--begin::Icon-->
-                            <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #1BC5BD">
+                            <div class="d-flex flex-center rounded-circle h-80px w-80px"
+                                 style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #1BC5BD">
                                 <i class="ki-outline ki-call text-white fs-2qx lh-0"></i>
                             </div>
                             <!--end::Icon-->
@@ -83,13 +85,15 @@
                 </div>
                 <!--end::Col-->
                 <!--begin::Col-->
-                <div class="col-xl-3">
+                <div class="col-xl-4">
                     <!--begin::Card widget 3-->
-                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100" style="background-color: #EE9D01;background-image:url('assets/media/svg/shapes/wave-bg-red.svg')">
+                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
+                         style="background-color: #EE9D01;background-image:url('assets/media/svg/shapes/wave-bg-red.svg')">
                         <!--begin::Header-->
                         <div class="card-header pt-5 mb-3">
                             <!--begin::Icon-->
-                            <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #EE9D01">
+                            <div class="d-flex flex-center rounded-circle h-80px w-80px"
+                                 style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #EE9D01">
                                 <i class="ki-outline ki-call text-white fs-2qx lh-0"></i>
                             </div>
                             <!--end::Icon-->
@@ -113,13 +117,15 @@
                 </div>
                 <!--end::Col-->
                 <!--begin::Col-->
-                <div class="col-xl-3">
+                <div class="col-xl-4">
                     <!--begin::Card widget 3-->
-                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100" style="background-color: #6ad59b;background-image:url('assets/media/svg/shapes/wave-bg-purple.svg')">
+                    <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-end h-xl-100"
+                         style="background-color: #6ad59b;background-image:url('assets/media/svg/shapes/wave-bg-purple.svg')">
                         <!--begin::Header-->
                         <div class="card-header pt-5 mb-3">
                             <!--begin::Icon-->
-                            <div class="d-flex flex-center rounded-circle h-80px w-80px" style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #6ad59b">
+                            <div class="d-flex flex-center rounded-circle h-80px w-80px"
+                                 style="border: 1px dashed rgba(255, 255, 255, 0.4);background-color: #6ad59b">
                                 <i class="ki-outline ki-call text-white fs-2qx lh-0"></i>
                             </div>
                             <!--end::Icon-->
@@ -142,6 +148,23 @@
                     <!--end::Card widget 3-->
                 </div>
                 <!--end::Col-->
+            </div>
+            <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
+                <div class="card card-bordered">
+                    <div class="card-header border-0 pt-5">
+                        <!--begin::Title-->
+                        <h3 class="card-title align-items-start flex-column">
+                            <span class="card-label fw-bold fs-3 mb-1">Statistik</span>
+
+                            <span class="text-muted fw-semibold fs-7">Calon siswa 3 tahun terakhir</span>
+                        </h3>
+                        <!--end::Title-->
+
+                    </div>
+                    <div class="card-body">
+                        <div id="kt_charts_widget_1_chart" style="height: 350px;"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <!--end::Content container-->

@@ -21,24 +21,26 @@ class HasilSeleksi extends BaseController
     {
         $jenjang = JENJANG[$jenjang];
         $data = [
-            'title'     => 'Hasil Seleksi',
-            'lembaga'   => $this->lembaga,
-            'siswa'     => $this->siswaModel->where('status_pendaftaran', '2')->where('jenjang_daftar', $jenjang)->findAll(),
-            'catatan'   => $this->keteranganBuktiModel->where('jenjang', $jenjang)->first(),
-            'jenjang'   => $jenjang
+            'title' => 'Hasil Seleksi',
+            'lembaga' => $this->lembaga,
+            'siswa' => $this->siswaModel->where('status_pendaftaran', '2')->where('jenjang_daftar', $jenjang)->findAll(),
+            'catatan' => $this->keteranganBuktiModel->where('jenjang', $jenjang)->first(),
+            'jenjang' => $jenjang
         ];
 
         return view('/panel/hasil-seleksi', $data);
     }
 
-    public function save(){
+    public function save()
+    {
         $data = [
-            'id'      => $this->request->getVar('id'),
-            'nilai'   => $this->request->getVar('nilai'),
+            'id' => $this->request->getVar('id'),
+            'nilai' => $this->request->getVar('nilai'),
             'status_kelulusan' => ($this->request->getVar('nilai') >= NILAI_MIN) ? 1 : 2
         ];
-//        dd($data);
-//        dd($data);
+//        if ($data['status_kelulusan'] == 2) {
+//            $data['status_verifikasi'] = 2;
+//        }
         $this->siswaModel->save($data);
         session()->setFlashdata('pesan', 'Nilai berhasil disimpan.');
         return redirect()->back();
@@ -54,9 +56,11 @@ class HasilSeleksi extends BaseController
         session()->setFlashdata('pesan', 'Siswa berhasil diterima.');
         return redirect()->back();
     }
-    public function tolak($id){
+
+    public function tolak($id)
+    {
         $data = [
-            'id'      => $id,
+            'id' => $id,
             'status_verifikasi' => 2
         ];
         $this->siswaModel->save($data);

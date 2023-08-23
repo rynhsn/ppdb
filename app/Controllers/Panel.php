@@ -63,8 +63,9 @@ class Panel extends BaseController
             'pendaftar' => $this->siswaModel->where('status_pendaftaran', 2)->countAllResults(),
             'totalLulus' => $this->siswaModel->where('status_kelulusan', 1)->countAllResults(),
             'totalTidakLulus' => $this->siswaModel->where('status_kelulusan', 2)->countAllResults(),
-            'jumlahSiswa' => $this->siswaModel->getJumlahSiswa()
+//            'jumlahSiswa' => $this->siswaModel->getJumlahSiswaByJenjang(4, 'Madrasah Aliyah')
         ];
+//        dd($data['jumlahSiswa']);
         if (in_groups('siswa')) {
             $data += [
                 'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),

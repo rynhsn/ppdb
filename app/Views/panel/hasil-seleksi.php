@@ -165,7 +165,7 @@
                                             <span class="path5"></span>
                                         </i>
                                     </button>
-                                    <a href="<?= base_url('panel/hasil-seleksi/terima/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1 <?= $item['status_kelulusan'] != 1 ? 'disabled' : '' ?>" title="Terima" onclick="return confirm('Siswa akan diterima, yakin?')">
+                                    <a href="<?= base_url('panel/hasil-seleksi/terima/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-success btn-sm me-1 <?= ($item['status_verifikasi'] != 1 && $item['status_kelulusan'] != 0) ? '' : 'disabled' ?>" title="Terima" onclick="return confirm('Siswa akan diterima, yakin?')">
                                         <i class="ki-duotone ki-check-square fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>
@@ -174,7 +174,7 @@
                                             <span class="path5"></span>
                                         </i>
                                     </a>
-                                    <a href="<?= base_url('panel/hasil-seleksi/tolak/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 <?= $item['status_kelulusan'] != 1 ? 'disabled' : '' ?>" title="Tolak" onclick="return confirm('Siswa akan ditolak, yakin?')">
+                                    <a href="<?= base_url('panel/hasil-seleksi/tolak/'.$item['id']) ?>" type="button" class="btn btn-icon btn-bg-light btn-active-color-danger btn-sm me-1 <?= ($item['status_verifikasi'] != 2 && $item['status_kelulusan'] != 0) ? '' : 'disabled' ?>" title="Tolak" onclick="return confirm('Siswa akan ditolak, yakin?')">
                                         <i class="ki-duotone ki-cross-square fs-2">
                                             <span class="path1"></span>
                                             <span class="path2"></span>

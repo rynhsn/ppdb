@@ -80,12 +80,99 @@ class SiswaModel extends Model
     protected $beforeDelete = [];
     protected $afterDelete = [];
 
-    //get jumlah siswa 3 tahun terakhir group by tahun
-    public function getJumlahSiswa()
+    public function getJumlahSiswa($numYears, $jenjang)
     {
-        return $this->db->table('siswa')
-            ->select('YEAR(created_at) as tahun, COUNT(*) as jumlah')
+        $currentYear = date('Y');
+        $startYear = $currentYear - $numYears + 1;
+
+        $result = $this->db->table('siswa')
+            ->select("YEAR(created_at) as tahun, IFNULL(COUNT(*), 0) as jumlah", false)
+            ->where("YEAR(created_at) >= $startYear")
             ->groupBy('YEAR(created_at)')
-            ->get()->getResultArray();
+            ->get()
+            ->getResultArray();
+
+        // Fill in missing years with zero count
+        $data = [];
+        for ($i = $startYear; $i <= $currentYear; $i++) {
+            $found = false;
+            foreach ($result as $row) {
+                if ($row['tahun'] == $i) {
+                    $data[] = $row;
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                $data[] = ['tahun' => $i, 'jumlah' => 0];
+            }
+        }
+
+        return $data;
     }
+    public function getJumlahSiswaByJenjang($numYears, $jenjang)
+    {
+        $currentYear = date('Y');
+        $startYear = $currentYear - $numYears + 1;
+
+        $result = $this->db->table('siswa')
+            ->select("YEAR(created_at) as tahun, IFNULL(COUNT(*), 0) as jumlah", false)
+            ->where("YEAR(created_at) >= $startYear")
+            ->where('jenjang_daftar', $jenjang)
+            ->groupBy('YEAR(created_at)')
+            ->get()
+            ->getResultArray();
+
+        $jumlahSiswa = [];
+        for ($i = $startYear; $i <= $currentYear; $i++) {
+            $found = false;
+            foreach ($result as $row) {
+                if ($row['tahun'] == $i) {
+                    $jumlahSiswa[] = intval($row['jumlah']);
+                    $found = true;
+                    break;
+                }
+            }
+            if (!$found) {
+                $jumlahSiswa[] = 0;
+            }
+        }
+
+        return $jumlahSiswa;
+    }
+
+//
+//    public function getJumlahSiswaByJenjang($numYears, $jenjang)
+//    {
+//        $currentYear = date('Y');
+//        $startYear = $currentYear - $numYears + 1;
+//
+//        $result = $this->db->table('siswa')
+//            ->select("YEAR(created_at) as tahun, IFNULL(COUNT(*), 0) as jumlah", false)
+//            ->where("YEAR(created_at) >= $startYear")
+//            ->where('jenjang_daftar', $jenjang) // Adding condition for jenjang_daftar
+//            ->groupBy('YEAR(created_at)')
+//            ->get()
+//            ->getResultArray();
+//
+//        // Fill in missing years with zero count
+//        $data = [];
+//        for ($i = $startYear; $i <= $currentYear; $i++) {
+//            $found = false;
+//            foreach ($result as $row) {
+//                if ($row['tahun'] == $i) {
+//                    $data[] = $row;
+//                    $found = true;
+//                    break;
+//                }
+//            }
+//            if (!$found) {
+//                $data[] = ['tahun' => $i, 'jumlah' => 0];
+//            }
+//        }
+//
+//        return $result;
+//    }
+
+
 }
