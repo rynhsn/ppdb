@@ -146,16 +146,6 @@
                                 <td>:</td>
                                 <td><?= $siswa['kode_pos'] ?></td>
                             </tr>
-                            <tr>
-                                <td>No. Hp</td>
-                                <td>:</td>
-                                <td><?= $siswa['no_hp_siswa'] ?></td>
-                            </tr>
-                            <tr>
-                                <td>Asal Sekolah</td>
-                                <td>:</td>
-                                <td><?= $siswa['nama_sekolah'] ?></td>
-                            </tr>
                         </table>
                         <!-- End:Data Siswa -->
                     </td>

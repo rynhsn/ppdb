@@ -8,6 +8,7 @@ use App\Models\PekerjaanModel;
 use App\Models\PendidikanModel;
 use App\Models\PenghasilanModel;
 use App\Models\SiswaModel;
+use App\Models\StatusPpdbModel;
 use Config\Services;
 use App\Entities\User;
 use App\Models\UserModel;
@@ -40,9 +41,11 @@ class Home extends BaseController
 
     public function index()
     {
+        $statusModel = new StatusPpdbModel();
         $data = [
             'title' => 'Selamat Datang',
             'lembaga' => $this->lembaga,
+            'status' => $statusModel->first(),
         ];
         return view('home/index', $data);
     }

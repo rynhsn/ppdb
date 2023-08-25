@@ -206,8 +206,7 @@ use CodeIgniter\I18n\Time;
                         <?php if (in_array('Tes Seleksi', $jadwal_hari_ini)) : ?>
                             <!--end::Title-->
                             <div class="m-0">
-                                <a href="#" class="btn btn-sm btn-success mb-2" data-bs-toggle="modal"
-                                   data-bs-target="#kt_modal_create_app">Buka link ujian</a>
+                                <a href="<?= $link['link'] ?>" class="btn btn-sm btn-success mb-2" target="_blank">Buka link ujian</a>
                             </div>
                         <?php endif; ?>
                     </div>

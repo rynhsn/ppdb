@@ -8,6 +8,7 @@ use App\Models\JadwalModel;
 use App\Models\JenjangModel;
 use App\Models\KeteranganBuktiModel;
 use App\Models\KompetensiModel;
+use App\Models\LinkTestModel;
 use App\Models\MateriModel;
 use App\Models\PekerjaanModel;
 use App\Models\PendidikanModel;
@@ -67,6 +68,7 @@ class Panel extends BaseController
         ];
 //        dd($data['jumlahSiswa']);
         if (in_groups('siswa')) {
+            $link = new LinkTestModel();
             $data += [
                 'siswa' => $this->siswaModel->where('no_pendaftaran', user()->username)->first(),
                 'pengumuman' => $this->pengumumanModel->orderBy('tgl_pengumuman', 'DESC')->findAll()
@@ -74,6 +76,7 @@ class Panel extends BaseController
 
             $data['jadwal'] = $this->jadwalModel->where('jenjang', $data['siswa']['jenjang_daftar'])->orderBy('tgl_mulai', 'ASC')->findAll();
             $data['materi'] = $this->materiModel->where('jenjang', $data['siswa']['jenjang_daftar'])->first();
+            $data['link'] = $link->where('jenjang', $data['siswa']['jenjang_daftar'])->first();
             $jadwal_hari_ini = $this->jadwalModel->select('judul')->where('jenjang', $data['siswa']['jenjang_daftar'])->where('tgl_mulai <=', Time::now('Asia/Jakarta')->toDateString())->where('tgl_selesai >=', Time::now('Asia/Jakarta')->toDateString())->findAll();
 //            dd(end($data['jadwal_hari_ini'])['judul']);
 //            $data['jadwal_hari_ini'] = end($jadwal_hari_ini)['judul'];

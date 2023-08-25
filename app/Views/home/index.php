@@ -113,7 +113,12 @@
                     </h1>
                     <!--end::Title-->
                     <!--begin::Action-->
+                    <?php if ($status == 'tutup') : ?>
+                    <a href="#" class="btn btn-light-danger disabled">Pendaftaran Ditutup</a>
+                    <?php endif ?>
+                    <?php if ($status == 'buka') : ?>
                     <a href="<?= base_url('daftar') ?>" class="btn btn-success">Daftar Sekarang</a>
+                    <?php endif ?>
                     <!--end::Action-->
                 </div>
                 <!--end::Heading-->
