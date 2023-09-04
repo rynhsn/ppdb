@@ -113,28 +113,6 @@
 
             <!--begin::Card-->
             <div class="card">
-                <!--begin::Card header-->
-                <div class="card-header border-0 pt-6">
-                    <!--begin::Card title-->
-                    <div class="card-title">
-                        <!--begin::Search-->
-                        <div class="d-flex align-items-center position-relative my-1">
-                            <i class="ki-duotone ki-magnifier fs-1 position-absolute ms-4">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <input type="text" data-kt-filter="search"
-                                   class="form-control form-control-solid w-250px ps-14"
-                                   placeholder="Cari .."/>
-                        </div>
-                        <!--end::Search-->
-                        <!--begin::Export buttons-->
-                        <div id="kt_datatable_example_1_export" class="d-none"></div>
-                        <!--end::Export buttons-->
-                    </div>
-                    <!--begin::Card title-->
-                </div>
-                <!--end::Card header-->
                 <!--begin::Card body-->
                 <div class="card-body py-4">
                     <!--begin::Table-->

@@ -136,7 +136,7 @@
                                         <?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?>
                                     </span>
                                 </td>
-                                <td class="fw-bold"><?= $item['jumlah'] ?></td>
+                                <td class="fw-bold"><?= 'Rp. ' . number_format($item['jumlah'], 0, ',', '.') . ',-'  ?></td>
                                 <td class="fw-bold"><?= $item['tanggal'] ?></td>
                                 <td class="text-end">
                                     <button type="button" data-bs-toggle="modal"
@@ -287,7 +287,7 @@
                             <!--begin::Label-->
                             <!--begin::Label-->
                             <div class="col-lg-8">
-                                <span class="fw-bold fs-6 text-gray-800"><?= $item['jumlah'] ?></span>
+                                <span class="fw-bold fs-6 text-gray-800"><?= 'Rp. ' . number_format($item['jumlah'], 0, ',', '.') . ',-'  ?></span>
                             </div>
                             <!--begin::Label-->
                         </div>

@@ -91,4 +91,5 @@ class Pembayaran extends BaseController
         session()->setFlashdata('pesan', 'Mohon tunggu, kami akan konfirmasi segera.');
         return redirect()->to('/panel');
     }
+
 }

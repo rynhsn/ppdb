@@ -24,6 +24,7 @@ class ValidasiRegistrasi extends BaseController
         $this->userModel = new UserModel();
         $this->groupModel = new GroupModel();
         $this->permissionModel = new PermissionModel();
+        $this->pembayaranModel = new PembayaranModel();
     }
 
     public function index()
@@ -62,5 +63,39 @@ class ValidasiRegistrasi extends BaseController
         $this->siswaModel->save($data);
         session()->setFlashdata('pesan', 'Data registrasi ditolak.');
         return redirect()->to('/panel/validasi-registrasi');
+    }
+
+    public function laporan(){
+        $get = $this->request->getPost();
+
+        $data = [
+            'title' => 'Laporan Pembayaran',
+            'lembaga' => $this->lembaga,
+        ];
+
+        if ($get){
+            if($get['periode'] == 'bulan'){
+                $data['periode'] = 'Bulan '.date('F', mktime(0, 0, 0, $get['bulan'], 10)).' '.$get['tahun'];
+                $cond = [
+                    'jenjang_daftar' => $get['jenjang'],
+                    'MONTH(p.created_at)' => $get['bulan'],
+                    'YEAR(p.created_at)' => $get['tahun'],
+                ];
+            }
+            if ($get['periode'] == 'tahun'){
+                $data['periode'] = 'Tahun '.$get['tahun'];
+                $cond = [
+                    'jenjang_daftar' => $get['jenjang'],
+                    'YEAR(p.created_at)' => $get['tahun'],
+                ];
+            }
+            $data['laporan'] = $this->pembayaranModel->getByCond($cond);
+//            dd($data['laporan']);
+            $data['jenjang'] = $get['jenjang'];
+            $data['tahun_ajaran'] = $data['lembaga']['th_pelajaran'];
+
+            return view('pembayaran/cetak', $data);
+        }
+        return view('pembayaran/laporan', $data);
     }
 }

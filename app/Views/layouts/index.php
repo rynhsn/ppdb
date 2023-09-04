@@ -75,7 +75,7 @@
                 <div id="kt_app_footer" class="app-footer">
                     <!--begin::Footer container-->
                     <div
-                        class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
+                            class="app-container container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3">
                         <!--begin::Copyright-->
                         <div class="text-dark order-2 order-md-1">
                             <span class="text-muted fw-semibold me-1">2023&copy;</span>
@@ -199,6 +199,15 @@
         });
     <?php endif; ?>
 
+    $(document).ready(function () {
+        $('input[type=radio][name=periode]').change(function () {
+            if (this.value == 'bulan') {
+                $('#radioBulan').show();
+            } else if (this.value == 'tahun') {
+                $('#radioBulan').hide();
+            }
+        });
+    });
 
 </script>
 </body>

@@ -49,6 +49,8 @@ $routes->group('panel', ['filter' => 'login'], static function ($routes) {
         $routes->get('', 'ValidasiRegistrasi::index');
         $routes->post('konfirmasi', 'ValidasiRegistrasi::konfirmasi');
         $routes->post('tolak', 'ValidasiRegistrasi::tolak');
+        $routes->get('laporan', 'ValidasiRegistrasi::laporan');
+        $routes->post('laporan', 'ValidasiRegistrasi::laporan');
     });
 
     $routes->group('pembayaran', function ($routes) {

@@ -54,9 +54,8 @@
                         <!--begin::Card body-->
                         <div class="card-body text-dark opacity-75 fw-bold pt-0 mt-10">
                             Rekening atas nama<h2> <?= $lembaga['nama_lembaga'] ?></h2>
-                            <h1 class="mb-10">Biaya registrasi:
-                                <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">Rp.</span><span
-                                    class="text-danger"><?= BIAYA_PENDAFTARAN[$siswa['jenjang_daftar']] ?></span></h1>
+                            <h1 class="mb-10">Biaya registrasi: <span
+                                    class="text-danger"><?= 'Rp. ' . number_format(BIAYA_PENDAFTARAN[$siswa['jenjang_daftar']], 0, ',', '.') . ',-'  ?></span></h1>
                             <?php foreach (REKENING as $key => $value): ?>
                                 <div class="row mb-5">
                                     <div class="col-2">

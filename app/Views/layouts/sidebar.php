@@ -117,6 +117,23 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
 <!--                            </span>-->
                         </a>
                         <!--end:Menu link-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item">
+                            <!--begin:Menu link-->
+                            <a class="menu-link" href="<?= base_url('panel/validasi-registrasi/laporan') ?>">
+                                <span class="menu-icon">
+                                    <i class="ki-duotone ki-tablet-text-down fs-2">
+                                        <i class="path1"></i>
+                                        <i class="path2"></i>
+                                        <i class="path3"></i>
+                                        <i class="path4"></i>
+                                    </i>
+                                </span>
+                                <span class="menu-title text-white">Laporan</span>
+                            </a>
+                            <!--end:Menu link-->
+                        </div>
+                        <!--end:Menu item-->
                     </div>
                     <!--end:Menu item-->
                 <?php endif ?>
