@@ -112,15 +112,20 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                             <span class="menu-badge">
                                 <span class="badge badge-warning"><?= get_total_pending_students() ?></span>
                             </span>
-<!--                            <span class="menu-badge">-->
-<!--                                <span class="badge badge-danger">--><?php //= get_total_pending_students() ?><!--</span>-->
-<!--                            </span>-->
+                            <!--                            <span class="menu-badge">-->
+                            <!--                                <span class="badge badge-danger">-->
+                            <?php //= get_total_pending_students() ?><!--</span>-->
+                            <!--                            </span>-->
                         </a>
                         <!--end:Menu link-->
-                        <!--begin:Menu item-->
-                        <div class="menu-item">
-                            <!--begin:Menu link-->
-                            <a class="menu-link" href="<?= base_url('panel/validasi-registrasi/laporan') ?>">
+                    </div>
+                <?php endif; ?>
+
+                <?php if (has_permission('manage-keuangan') || in_groups(['keuangan', 'pimpinan'])): ?>
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link" href="<?= base_url('panel/validasi-registrasi/laporan') ?>">
                                 <span class="menu-icon">
                                     <i class="ki-duotone ki-tablet-text-down fs-2">
                                         <i class="path1"></i>
@@ -129,11 +134,9 @@ if (isset($_COOKIE["sidebar_minimize_state"]) && $_COOKIE["sidebar_minimize_stat
                                         <i class="path4"></i>
                                     </i>
                                 </span>
-                                <span class="menu-title text-white">Laporan</span>
-                            </a>
-                            <!--end:Menu link-->
-                        </div>
-                        <!--end:Menu item-->
+                            <span class="menu-title text-white">Laporan Keuangan</span>
+                        </a>
+                        <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
                 <?php endif ?>
