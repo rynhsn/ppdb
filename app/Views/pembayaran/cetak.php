@@ -100,7 +100,7 @@
             <td><?= $item['dari'] ?></td>
             <td><?= $item['ke'] ?></td>
             <td><?= $item['tanggal'] ?></td>
-            <td><?= $item['status_pendaftaran'] ?></td>
+            <td><?= STATUS_PEMBAYARAN[$item['status_pendaftaran']][0] ?></td>
             <td>Rp. <?= number_format($item['jumlah']) ?>,-</td>
         </tr>
     <?php endforeach; ?>
